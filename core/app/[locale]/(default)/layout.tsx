@@ -1,9 +1,9 @@
 import { setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
-import { Navigation, Footer } from '~/components/epha';
 import { isLoggedIn } from '~/auth';
-import { getHeaderCartData, updateCartItemQuantity, removeCartItem } from '~/components/cart';
+import { getHeaderCartData, removeCartItem, updateCartItemQuantity } from '~/components/cart';
+import { Footer, Navigation } from '~/components/epha';
 
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;
@@ -24,11 +24,11 @@ export default async function DefaultLayout({ params, children }: Props) {
     <>
       <Navigation
         cartCount={cartData.itemCount}
-        isLoggedIn={userLoggedIn}
         cartItems={cartData.items}
         cartSubtotal={cartData.subtotal}
-        updateQuantityAction={updateCartItemQuantity}
+        isLoggedIn={userLoggedIn}
         removeItemAction={removeCartItem}
+        updateQuantityAction={updateCartItemQuantity}
       />
       <main>{children}</main>
       <Footer />

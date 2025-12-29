@@ -11,7 +11,7 @@ const ContactFormSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
-export type ContactFormState = {
+export interface ContactFormState {
   success?: boolean;
   message?: string;
   errors?: {
@@ -22,11 +22,11 @@ export type ContactFormState = {
     subject?: string[];
     message?: string[];
   };
-};
+}
 
 export async function submitContactForm(
   prevState: ContactFormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<ContactFormState> {
   const rawData = {
     name: formData.get('name'),
@@ -60,10 +60,11 @@ export async function submitContactForm(
       success: true,
       message: 'Thank you for your message! We will get back to you within 24 hours.',
     };
-  } catch (error) {
+  } catch {
     return {
       success: false,
-      message: 'Something went wrong. Please try again or contact us directly at epha@gtsegroup.com',
+      message:
+        'Something went wrong. Please try again or contact us directly at epha@gtsegroup.com',
     };
   }
 }

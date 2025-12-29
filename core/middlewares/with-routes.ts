@@ -290,6 +290,7 @@ export const withRoutes: MiddlewareFactory = () => {
   return async (request, event) => {
     // Skip processing for static files in public folder
     const pathname = request.nextUrl.pathname;
+
     if (pathname.startsWith('/images/') || pathname.startsWith('/blog/')) {
       return NextResponse.next();
     }

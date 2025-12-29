@@ -1,6 +1,6 @@
+import { Clock, Mail, MapPin, MessageSquare, Phone } from 'lucide-react';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 
 import { ContactForm } from './_components/contact-form';
 
@@ -8,27 +8,27 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   return {
     title: 'Contact Us | EPHA Hose Protectors',
-    description: 'Get in touch with EPHA Hose Protectors. Contact us for product inquiries, bulk orders, distribution partnerships, or technical support.',
+    description:
+      'Get in touch with EPHA Hose Protectors. Contact us for product inquiries, bulk orders, distribution partnerships, or technical support.',
   };
 }
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
+
   setRequestLocale(locale);
 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-primary text-white py-20">
+      <section className="relative bg-primary py-20 text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-heading text-5xl md:text-6xl uppercase mb-6">
-              Contact Us
-            </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="mb-6 font-heading text-5xl uppercase md:text-6xl">Contact Us</h1>
+            <p className="text-xl leading-relaxed text-white/80">
               Have questions about our hose protectors? Need a bulk quote? Our team is here to help.
             </p>
           </div>
@@ -36,47 +36,54 @@ export default async function ContactPage({ params }: Props) {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 bg-gray-50">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="w-6 h-6 text-accent" />
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-6 md:grid-cols-4">
+              <div className="rounded-xl bg-white p-6 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <Phone className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="font-heading text-lg uppercase text-primary mb-2">Phone</h3>
-                <a href="tel:1-463-255-9942" className="text-accent hover:underline font-medium">
+                <h3 className="mb-2 font-heading text-lg uppercase text-primary">Phone</h3>
+                <a className="font-medium text-accent hover:underline" href="tel:1-463-255-9942">
                   1-463-255-9942
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="w-6 h-6 text-accent" />
+              <div className="rounded-xl bg-white p-6 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <Mail className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="font-heading text-lg uppercase text-primary mb-2">Email</h3>
-                <a href="mailto:epha@gtsegroup.com" className="text-accent hover:underline font-medium">
+                <h3 className="mb-2 font-heading text-lg uppercase text-primary">Email</h3>
+                <a
+                  className="font-medium text-accent hover:underline"
+                  href="mailto:epha@gtsegroup.com"
+                >
                   epha@gtsegroup.com
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-6 h-6 text-accent" />
+              <div className="rounded-xl bg-white p-6 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <Clock className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="font-heading text-lg uppercase text-primary mb-2">Hours</h3>
-                <p className="text-gray-600 text-sm">
-                  Mon - Fri<br />8am - 6pm EST
+                <h3 className="mb-2 font-heading text-lg uppercase text-primary">Hours</h3>
+                <p className="text-sm text-gray-600">
+                  Mon - Fri
+                  <br />
+                  8am - 6pm EST
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-accent" />
+              <div className="rounded-xl bg-white p-6 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <MapPin className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="font-heading text-lg uppercase text-primary mb-2">Address</h3>
-                <p className="text-gray-600 text-sm">
-                  4101 S High School Rd<br />Indianapolis, IN 46241
+                <h3 className="mb-2 font-heading text-lg uppercase text-primary">Address</h3>
+                <p className="text-sm text-gray-600">
+                  4101 S High School Rd
+                  <br />
+                  Indianapolis, IN 46241
                 </p>
               </div>
             </div>
@@ -87,74 +94,74 @@ export default async function ContactPage({ params }: Props) {
       {/* Contact Form Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-12">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-12 lg:grid-cols-5">
               {/* Form */}
               <div className="lg:col-span-3">
-                <div className="flex items-center gap-3 mb-6">
-                  <MessageSquare className="w-6 h-6 text-accent" />
+                <div className="mb-6 flex items-center gap-3">
+                  <MessageSquare className="h-6 w-6 text-accent" />
                   <h2 className="font-heading text-3xl uppercase text-primary">
                     Send Us a Message
                   </h2>
                 </div>
-                <p className="text-gray-600 mb-8">
-                  Fill out the form below and our team will get back to you within 24 hours.
-                  For urgent inquiries, please call us directly.
+                <p className="mb-8 text-gray-600">
+                  Fill out the form below and our team will get back to you within 24 hours. For
+                  urgent inquiries, please call us directly.
                 </p>
                 <ContactForm />
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-2">
-                <div className="bg-primary rounded-2xl p-8 text-white">
-                  <h3 className="font-heading text-2xl uppercase mb-6">Quick Help</h3>
+                <div className="rounded-2xl bg-primary p-8 text-white">
+                  <h3 className="mb-6 font-heading text-2xl uppercase">Quick Help</h3>
 
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-heading text-lg uppercase text-accent mb-2">
+                      <h4 className="mb-2 font-heading text-lg uppercase text-accent">
                         Product Inquiries
                       </h4>
-                      <p className="text-white/80 text-sm">
-                        Need help choosing the right hose protector size? Our team can recommend
-                        the perfect solution for your application.
+                      <p className="text-sm text-white/80">
+                        Need help choosing the right hose protector size? Our team can recommend the
+                        perfect solution for your application.
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="font-heading text-lg uppercase text-accent mb-2">
+                      <h4 className="mb-2 font-heading text-lg uppercase text-accent">
                         Bulk Orders
                       </h4>
-                      <p className="text-white/80 text-sm">
-                        Looking to order large quantities? We offer volume discounts and can
-                        provide custom quotes for fleet operators and distributors.
+                      <p className="text-sm text-white/80">
+                        Looking to order large quantities? We offer volume discounts and can provide
+                        custom quotes for fleet operators and distributors.
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="font-heading text-lg uppercase text-accent mb-2">
+                      <h4 className="mb-2 font-heading text-lg uppercase text-accent">
                         Distribution Partnership
                       </h4>
-                      <p className="text-white/80 text-sm">
+                      <p className="text-sm text-white/80">
                         Interested in becoming an EPHA distributor? Contact us to learn about
                         partnership opportunities in your region.
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="font-heading text-lg uppercase text-accent mb-2">
+                      <h4 className="mb-2 font-heading text-lg uppercase text-accent">
                         Technical Support
                       </h4>
-                      <p className="text-white/80 text-sm">
-                        Have questions about installation or specifications? Our technical team
-                        is happy to assist with any product questions.
+                      <p className="text-sm text-white/80">
+                        Have questions about installation or specifications? Our technical team is
+                        happy to assist with any product questions.
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-8 border-t border-white/20">
-                    <p className="text-white/60 text-sm mb-4">Distributed by</p>
+                  <div className="mt-8 border-t border-white/20 pt-8">
+                    <p className="mb-4 text-sm text-white/60">Distributed by</p>
                     <div className="font-heading text-xl uppercase">GTSE Group Inc</div>
-                    <p className="text-white/80 text-sm mt-2">
+                    <p className="mt-2 text-sm text-white/80">
                       Your trusted partner for industrial consumables and hose protection solutions.
                     </p>
                   </div>
@@ -166,18 +173,18 @@ export default async function ContactPage({ params }: Props) {
       </section>
 
       {/* Map Section (placeholder) */}
-      <section className="h-80 bg-gray-200 relative">
+      <section className="relative h-80 bg-gray-200">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500 font-medium">
+            <MapPin className="mx-auto mb-4 h-12 w-12 text-gray-400" />
+            <p className="font-medium text-gray-500">
               4101 S High School Rd, Indianapolis, IN 46241
             </p>
             <a
+              className="mt-4 inline-flex items-center gap-2 text-accent hover:underline"
               href="https://maps.google.com/?q=4101+S+High+School+Rd+Indianapolis+IN+46241"
-              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-accent hover:underline"
+              target="_blank"
             >
               View on Google Maps
             </a>

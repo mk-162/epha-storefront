@@ -17,8 +17,12 @@ const GET_PRODUCTS_QUERY = graphql(`
                 currencyCode
               }
               priceRange {
-                min { value }
-                max { value }
+                min {
+                  value
+                }
+                max {
+                  value
+                }
               }
             }
             productOptions(first: 10) {
@@ -105,7 +109,7 @@ export async function getHoseProtectors(): Promise<Product[]> {
 
       // Get the "Hose size" option ID if it exists
       const sizeOption = node.productOptions.edges.find(
-        (opt) => opt.node.displayName === 'Hose size'
+        (opt) => opt.node.displayName === 'Hose size',
       );
 
       const variants: ProductVariant[] = node.variants.edges.map((v) => {
@@ -117,7 +121,7 @@ export async function getHoseProtectors(): Promise<Product[]> {
         return {
           entityId: variant.entityId,
           sku: variant.sku,
-          price: variant.prices?.price?.value ?? 0,
+          price: variant.prices?.price.value ?? 0,
           size: sizeValue?.label ?? '',
         };
       });
@@ -127,11 +131,13 @@ export async function getHoseProtectors(): Promise<Product[]> {
         name: node.name,
         sku: node.sku,
         path: node.path,
-        basePrice: node.prices?.price?.value ?? 0,
-        priceRange: node.prices?.priceRange ? {
-          min: node.prices.priceRange.min.value,
-          max: node.prices.priceRange.max.value,
-        } : null,
+        basePrice: node.prices?.price.value ?? 0,
+        priceRange: node.prices?.priceRange
+          ? {
+              min: node.prices.priceRange.min.value,
+              max: node.prices.priceRange.max.value,
+            }
+          : null,
         optionId: sizeOption ? sizeOption.node.entityId : null,
         variants,
       };

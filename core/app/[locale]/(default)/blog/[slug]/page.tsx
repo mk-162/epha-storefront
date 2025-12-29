@@ -1,9 +1,17 @@
-import { setRequestLocale } from 'next-intl/server';
-import { Link } from '~/components/link';
-import { Image } from '~/components/image';
-import { Calendar, Clock, ChevronRight, ArrowLeft, Share2, Linkedin, Twitter, Facebook, User } from 'lucide-react';
-import { blogPosts } from '~/lib/blog-data';
+import {
+  ArrowLeft,
+  Calendar,
+  ChevronRight,
+  Clock,
+  Share2,
+  User,
+} from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+
+import { Image } from '~/components/image';
+import { Link } from '~/components/link';
+import { blogPosts } from '~/lib/blog-data';
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -11,53 +19,52 @@ interface Props {
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
+
   setRequestLocale(locale);
 
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
+  const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background font-sans text-foreground">
       <main>
         {/* Hero Section */}
-        <section className="relative h-[50vh] min-h-[400px] flex items-end">
+        <section className="relative flex h-[50vh] min-h-[400px] items-end">
           <div className="absolute inset-0">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
+            <Image alt={post.title} className="object-cover" fill priority src={post.image} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
           </div>
-          <div className="container mx-auto px-4 pb-12 relative z-10">
-            <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <div className="container relative z-10 mx-auto px-4 pb-12">
+            <nav className="mb-6 flex items-center gap-2 text-sm text-white/60">
+              <Link className="transition-colors hover:text-white" href="/">
+                Home
+              </Link>
               <ChevronRight className="h-4 w-4" />
-              <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <Link className="transition-colors hover:text-white" href="/blog">
+                Blog
+              </Link>
               <ChevronRight className="h-4 w-4" />
               <span className="text-white">{post.category}</span>
             </nav>
-            <span className="inline-block bg-accent text-white text-xs font-bold uppercase px-3 py-1 rounded-full mb-4">
+            <span className="mb-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase text-white">
               {post.category}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white uppercase mb-4 max-w-4xl">
+            <h1 className="mb-4 max-w-4xl font-heading text-3xl font-bold uppercase text-white md:text-4xl lg:text-5xl">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 text-white/80 text-sm">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-white/80">
               <div className="flex items-center gap-2">
-                <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                   <User className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-medium">{post.author}</p>
-                  <p className="text-white/60 text-xs">{post.authorRole}</p>
+                  <p className="font-medium text-white">{post.author}</p>
+                  <p className="text-xs text-white/60">{post.authorRole}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -73,31 +80,28 @@ export default async function BlogPostPage({ params }: Props) {
         </section>
 
         {/* Content */}
-        <section className="py-16 bg-white">
+        <section className="bg-white py-16">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-3 gap-12">
+            <div className="grid gap-12 lg:grid-cols-3">
               <article className="lg:col-span-2">
-                <div
-                  className="blog-content"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
 
                 {/* Share */}
-                <div className="mt-12 pt-8 border-t border-gray-200">
+                <div className="mt-12 border-t border-gray-200 pt-8">
                   <div className="flex flex-wrap items-center gap-4">
-                    <span className="font-bold text-gray-700 flex items-center gap-2">
+                    <span className="flex items-center gap-2 font-bold text-gray-700">
                       <Share2 className="h-4 w-4" />
                       Share this article:
                     </span>
                     <div className="flex gap-2">
-                      <button className="h-10 w-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <Linkedin className="h-5 w-5" />
+                      <button className="rounded-full bg-[#0A66C2] px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+                        LinkedIn
                       </button>
-                      <button className="h-10 w-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <Twitter className="h-5 w-5" />
+                      <button className="rounded-full bg-black px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+                        X
                       </button>
-                      <button className="h-10 w-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <Facebook className="h-5 w-5" />
+                      <button className="rounded-full bg-[#1877F2] px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+                        Facebook
                       </button>
                     </div>
                   </div>
@@ -106,8 +110,8 @@ export default async function BlogPostPage({ params }: Props) {
                 {/* Back to Blog */}
                 <div className="mt-8">
                   <Link
+                    className="inline-flex items-center gap-2 text-sm font-bold uppercase text-primary transition-colors hover:text-accent"
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-primary font-bold uppercase text-sm hover:text-accent transition-colors"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     Back to Blog
@@ -119,65 +123,70 @@ export default async function BlogPostPage({ params }: Props) {
               <aside className="lg:col-span-1">
                 <div className="sticky top-24 space-y-8">
                   {/* Related Posts */}
-                  <div className="bg-slate-50 rounded-xl p-6">
-                    <h3 className="font-heading font-bold text-primary uppercase mb-4">Related Articles</h3>
+                  <div className="rounded-xl bg-slate-50 p-6">
+                    <h3 className="mb-4 font-heading font-bold uppercase text-primary">
+                      Related Articles
+                    </h3>
                     <div className="space-y-4">
                       {relatedPosts.map((relatedPost) => (
                         <Link
-                          key={relatedPost.slug}
+                          className="group block"
                           href={`/blog/${relatedPost.slug}`}
-                          className="block group"
+                          key={relatedPost.slug}
                         >
-                          <p className="text-sm font-medium text-gray-800 group-hover:text-accent transition-colors line-clamp-2">
+                          <p className="line-clamp-2 text-sm font-medium text-gray-800 transition-colors group-hover:text-accent">
                             {relatedPost.title}
                           </p>
-                          <p className="text-xs text-gray-500 mt-1">{relatedPost.date}</p>
+                          <p className="mt-1 text-xs text-gray-500">{relatedPost.date}</p>
                         </Link>
                       ))}
                     </div>
                   </div>
 
                   {/* CTA */}
-                  <div className="bg-primary rounded-xl p-6 text-white">
-                    <h3 className="font-heading font-bold uppercase mb-3">Free Consultation</h3>
-                    <p className="text-white/80 text-sm mb-4">
-                      Get expert advice on protecting your hydraulic systems. Our team is ready to help.
+                  <div className="rounded-xl bg-primary p-6 text-white">
+                    <h3 className="mb-3 font-heading font-bold uppercase">Free Consultation</h3>
+                    <p className="mb-4 text-sm text-white/80">
+                      Get expert advice on protecting your hydraulic systems. Our team is ready to
+                      help.
                     </p>
                     <Link
+                      className="inline-block w-full rounded-lg bg-accent py-3 text-center text-sm font-bold uppercase text-white transition-colors hover:bg-accent/90"
                       href="/contact"
-                      className="inline-block w-full text-center bg-accent text-white font-bold uppercase text-sm py-3 rounded-lg hover:bg-accent/90 transition-colors"
                     >
                       Contact Us
                     </Link>
                   </div>
 
                   {/* Featured Product */}
-                  <Link href="/products" className="block group">
-                    <div className="rounded-xl overflow-hidden border border-gray-200 hover:border-accent/50 hover:shadow-lg transition-all">
+                  <Link className="group block" href="/products">
+                    <div className="overflow-hidden rounded-xl border border-gray-200 transition-all hover:border-accent/50 hover:shadow-lg">
                       <div className="relative h-40 overflow-hidden">
                         <Image
-                          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop"
                           alt="EPHA Spiral Guards"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop"
                         />
-                        <div className="absolute top-2 left-2">
-                          <span className="bg-accent text-white text-[10px] font-bold uppercase px-2 py-1 rounded">
+                        <div className="absolute left-2 top-2">
+                          <span className="rounded bg-accent px-2 py-1 text-[10px] font-bold uppercase text-white">
                             Best Seller
                           </span>
                         </div>
                       </div>
-                      <div className="p-4 bg-white">
-                        <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Hose Protection</p>
-                        <h4 className="font-heading font-bold text-primary uppercase text-lg mb-2 group-hover:text-accent transition-colors">
+                      <div className="bg-white p-4">
+                        <p className="mb-1 text-xs uppercase tracking-wider text-gray-500">
+                          Hose Protection
+                        </p>
+                        <h4 className="mb-2 font-heading text-lg font-bold uppercase text-primary transition-colors group-hover:text-accent">
                           Spiral Hose Guards
                         </h4>
-                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                        <p className="mb-3 line-clamp-2 text-sm text-gray-600">
                           Extend hose life by up to 500%. Industrial-grade HDPE construction.
                         </p>
                         <div className="flex items-center justify-between">
                           <span className="text-lg font-bold text-primary">From $8.99</span>
-                          <span className="text-xs font-bold text-accent uppercase group-hover:underline">
+                          <span className="text-xs font-bold uppercase text-accent group-hover:underline">
                             View &rarr;
                           </span>
                         </div>
@@ -186,17 +195,19 @@ export default async function BlogPostPage({ params }: Props) {
                   </Link>
 
                   {/* Newsletter */}
-                  <div className="border border-gray-200 rounded-xl p-6">
-                    <h3 className="font-heading font-bold text-primary uppercase mb-3">Newsletter</h3>
-                    <p className="text-gray-600 text-sm mb-4">
+                  <div className="rounded-xl border border-gray-200 p-6">
+                    <h3 className="mb-3 font-heading font-bold uppercase text-primary">
+                      Newsletter
+                    </h3>
+                    <p className="mb-4 text-sm text-gray-600">
                       Get the latest insights delivered to your inbox.
                     </p>
                     <input
-                      type="email"
+                      className="mb-3 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-accent"
                       placeholder="Your email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                      type="email"
                     />
-                    <button className="w-full bg-primary text-white font-bold uppercase text-sm py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                    <button className="w-full rounded-lg bg-primary py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-primary/90">
                       Subscribe
                     </button>
                   </div>

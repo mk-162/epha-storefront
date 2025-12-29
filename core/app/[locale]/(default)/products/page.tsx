@@ -1,12 +1,13 @@
 import { setRequestLocale } from 'next-intl/server';
 
 import {
-  ProductVideoHero,
-  ProductOverview,
   ProductFeatureGrid,
+  ProductOverview,
+  ProductResourcesCTA,
   ProductTable,
-  ProductResourcesCTA
+  ProductVideoHero,
 } from '~/components/epha/ProductPage';
+
 import { getHoseProtectors } from './_data/get-products';
 
 interface Props {
@@ -21,7 +22,7 @@ export default async function ProductsPage({ params }: Props) {
   const products = await getHoseProtectors();
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background font-sans text-foreground">
       <ProductVideoHero />
       <ProductOverview />
       <ProductFeatureGrid />

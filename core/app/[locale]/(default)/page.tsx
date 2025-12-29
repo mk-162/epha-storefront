@@ -1,6 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 
-import { Hero, ValueProps, Comparison, FeaturedProducts, Industries } from '~/components/epha';
+import { Comparison, FeaturedProducts, Hero, Industries, ValueProps } from '~/components/epha';
 
 interface Props {
   params: Promise<{ locale: string }>;

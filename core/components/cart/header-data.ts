@@ -4,8 +4,8 @@ import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { TAGS } from '~/client/tags';
-import { getCartId } from '~/lib/cart';
 import type { CartSheetItem } from '~/components/cart/cart-sheet';
+import { getCartId } from '~/lib/cart';
 
 const HeaderCartQuery = graphql(`
   query HeaderCartQuery($cartId: String) {
@@ -80,7 +80,7 @@ export interface HeaderCartData {
   subtotal: string;
 }
 
-const formatPrice = (value: number, currencyCode: string = 'USD'): string => {
+const formatPrice = (value: number, currencyCode = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currencyCode,
@@ -131,11 +131,14 @@ export const getHeaderCartData = cache(async (): Promise<HeaderCartData> => {
       href: item.url,
       image: item.image
         ? {
-          src: item.image.url.replace('{:size}', '80x80'),
-          alt: item.name,
-        }
+            src: item.image.url.replace('{:size}', '80x80'),
+            alt: item.name,
+          }
         : undefined,
-      price: formatPrice(item.extendedSalePrice.value / item.quantity, item.extendedSalePrice.currencyCode),
+      price: formatPrice(
+        item.extendedSalePrice.value / item.quantity,
+        item.extendedSalePrice.currencyCode,
+      ),
       priceValue: item.extendedSalePrice.value / item.quantity,
       subtitle: [
         item.brand,
@@ -154,11 +157,14 @@ export const getHeaderCartData = cache(async (): Promise<HeaderCartData> => {
       href: item.url,
       image: item.image
         ? {
-          src: item.image.url.replace('{:size}', '80x80'),
-          alt: item.name,
-        }
+            src: item.image.url.replace('{:size}', '80x80'),
+            alt: item.name,
+          }
         : undefined,
-      price: formatPrice(item.extendedSalePrice.value / item.quantity, item.extendedSalePrice.currencyCode),
+      price: formatPrice(
+        item.extendedSalePrice.value / item.quantity,
+        item.extendedSalePrice.currencyCode,
+      ),
       priceValue: item.extendedSalePrice.value / item.quantity,
       subtitle: [
         item.brand,
@@ -179,6 +185,7 @@ export const getHeaderCartData = cache(async (): Promise<HeaderCartData> => {
     };
   } catch (error) {
     console.error('Error fetching header cart data:', error);
+
     return emptyCart;
   }
 });

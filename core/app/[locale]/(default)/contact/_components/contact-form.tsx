@@ -1,9 +1,9 @@
 'use client';
 
+import { AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useActionState } from 'react';
-import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
-import { submitContactForm, ContactFormState } from '../_actions/submit-contact';
+import { ContactFormState, submitContactForm } from '../_actions/submit-contact';
 
 const initialState: ContactFormState = {};
 
@@ -12,9 +12,9 @@ export function ContactForm() {
 
   if (state.success) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-        <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-        <h3 className="font-heading text-2xl uppercase text-primary mb-2">Message Sent!</h3>
+      <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center">
+        <CheckCircle className="mx-auto mb-4 h-12 w-12 text-green-500" />
+        <h3 className="mb-2 font-heading text-2xl uppercase text-primary">Message Sent!</h3>
         <p className="text-gray-600">{state.message}</p>
       </div>
     );
@@ -22,90 +22,90 @@ export function ContactForm() {
 
   return (
     <form action={formAction} className="space-y-6">
-      {state.message && !state.success && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-          <p className="text-red-700 text-sm">{state.message}</p>
+      {state.message && !state.success ? (
+        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4">
+          <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" />
+          <p className="text-sm text-red-700">{state.message}</p>
         </div>
-      )}
+      ) : null}
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="name">
             Full Name <span className="text-red-500">*</span>
           </label>
           <input
-            type="text"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
             id="name"
             name="name"
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
             placeholder="John Smith"
+            required
+            type="text"
           />
           {state.errors?.name && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.name[0]}</p>
+            <p className="mt-1 text-sm text-red-500">{state.errors.name[0]}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="email">
             Email Address <span className="text-red-500">*</span>
           </label>
           <input
-            type="email"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
             id="email"
             name="email"
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
             placeholder="john@company.com"
+            required
+            type="email"
           />
           {state.errors?.email && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.email[0]}</p>
+            <p className="mt-1 text-sm text-red-500">{state.errors.email[0]}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="phone">
             Phone Number
           </label>
           <input
-            type="tel"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
             id="phone"
             name="phone"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
             placeholder="(555) 123-4567"
+            type="tel"
           />
           {state.errors?.phone && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.phone[0]}</p>
+            <p className="mt-1 text-sm text-red-500">{state.errors.phone[0]}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="company">
             Company Name
           </label>
           <input
-            type="text"
+            className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
             id="company"
             name="company"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
             placeholder="Your Company"
+            type="text"
           />
           {state.errors?.company && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.company[0]}</p>
+            <p className="mt-1 text-sm text-red-500">{state.errors.company[0]}</p>
           )}
         </div>
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="subject">
           Subject <span className="text-red-500">*</span>
         </label>
         <select
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
           id="subject"
           name="subject"
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors bg-white"
         >
           <option value="">Select a subject...</option>
           <option value="product-inquiry">Product Inquiry</option>
@@ -116,35 +116,35 @@ export function ContactForm() {
           <option value="other">Other</option>
         </select>
         {state.errors?.subject && (
-          <p className="text-red-500 text-sm mt-1">{state.errors.subject[0]}</p>
+          <p className="mt-1 text-sm text-red-500">{state.errors.subject[0]}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="message">
           Message <span className="text-red-500">*</span>
         </label>
         <textarea
+          className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-accent focus:ring-2 focus:ring-accent"
           id="message"
           name="message"
+          placeholder="Tell us how we can help..."
           required
           rows={5}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors resize-none"
-          placeholder="Tell us how we can help..."
         />
         {state.errors?.message && (
-          <p className="text-red-500 text-sm mt-1">{state.errors.message[0]}</p>
+          <p className="mt-1 text-sm text-red-500">{state.errors.message[0]}</p>
         )}
       </div>
 
       <button
-        type="submit"
+        className="flex w-full items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-heading uppercase text-white transition-colors hover:bg-accent/90 disabled:bg-accent/50 md:w-auto"
         disabled={isPending}
-        className="w-full md:w-auto px-8 py-4 bg-accent hover:bg-accent/90 disabled:bg-accent/50 text-white font-heading uppercase rounded-full transition-colors flex items-center justify-center gap-2"
+        type="submit"
       >
         {isPending ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin" />
+            <Loader2 className="h-5 w-5 animate-spin" />
             Sending...
           </>
         ) : (

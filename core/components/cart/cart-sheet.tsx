@@ -1,19 +1,19 @@
 'use client';
 
 import { Minus, Plus, ShoppingBag, ShoppingCart, X } from 'lucide-react';
+import { useRouter } from '~/i18n/routing';
+import { startTransition, useOptimistic, useState } from 'react';
+
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
-import { useRouter } from 'next/navigation';
-import { useState, useOptimistic, startTransition } from 'react';
-
 import { Button } from '~/components/ui/button';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose,
 } from '~/components/ui/sheet';
 
 export interface CartSheetItem {
@@ -35,7 +35,12 @@ interface CartSheetProps {
   subtotal: string;
   checkoutUrl?: string;
   currencyCode?: string;
-  updateQuantityAction?: (id: string, productEntityId: number, quantity: number, variantEntityId?: number) => Promise<void>;
+  updateQuantityAction?: (
+    id: string,
+    productEntityId: number,
+    quantity: number,
+    variantEntityId?: number,
+  ) => Promise<void>;
   removeItemAction?: (id: string) => Promise<void>;
   children?: React.ReactNode;
 }
@@ -51,53 +56,59 @@ export function CartSheet({
 }: CartSheetProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [optimisticItems, setOptimisticItems] = useOptimistic<CartSheetItem[], { type: 'update' | 'remove'; id: string; quantity?: number }>(
-    items,
-    (state, action) => {
-      if (action.type === 'remove') {
-        return state.filter((item) => item.id !== action.id);
-      }
-      if (action.type === 'update' && action.quantity !== undefined) {
-        return state.map((item) =>
-          item.id === action.id ? { ...item, quantity: action.quantity! } : item
-        );
-      }
-      return state;
+  const [optimisticItems, setOptimisticItems] = useOptimistic<
+    CartSheetItem[],
+    { type: 'update' | 'remove'; id: string; quantity?: number }
+  >(items, (state, action) => {
+    if (action.type === 'remove') {
+      return state.filter((item) => item.id !== action.id);
     }
-  );
+
+    if (action.type === 'update' && action.quantity !== undefined) {
+      return state.map((item) =>
+        item.id === action.id ? { ...item, quantity: action.quantity! } : item,
+      );
+    }
+
+    return state;
+  });
 
   const optimisticCount = optimisticItems.reduce((sum, item) => sum + item.quantity, 0);
-  const optimisticSubtotal = optimisticItems.reduce((sum, item) => sum + item.priceValue * item.quantity, 0);
 
-  const handleUpdateQuantity = async (item: CartSheetItem, newQuantity: number) => {
+  const handleUpdateQuantity = (item: CartSheetItem, newQuantity: number) => {
     if (newQuantity < 1) return;
-    startTransition(async () => {
+    startTransition(() => {
       setOptimisticItems({ type: 'update', id: item.id, quantity: newQuantity });
+
       if (updateQuantityAction) {
-        await updateQuantityAction(item.id, item.productEntityId, newQuantity, item.variantEntityId);
-        router.refresh();
+        void updateQuantityAction(
+          item.id,
+          item.productEntityId,
+          newQuantity,
+          item.variantEntityId,
+        ).then(() => router.refresh());
       }
     });
   };
 
-  const handleRemoveItem = async (id: string) => {
-    startTransition(async () => {
+  const handleRemoveItem = (id: string) => {
+    startTransition(() => {
       setOptimisticItems({ type: 'remove', id });
+
       if (removeItemAction) {
-        await removeItemAction(id);
-        router.refresh();
+        void removeItemAction(id).then(() => router.refresh());
       }
     });
   };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet onOpenChange={setOpen} open={open}>
       <SheetTrigger asChild>
         {children || (
-          <button className="relative p-2 hover:bg-white/10 rounded-full transition-colors group cursor-pointer">
-            <ShoppingCart className="h-6 w-6 text-white group-hover:text-accent transition-colors" />
+          <button className="group relative cursor-pointer rounded-full p-2 transition-colors hover:bg-white/10">
+            <ShoppingCart className="h-6 w-6 text-white transition-colors group-hover:text-accent" />
             {itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-primary">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-primary bg-accent text-[10px] font-bold text-white">
                 {itemCount > 99 ? '99+' : itemCount}
               </span>
             )}
@@ -105,11 +116,11 @@ export function CartSheet({
         )}
       </SheetTrigger>
       <SheetContent
+        className="flex w-full flex-col border-l border-slate-200 bg-white sm:max-w-md"
         side="right"
-        className="flex w-full flex-col sm:max-w-md bg-white border-l border-slate-200"
       >
         <SheetHeader className="border-b border-slate-200 pb-4">
-          <SheetTitle className="flex items-center gap-2 text-xl font-heading uppercase text-primary">
+          <SheetTitle className="flex items-center gap-2 font-heading text-xl uppercase text-primary">
             <ShoppingCart className="h-5 w-5 text-accent" />
             Your Cart
             <span className="text-sm font-normal normal-case text-slate-500">
@@ -124,13 +135,16 @@ export function CartSheet({
               <ShoppingBag className="h-12 w-12 text-slate-400" />
             </div>
             <div>
-              <h3 className="text-lg font-heading uppercase text-primary">Your cart is empty</h3>
+              <h3 className="font-heading text-lg uppercase text-primary">Your cart is empty</h3>
               <p className="text-sm text-slate-500">
                 Looks like you haven&apos;t added anything yet.
               </p>
             </div>
             <SheetClose asChild>
-              <Button asChild className="bg-accent hover:bg-accent/90 text-white font-heading uppercase">
+              <Button
+                asChild
+                className="bg-accent font-heading uppercase text-white hover:bg-accent/90"
+              >
                 <Link href="/products">Shop Products</Link>
               </Button>
             </SheetClose>
@@ -141,17 +155,17 @@ export function CartSheet({
               <div className="space-y-4">
                 {optimisticItems.map((item) => (
                   <div
-                    key={item.id}
                     className="flex gap-4 rounded-lg border border-slate-200 bg-slate-50 p-3"
+                    key={item.id}
                   >
                     {/* Image */}
                     <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border bg-white">
                       {item.image ? (
                         <Image
-                          src={item.image.src}
                           alt={item.image.alt}
-                          fill
                           className="object-contain p-1"
+                          fill
+                          src={item.image.src}
                         />
                       ) : (
                         <div className="flex h-full items-center justify-center">
@@ -164,32 +178,32 @@ export function CartSheet({
                     <div className="flex flex-1 flex-col">
                       <div className="flex justify-between">
                         <Link
+                          className="line-clamp-2 text-sm font-medium text-primary hover:text-accent"
                           href={item.href || '#'}
-                          className="font-medium text-primary hover:text-accent line-clamp-2 text-sm"
                           onClick={() => setOpen(false)}
                         >
                           {item.name}
                         </Link>
                         <button
-                          onClick={() => handleRemoveItem(item.id)}
-                          className="text-slate-400 hover:text-red-500 transition-colors p-1 -mr-1 -mt-1"
                           aria-label="Remove item"
+                          className="-mr-1 -mt-1 p-1 text-slate-400 transition-colors hover:text-red-500"
+                          onClick={() => handleRemoveItem(item.id)}
                         >
                           <X className="h-4 w-4" />
                         </button>
                       </div>
 
                       {item.subtitle && (
-                        <p className="text-xs text-slate-500 mt-0.5">{item.subtitle}</p>
+                        <p className="mt-0.5 text-xs text-slate-500">{item.subtitle}</p>
                       )}
 
                       <div className="mt-auto flex items-center justify-between pt-2">
                         {/* Quantity Controls */}
                         <div className="flex items-center gap-1">
                           <button
-                            onClick={() => handleUpdateQuantity(item, item.quantity - 1)}
+                            className="flex h-7 w-7 items-center justify-center rounded border border-slate-300 bg-white transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
                             disabled={item.quantity <= 1}
-                            className="h-7 w-7 rounded border border-slate-300 bg-white flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            onClick={() => handleUpdateQuantity(item, item.quantity - 1)}
                           >
                             <Minus className="h-3 w-3" />
                           </button>
@@ -197,8 +211,8 @@ export function CartSheet({
                             {item.quantity}
                           </span>
                           <button
+                            className="flex h-7 w-7 items-center justify-center rounded border border-slate-300 bg-white transition-colors hover:bg-slate-50"
                             onClick={() => handleUpdateQuantity(item, item.quantity + 1)}
-                            className="h-7 w-7 rounded border border-slate-300 bg-white flex items-center justify-center hover:bg-slate-50 transition-colors"
                           >
                             <Plus className="h-3 w-3" />
                           </button>
@@ -214,18 +228,18 @@ export function CartSheet({
             </div>
 
             {/* Footer */}
-            <div className="border-t border-slate-200 pt-4 space-y-4">
-              <div className="flex justify-between items-center">
+            <div className="space-y-4 border-t border-slate-200 pt-4">
+              <div className="flex items-center justify-between">
                 <span className="text-slate-600">Subtotal</span>
-                <span className="text-xl font-heading text-primary">{subtotal}</span>
+                <span className="font-heading text-xl text-primary">{subtotal}</span>
               </div>
-              <p className="text-xs text-slate-500 text-center">
+              <p className="text-center text-xs text-slate-500">
                 Shipping & tax calculated at checkout
               </p>
               <div className="grid gap-2">
                 <Button
                   asChild
-                  className="w-full bg-accent hover:bg-accent/90 text-white font-heading uppercase h-12"
+                  className="h-12 w-full bg-accent font-heading uppercase text-white hover:bg-accent/90"
                 >
                   <Link href={checkoutUrl} onClick={() => setOpen(false)}>
                     Checkout
@@ -234,8 +248,8 @@ export function CartSheet({
                 <SheetClose asChild>
                   <Button
                     asChild
-                    variant="outline"
                     className="w-full border-slate-300 hover:bg-slate-50"
+                    variant="outline"
                   >
                     <Link href="/cart" onClick={() => setOpen(false)}>
                       View Full Cart

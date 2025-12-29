@@ -37,7 +37,7 @@ export async function updateCartItemQuantity(
   lineItemEntityId: string,
   productEntityId: number,
   quantity: number,
-  variantEntityId?: number
+  variantEntityId?: number,
 ): Promise<void> {
   const t = await getTranslations('Cart.Errors');
   const customerAccessToken = await getSessionCustomerAccessToken();
@@ -54,6 +54,7 @@ export async function updateCartItemQuantity(
   // If quantity is 0, remove the item
   if (quantity <= 0) {
     await removeCartItem(lineItemEntityId);
+
     return;
   }
 
