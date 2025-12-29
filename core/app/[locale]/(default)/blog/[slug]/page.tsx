@@ -1,6 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
-import Image from 'next/image';
+import { Link } from '~/components/link';
+import { Image } from '~/components/image';
 import { Calendar, Clock, ChevronRight, ArrowLeft, Share2, Linkedin, Twitter, Facebook, User } from 'lucide-react';
 import { blogPosts } from '~/lib/blog-data';
 import { notFound } from 'next/navigation';

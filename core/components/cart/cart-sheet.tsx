@@ -1,8 +1,8 @@
 'use client';
 
 import { Minus, Plus, ShoppingBag, ShoppingCart, X } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Image } from '~/components/image';
+import { Link } from '~/components/link';
 import { useRouter } from 'next/navigation';
 import { useState, useOptimistic, startTransition } from 'react';
 

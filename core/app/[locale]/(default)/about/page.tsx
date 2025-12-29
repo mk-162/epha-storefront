@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Shield, Award, Users, Truck, CheckCircle, Factory } from 'lucide-react';
+import { Link } from '~/components/link';
+import { Shield, Award, Users, Truck, CheckCircle } from 'lucide-react';
 
 interface Props {
   params: Promise<{ locale: string }>;

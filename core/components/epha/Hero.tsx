@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Image } from '~/components/image';
 import { Button } from "~/components/ui/button";
 import { ArrowRight, Thermometer, Clock, TrendingDown, PlayCircle } from "lucide-react";
 

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '~/components/link';
 
 interface Props {
   params: Promise<{ locale: string }>;

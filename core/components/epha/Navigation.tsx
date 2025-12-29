@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from '~/components/link';
+import { Image } from '~/components/image';
 import { Button } from "~/components/ui/button";
 import { Menu, ShoppingCart, User, LogOut } from "lucide-react";
 import {
