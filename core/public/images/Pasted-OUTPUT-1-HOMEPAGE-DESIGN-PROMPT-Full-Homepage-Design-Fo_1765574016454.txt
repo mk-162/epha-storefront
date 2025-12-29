@@ -1,0 +1,635 @@
+OUTPUT 1: HOMEPAGE DESIGN PROMPT
+Full Homepage Design (For AI Design Tools: Midjourney, DALL-E, Figma AI, etc.)
+Master Prompt for Homepage Design
+Create a sophisticated B2B industrial website homepage design for EPHA Hose Protectors, 
+a premium hydraulic hose protection product company. Style: Parker Hannifin meets 
+Caterpillar meets Stripe - engineering precision with American manufacturing pride.
+
+LAYOUT:
+- Desktop view, 1440px width
+- Clean grid system, generous white space
+- Asymmetric balance with hero section
+
+HERO SECTION:
+- Full-width background: Construction site at golden hour, excavator with visible 
+  hydraulic lines protected by red hose protectors
+- Dark gradient overlay (top to bottom, 0% to 50% black opacity)
+- Headline: "The $8 Solution That Prevents $47,500 Failures" in ultra-bold 
+  condensed sans-serif (Bebas Neue style), white text, 72px, strong text shadow
+- Subheadline: "Industrial-grade hose protection that installs in 4 minutes and 
+  prevents 85% of costly equipment breakdowns" in clean sans-serif, 20px, white 
+  with 80% opacity
+- Four trust badges in white circles with icons: "Made in USA" (flag), "-40°F to 
+  430°F" (thermometer), "4-Minute Install" (clock), "85% Fewer Failures" (shield)
+- Primary CTA button: Safety orange (#FF6B35), "Calculate Your Savings", large 
+  with drop shadow
+- Secondary CTA: White outline button, "Watch 60-Second Demo"
+- Proof statement: "Protecting 1,000+ fleets across North America"
+
+SECTION 2 - VALUE PROPOSITIONS:
+- White background, 3-column grid
+- Each column: Industrial blue icon (64px), bold headline, description text
+- Icons: Dollar sign with down arrow (cost savings), Clock (easy install), 
+  Shield (protection)
+- Subtle lift on hover with shadow
+
+SECTION 3 - FEATURED PRODUCTS:
+- Light gray background (#F8F9FA)
+- 4-product grid showing different colored hose protectors
+- Clean product cards with subtle shadows
+- Product images on light gradient background (not pure white)
+
+SECTION 4 - BEFORE/AFTER COMPARISON:
+- Split screen: Left (damaged hose, red tint), Right (protected hose, green tint)
+- Large cost savings callout in center
+- Customer testimonial quote below
+
+SECTION 5 - INDUSTRIES SERVED:
+- Alternating image-text rows
+- Professional industrial photography (fleet trucks, construction, manufacturing)
+- Industry icons and benefit lists
+
+FOOTER:
+- Dark charcoal background (#1A1D29)
+- 4-column layout with company info, links, resources, contact
+- Social icons, Made in USA badge
+
+COLOR PALETTE:
+- Primary: Deep navy #002E5C
+- Accent: Safety orange #FF6B35
+- Neutrals: Charcoal #1A1D29, Cool gray #6B7280, Warm surface #F8F9FA
+- Technical accent: Electric blue #0EA5E9
+
+TYPOGRAPHY:
+- Headlines: Ultra-bold condensed (Bebas Neue, Oswald Extra Bold style)
+- Body: Clean sans-serif (Inter, Open Sans style)
+- Technical: Monospace for specs
+
+STYLE NOTES:
+- Subtle shadows for depth (not flat design)
+- 8px border radius on cards
+- Professional industrial photography with slight blue color grading
+- Generous padding and white space
+- Modern B2B aesthetic, not consumer retail
+- Engineering precision meets American manufacturing pride
+Section-by-Section Detailed Prompts
+HERO SECTION ONLY:
+
+B2B industrial website hero section for hydraulic hose protector company. 
+Background: Wide construction site photo at golden hour, excavator arm with red 
+hose protectors visible on hydraulic lines, dramatic lighting, shallow depth of 
+field. Dark gradient overlay top 50%. Headline in ultra-bold condensed white text: 
+"The $8 Solution That Prevents $47,500 Failures". Four circular white trust badges 
+below with icons and text. Large orange CTA button "Calculate Your Savings". 
+Professional, sophisticated industrial aesthetic. Style: Parker Hannifin website 
+meets Caterpillar advertising. Desktop 1440px width, modern B2B design, generous 
+white space, strict grid alignment.
+VALUE PROPOSITIONS SECTION:
+
+Three-column section for B2B industrial website. White background, generous padding. 
+Each column: Navy blue icon at top (64px) - dollar sign, clock, shield. Bold headline 
+below in condensed sans-serif. Clean description text. Subtle card hover effect with 
+shadow. Professional industrial aesthetic, modern layout, strict grid alignment, 
+white space between columns. Style: 3M Industrial or Parker Hannifin product pages.
+PRODUCT SHOWCASE SECTION:
+
+Product grid section for industrial e-commerce, light gray background (#F8F9FA). 
+Four product cards in row showing red hose protectors (black, orange, yellow variants). 
+Clean product photography on soft gradient background. Each card: product image, 
+product name, price, "Shop Now" button. Subtle shadows, 8px border radius, hover 
+state with lift effect. Professional B2B industrial design, organized layout, 
+modern e-commerce aesthetic. Style: Grainger product listings meets Shopify clean 
+design.
+BEFORE/AFTER COMPARISON:
+
+Split-screen comparison section for industrial website. Left side: Worn, damaged 
+hydraulic hose with visible fraying, red tint overlay, "WITHOUT PROTECTION" label. 
+Right side: Same hose with red protector installed, perfect condition, green tint, 
+"WITH EPHA" label. Large cost savings callout in center: "SAVES $13,825". Customer 
+testimonial quote below with photo. Professional industrial photography, dramatic 
+lighting, technical credibility. Style: Gates Corporation case studies.
+OUTPUT 2: BRANDING - LOGO & NAME IDEAS
+Current Analysis
+Current Name: EPHA (Established since 1987) Recommendation: KEEP THE NAME, but evolve the visual identity
+
+Why Keep EPHA:
+
+37 years of brand equity (since 1987)
+Customer recognition in existing markets
+"1,000+ fleet managers trust EPHA" has weight
+Short, memorable, easy to say
+Domain likely owned (epha.com)
+But ADD: Tagline/descriptor for clarity
+
+Logo Design Direction
+OPTION 1: SHIELD MARK (Recommended)
+Concept: Protection, reliability, American manufacturing
+
+AI Generation Prompt:
+
+Professional industrial logo for EPHA, a hydraulic hose protector manufacturer. 
+Design: Bold geometric shield icon with "EPHA" wordmark. Shield should suggest 
+protection and durability with clean, modern lines (not medieval or ornate). 
+Wordmark in ultra-bold condensed sans-serif (similar to Bebas Neue or DIN 
+Condensed Black). Color: Deep navy blue (#002E5C) for shield and text. Small 
+"Made in USA" text or flag element integrated below. Style: Engineering precision, 
+B2B industrial confidence, similar to Parker Hannifin or Gates Corporation logos. 
+Modern, professional, authoritative. Vector style, clean lines, works in single 
+color. Horizontal lockup format.
+Tagline Options:
+
+"Industrial Hose Protection"
+"Preventing Failures Since 1987"
+"Engineered Protection"
+"Protect. Prevent. Perform."
+OPTION 2: GEAR/MECHANICAL MARK
+Concept: Engineering, precision, industrial application
+
+AI Generation Prompt:
+
+Industrial logo for EPHA hose protectors. Design: Stylized gear or mechanical 
+element integrated with "EPHA" letters. Geometric, precise, engineering-focused. 
+The gear suggests industrial application and precision manufacturing. Wordmark: 
+Ultra-bold condensed sans-serif. Color: Navy blue (#002E5C). Clean, modern, 
+technical aesthetic. Not overdesigned - simple and bold. Similar style to 
+Caterpillar or 3M Industrial logos. Works in single color for versatility. 
+Horizontal format with icon left of text.
+OPTION 3: MONOGRAM/LETTERMARK
+Concept: Bold simplicity, modern industrial
+
+AI Generation Prompt:
+
+Bold lettermark logo for EPHA. Design: "EPHA" in ultra-condensed, heavy sans-serif 
+letterforms (similar to Bebas Neue Black or Akzidenz-Grotesk Condensed Black). 
+Letters tightly kerned, geometric precision. Small underline or horizontal bar 
+beneath suggesting stability and foundation. Tagline "HOSE PROTECTION" in smaller 
+text below bar. Color: Navy blue (#002E5C). Extremely simple, bold, authoritative. 
+Style: Similar to CAT (Caterpillar) logo simplicity and confidence. Modern 
+industrial B2B. Works at any size, instant recognition.
+OPTION 4: PROTECTIVE WRAP ICON
+Concept: Product-literal, shows what it does
+
+AI Generation Prompt:
+
+Industrial logo for EPHA showing product concept. Design: Stylized icon of a hose 
+with protective wrap around it (cross-section view), geometric and simplified. 
+Icon suggests protection and reinforcement. "EPHA" wordmark to right in bold 
+condensed sans-serif. Color: Navy blue icon with safety orange accent on wrap 
+element. Clean, technical, shows product function immediately. Similar to technical 
+diagram aesthetic. Modern B2B industrial style. Horizontal lockup.
+Logo System Requirements
+Logo Variations Needed:
+
+Primary Horizontal: Full logo with icon + wordmark + tagline
+Secondary Horizontal: Icon + wordmark only (no tagline)
+Stacked Version: Icon top, wordmark below, tagline bottom
+Icon Only: For social media profiles, favicon, small applications
+Monochrome: Black, white, and single navy versions
+Minimum Size: Readable at 0.75" width (print), 120px (digital)
+AI Prompt for Full Logo Package:
+
+Create complete logo system for EPHA industrial hose protectors. Include:
+1. Primary horizontal lockup: [chosen icon] + "EPHA" wordmark + "Industrial Hose 
+   Protection" tagline
+2. Secondary horizontal: Icon + "EPHA" only
+3. Stacked vertical version for narrow applications
+4. Icon-only mark (square format) for social media
+5. All versions in: Full color (navy + orange), Navy only, Black, White, Reversed
+6. Show clear space requirements (height of "E" on all sides)
+7. Minimum size specifications
+Style: Modern industrial B2B, bold condensed typography, geometric precision, 
+engineering credibility. Reference: Parker Hannifin, Gates, Caterpillar logo 
+systems. Professional, authoritative, American manufacturing pride.
+Brand Name Extensions (If Expanding Product Line)
+EPHA Family Architecture:
+
+EPHA HP Series - Hose Protectors (flagship)
+EPHA HS Series - Hose Spacers
+EPHA BW Series - Bundle Wraps
+EPHA Pro - Premium/heavy-duty line
+EPHA Industrial - Parent brand positioning
+OUTPUT 3: HERO IMAGE PROMPTS
+Hero Image Set (Multiple Concepts for A/B Testing)
+HERO IMAGE 1: EXCAVATOR GOLDEN HOUR (Primary Recommendation)
+Photography Prompt:
+
+Professional industrial photography: Construction excavator arm at golden hour 
+(sunset), dramatic side lighting. Hydraulic lines visible with 3-4 bright red 
+EPHA hose protectors installed, clearly visible and in sharp focus. Low angle 
+looking up at equipment (heroic perspective). Shallow depth of field - protectors 
+and near hoses sharp, distant equipment softly blurred. Background: Construction 
+site with warm orange/golden sky, slight dust/atmospheric haze. Foreground: 
+Slight blur on nearby equipment (depth). Color grading: Warm tones, slightly 
+desaturated (10%), blue/teal shadow tones, professional cinematic look. Style: 
+Caterpillar advertising photography quality. Commercial industrial photography, 
+dramatic lighting, epic scale. 4K resolution, ultra detailed, photorealistic. 
+Camera: 35mm lens equivalent, f/2.8, low angle. Lighting: Natural golden hour 
+with fill bounce. Composition: Rule of thirds, diagonal excavator arm, red 
+protectors at intersection point.
+Midjourney-Optimized Prompt:
+
+construction excavator arm at golden hour sunset, bright red hydraulic hose 
+protectors visible, dramatic side lighting, low angle shot, shallow depth of 
+field, professional commercial photography, warm color grading, cinematic 
+lighting, atmospheric haze, construction site background, photorealistic, ultra 
+detailed, 4k, style of Caterpillar advertising --ar 16:9 --style raw --v 6
+HERO IMAGE 2: CLOSE-UP INSTALLATION (Alternative)
+Photography Prompt:
+
+Professional product photography: Close-up of worker's hands installing red EPHA 
+hose protector on black hydraulic line. Shallow depth of field, hands and product 
+in sharp focus, background equipment softly blurred. Natural outdoor lighting with 
+subtle fill light. Worker wearing work gloves (clean but worn, authentic). Red 
+protector is vibrant and prominent. Background: Blurred construction equipment, 
+natural daylight. Camera angle: Slightly above, 45-degree angle. Color grading: 
+Natural tones with slight blue undertone in shadows, professional commercial look. 
+Style: Gates Corporation or Parker Hannifin product photography. Shows ease of 
+installation, real-world application. 4K resolution, photorealistic, commercial 
+quality. Camera: 50mm lens equivalent, f/2.8.
+Midjourney-Optimized Prompt:
+
+close-up hands installing bright red hose protector on black hydraulic line, 
+shallow depth of field, natural lighting, construction equipment blurred 
+background, professional product photography, commercial quality, photorealistic, 
+authentic work setting, 4k, style of industrial B2B product photography --ar 16:9 
+--style raw --v 6
+HERO IMAGE 3: FLEET TRUCK WIDE SHOT (Industry-Specific)
+Photography Prompt:
+
+Professional industrial photography: Class 8 semi-truck fleet maintenance bay, 
+side profile view showing undercarriage and hydraulic systems. Multiple red EPHA 
+hose protectors visible on hydraulic lines, brake lines, and steering components. 
+Natural warehouse lighting with professional fill lights. Mechanic working in 
+background (slightly blurred). Foreground: Protected hoses in sharp focus. Clean 
+professional maintenance facility. Color grading: Cool industrial tones with warm 
+highlights, slight blue undertone. Style: Professional fleet management 
+photography, corporate quality. Shows scale of application and professional 
+setting. 4K resolution, ultra detailed. Camera: 35mm lens equivalent, f/4, 
+eye-level angle. Composition: Truck diagonally across frame, rule of thirds.
+Midjourney-Optimized Prompt:
+
+semi truck in professional maintenance bay, red hose protectors on hydraulic 
+lines visible, industrial warehouse lighting, mechanic in background, professional 
+corporate photography, clean facility, cool color grading, photorealistic, 
+commercial B2B quality, 4k --ar 16:9 --style raw --v 6
+HERO IMAGE 4: BEFORE/AFTER SPLIT (High Impact)
+Photography Prompt:
+
+Professional industrial photography: Split-screen composition. LEFT SIDE: Worn, 
+damaged black hydraulic hose with visible fraying, abrasion wear, slight fluid 
+leak visible, aged and deteriorated. Dramatic lighting emphasizing damage. Red 
+color tint overlay (subtle, 20% opacity). Label: "WITHOUT PROTECTION" in bold 
+text. RIGHT SIDE: Same type of hose with bright red EPHA protector installed, 
+pristine condition, clean, well-maintained. Same lighting setup for consistency. 
+Green color tint overlay (subtle, 20% opacity). Label: "WITH EPHA PROTECTION". 
+Center dividing line: Vertical with large cost comparison "$47,500 vs $8" graphic. 
+Background: Industrial equipment setting, slightly blurred. Professional commercial 
+photography, identical angles both sides, dramatic comparison. 4K resolution, 
+photorealistic. Style: Technical comparison photography, engineering documentation 
+quality.
+Midjourney-Optimized Prompt:
+
+split screen comparison, left side damaged worn hydraulic hose with fraying, right 
+side protected hose with red protector pristine condition, industrial setting, 
+professional photography, red tint left green tint right, dramatic lighting, 
+before and after comparison, commercial B2B photography, photorealistic, 4k --ar 
+16:9 --style raw --v 6
+HERO IMAGE 5: DRAMATIC EQUIPMENT ACTION (Dynamic)
+Photography Prompt:
+
+Professional action photography: Construction excavator mid-operation, bucket 
+digging into dirt, slight motion blur on dirt spray, dynamic action shot. 
+Hydraulic arm extended showing protected hoses with red EPHA protectors clearly 
+visible. Frozen moment of action. Dramatic natural lighting (golden hour or 
+overcast dramatic sky). Dust particles in air catching light. Low angle shot 
+(heroic perspective). Protected hydraulic lines in sharp focus while maintaining 
+action dynamic. Color grading: Cinematic, warm tones, blue shadows, high contrast. 
+Style: CAT Caterpillar promotional photography, epic industrial scale. 4K 
+resolution, ultra detailed, professional commercial quality. Camera: 35mm lens 
+equivalent, f/4, fast shutter speed to freeze action while showing slight motion 
+blur. Composition: Diagonal excavator arm, dramatic sky, rule of thirds.
+Midjourney-Optimized Prompt:
+
+excavator in action digging, hydraulic arm extended with red hose protectors 
+visible, slight motion blur on dirt, dramatic sky, golden hour lighting, epic 
+industrial photography, low angle heroic perspective, dust particles in air, 
+cinematic color grading, style of Caterpillar advertising, photorealistic, 4k, 
+ultra detailed --ar 16:9 --style raw --v 6
+Background/Texture Images for Supporting Sections
+SECTION BACKGROUNDS:
+1. Subtle Industrial Texture:
+
+Subtle diamond plate metal texture, light gray color, low contrast, barely 
+visible pattern, professional industrial background, clean and modern, 5% opacity 
+suitable for background, seamless tileable pattern, professional B2B aesthetic 
+--tile --v 6
+2. Blueprint/Technical Grid:
+
+Technical blueprint grid pattern, fine blue lines on dark navy background, 
+engineering drawing aesthetic, subtle and professional, low opacity suitable for 
+website background, modern industrial design, clean minimal pattern --tile --v 6
+3. Hexagon Engineering Pattern:
+
+Subtle hexagon geometric pattern, engineering aesthetic, light gray on white, 
+barely visible, professional B2B background, modern industrial design, clean and 
+minimal, outline only no fills --tile --v 6
+OUTPUT 4: PRODUCT PHOTOGRAPHY PROMPTS
+Product Shot Requirements
+PRODUCT SHOT 1: Hero Product (Primary)
+Photography Prompt:
+
+Professional studio product photography: Red EPHA hose protector (8-inch size) 
+installed on black hydraulic hose, centered composition. Studio lighting: 
+three-point lighting setup with soft shadows (not harsh). Background: Seamless 
+light gray gradient (not pure white), #F0F0F0 to #FAFAFA. Hose protector in sharp 
+focus showing texture detail, protective grooves clearly visible, cable ties 
+attached. Slight reflection on floor surface (subtle, professional). Camera angle: 
+Slight 3/4 view showing dimension and form. Color: Vibrant red protector (#FF6B35 
+tones) on matte black hose. Professional commercial product photography, ultra 
+sharp, 4K resolution. Style: Apple product photography quality, clean commercial 
+aesthetic. Lighting: Soft box key light 45° front-right, fill light left, rim 
+light back for separation from background.
+Midjourney Prompt:
+
+red hose protector on black hydraulic hose, professional studio product 
+photography, three-point lighting, soft shadows, light gray gradient background, 
+ultra sharp focus, commercial photography quality, clean aesthetic, slight 
+reflection, 4k resolution, photorealistic --ar 1:1 --style raw --v 6
+PRODUCT SHOT 2: Color Variants (Grid)
+Photography Prompt:
+
+Professional studio product photography: Three EPHA hose protectors in row - 
+black, orange, yellow (left to right). Each installed on matching black hydraulic 
+hose segment. Consistent studio lighting across all three. Background: Light gray 
+seamless gradient. Equal spacing between products. Camera: Straight-on view, 
+slight overhead angle. All products in sharp focus. Show texture, protective 
+grooves, cable tie details. Soft professional shadows. Commercial product 
+photography, consistent lighting and color, 4K resolution. Style: E-commerce 
+product photography, professional industrial product catalog quality.
+Midjourney Prompt:
+
+three hose protectors in row, black orange yellow, professional studio 
+photography, consistent lighting, light gray background, equal spacing, commercial 
+product photography, ultra sharp, industrial product catalog style, 4k --ar 16:9 
+--style raw --v 6
+PRODUCT SHOT 3: Size Comparison (Range)
+Photography Prompt:
+
+Professional product photography: Seven EPHA hose protectors arranged by size 
+(4-inch to 12-inch), smallest to largest left to right, all in orange color for 
+consistency. Each on same black hose showing size scale. White background with 
+soft graduated shadow beneath. Overhead view, precise alignment. Clean technical 
+product photography showing range. Ruler or measurement scale visible below for 
+reference. Professional catalog photography, precise and clean, 4K resolution. 
+Style: Technical product documentation, engineering catalog quality.
+Midjourney Prompt:
+
+seven hose protectors arranged by size smallest to largest, orange color, overhead 
+view, white background, soft shadows, measurement scale visible, technical product 
+photography, catalog style, precise alignment, professional commercial quality, 4k 
+--ar 16:9 --style raw --v 6
+PRODUCT SHOT 4: Detail/Macro (Technical)
+Photography Prompt:
+
+Macro product photography: Extreme close-up of red EPHA hose protector showing 
+material texture, protective groove detail, and cable tie attachment point. Ultra 
+sharp focus on groove details. Shallow depth of field, background softly blurred. 
+Professional studio lighting emphasizing texture and material quality. Background: 
+Soft gray blur. Shows engineering detail and quality construction. Commercial 
+macro photography, ultra detailed, 4K resolution. Camera: 100mm macro lens 
+equivalent, f/4, showing material weave/texture clearly.
+Midjourney Prompt:
+
+extreme macro close-up red hose protector, material texture detail visible, 
+protective grooves sharp focus, shallow depth of field, professional macro 
+photography, studio lighting, ultra detailed, commercial quality, engineering 
+detail, 4k --ar 4:3 --style raw --v 6
+PRODUCT SHOT 5: Application/Context (Lifestyle)
+Photography Prompt:
+
+Professional lifestyle product photography: Red EPHA hose protector installed on 
+excavator hydraulic arm, real equipment, natural outdoor lighting. Product clearly 
+visible and recognizable but shown in authentic application context. Background: 
+Softly blurred construction equipment and job site. Natural daylight with subtle 
+fill. Shows product scale and real-world application. Commercial photography, 
+authentic setting, professional quality, 4K resolution. Style: Parker Hannifin or 
+Gates application photography.
+Midjourney Prompt:
+
+red hose protector on excavator hydraulic arm, professional application 
+photography, natural lighting, construction site background softly blurred, 
+product prominent, authentic setting, commercial B2B photography, photorealistic, 
+4k --ar 3:2 --style raw --v 6
+OUTPUT 5: SUPPORTING IMAGES & ICONS
+Icon Set Prompts
+Trust Badge Icons (Set of 4)
+Prompt for Icon Designer:
+
+Create set of 4 industrial icons for website trust badges, consistent style across 
+all. Line icons, 2.5px stroke weight, rounded ends, simple geometric forms, navy 
+blue color (#002E5C). Icons needed:
+
+1. USA Flag icon (circular or shield shape, stylized stars and stripes)
+2. Thermometer icon (showing temperature range, with -40° and 430° indicators)
+3. Clock/stopwatch icon (showing 4 minutes, clean simple clockface)
+4. Shield with checkmark icon (protection symbol, checkmark prominent)
+
+Style: Modern, clean, technical precision, B2B professional. Not playful or 
+consumer-facing. Similar to Parker Hannifin or Stripe icon style. Consistent line 
+weight, similar visual weight across all icons. 64px × 64px artboard size. Vector 
+format. Monochrome (designed for single color usage).
+Industry Category Icons
+Prompt:
+
+Industrial line icon set for B2B website, 8 icons representing industries. Style: 
+Simple line art, 2px stroke, navy blue (#002E5C), consistent visual weight. Icons:
+1. Truck (fleet/transportation)
+2. Excavator/hard hat (construction)
+3. Factory building (manufacturing)
+4. Wrench/gear (MRO/maintenance)
+5. Hydraulic hose coil (hydraulic systems)
+6. Lightning bolt (electrical)
+7. Oil drop (fluid systems)
+8. Tool box (service/repair)
+
+Modern industrial aesthetic, clean geometric forms, recognizable at small sizes, 
+professional B2B style. Similar to 3M or Gates website icons. 48px × 48px 
+artboard. Vector format.
+Supporting Photography
+TESTIMONIAL/TEAM PHOTOS:
+Prompt:
+
+Professional corporate headshot: Maintenance manager or fleet director, age 45-55, 
+wearing company polo shirt or work shirt, standing in maintenance facility or shop 
+floor. Natural confident expression, slight smile, arms crossed or hand on 
+equipment. Background: Slightly blurred shop/warehouse setting with equipment 
+visible. Natural lighting with professional fill light. Corporate testimonial 
+photography style. Professional, authentic, credible. 4K resolution. Camera: 85mm 
+lens equivalent, f/2.8. Composition: Head and shoulders, environmental portrait 
+style.
+Midjourney Prompt:
+
+professional corporate headshot maintenance manager, 45 years old, company shirt, 
+confident expression, industrial warehouse background blurred, natural lighting, 
+professional business photography, authentic and credible, photorealistic, 4k --ar 
+4:5 --style raw --v 6
+FACILITY/MANUFACTURING PHOTOS:
+Prompt:
+
+Professional industrial photography: American manufacturing facility interior, 
+clean organized production floor, modern equipment, bright natural lighting from 
+large windows. Workers in background (slightly blurred) operating machinery. 
+Foreground: Product assembly or quality control area in focus. Shows pride in 
+American manufacturing, modern facility, clean professional environment. Corporate 
+photography style, similar to Caterpillar or Parker Hannifin facility tours. Wide 
+angle view showing scale. 4K resolution, photorealistic. Camera: 24mm lens 
+equivalent, f/5.6. Color grading: Clean, bright, professional with slight blue 
+undertone.
+Midjourney Prompt:
+
+american manufacturing facility interior, modern production floor, clean 
+organized, natural lighting, workers in background, professional corporate 
+photography, bright and professional, american manufacturing pride, photorealistic, 
+4k --ar 16:9 --style raw --v 6
+BONUS: VIDEO STORYBOARD PROMPTS
+60-Second Product Demo Video (Storyboard Frames)
+Frame 1: Problem (0-10 seconds)
+
+Close-up damaged hydraulic hose leaking fluid, construction equipment in 
+background, dramatic lighting, problem scenario, professional commercial 
+videography style, RED camera quality --ar 16:9 --v 6
+Frame 2: Cost Impact (10-15 seconds)
+
+Text overlay on industrial background: "$47,500 average failure cost", dramatic 
+typography, motion graphics style, professional B2B video aesthetic --ar 16:9 --v 6
+Frame 3: Solution Introduction (15-25 seconds)
+
+Red EPHA hose protector hero shot, rotating slowly, clean studio lighting, 
+product reveal, professional commercial product videography, clean background --ar 
+16:9 --v 6
+Frame 4: Installation (25-40 seconds)
+
+Hands installing red hose protector on hydraulic line, four quick steps, natural 
+lighting, authentic workshop setting, professional how-to video style, clear and 
+instructional --ar 16:9 --v 6
+Frame 5: Protection in Action (40-50 seconds)
+
+Protected hoses on excavator working at construction site, golden hour lighting, 
+product performing in real conditions, professional commercial footage, cinematic 
+quality --ar 16:9 --v 6
+Frame 6: Results/CTA (50-60 seconds)
+
+Split screen before/after, text overlay "$8 solution prevents $47,500 failures", 
+logo and CTA "Calculate Your Savings", professional commercial video closing 
+frame --ar 16:9 --v 6
+IMPLEMENTATION CHECKLIST
+Phase 1: Logo & Branding (Week 1-2)
+ Generate 4 logo concepts using prompts above
+ Refine chosen direction
+ Create full logo package (6+ variations)
+ Develop brand guidelines (colors, typography, usage)
+ Create social media profile images
+ Design favicon
+Phase 2: Hero Images (Week 2-3)
+ Generate 5 hero image concepts using prompts
+ Select top 2-3 for refinement
+ Professional retouching/color grading
+ Create mobile-optimized versions (9:16)
+ Add text overlays in design software
+ A/B test preparation
+Phase 3: Product Photography (Week 3-4)
+ Generate 5 product shot variations
+ Create size comparison images
+ Detail/macro shots for credibility
+ Color variant showcase
+ Application/lifestyle shots
+ Background removal for e-commerce
+Phase 4: Supporting Assets (Week 4-5)
+ Icon set (trust badges + industry icons)
+ Section background textures
+ Team/testimonial photos
+ Facility/manufacturing images
+ Infographic elements
+ Social media templates
+Phase 5: Homepage Design (Week 5-7)
+ Use master homepage prompt to generate full design
+ Refine individual sections
+ Mobile responsive versions
+ Desktop, tablet, mobile mockups
+ Interactive prototype (Figma)
+ Developer handoff specifications
+AI TOOL RECOMMENDATIONS
+For Logo Design:
+Midjourney v6 (most photorealistic/professional)
+Adobe Firefly (vector-friendly, good for logos)
+Looka AI (specifically for logo generation)
+Then refine in: Adobe Illustrator or Figma
+For Hero Images:
+Midjourney v6 with --style raw (best photorealism)
+DALL-E 3 (good prompt adherence)
+Adobe Firefly (commercial licensing clear)
+Then retouch in: Photoshop
+For Product Shots:
+Midjourney v6 (best quality)
+Scenario.gg (product photography specialist)
+Then refine in: Photoshop, remove.bg for backgrounds
+For Homepage Design:
+Midjourney v6 for mockups/inspiration
+Uizard AI or Galileo AI for actual UI generation
+Then build in: Figma or Webflow
+For Icons:
+Midjourney v6 or DALL-E 3
+Recraft.ai (specifically for icon generation)
+Then vectorize in: Adobe Illustrator or Figma
+MIDJOURNEY PARAMETER GUIDE
+Key Parameters to Use:
+
+--ar 16:9       (Hero images, landscape)
+--ar 1:1        (Square product shots, social media)
+--ar 4:5        (Portrait photos, Instagram)
+--ar 9:16       (Mobile hero, stories)
+--style raw     (More photorealistic, less "AI-looking")
+--v 6           (Latest version, best quality)
+--q 2           (Higher quality, slower generation)
+--s 250         (Stylization, 250 = balanced photorealism)
+Example Full Command:
+
+/imagine prompt: construction excavator at golden hour with red hose protectors, 
+dramatic lighting, professional photography --ar 16:9 --style raw --v 6 --q 2
+FINAL DELIVERABLES SUMMARY
+By end of implementation, you should have:
+
+✅ Branding:
+
+Logo system (6+ variations)
+Brand guidelines document
+Color palette with hex codes
+Typography system
+Icon library (20+ icons)
+✅ Hero Section:
+
+5 hero image concepts
+2 finalized hero images (desktop + mobile)
+Text overlay designs
+A/B testing variants
+✅ Product Photography:
+
+Hero product shot
+Color variants showcase
+Size comparison grid
+Detail/macro shots
+Application lifestyle shots
+✅ Supporting Assets:
+
+Section background textures (3)
+Trust badge icon set (4)
+Industry category icons (8)
+Team/testimonial photos (3-5)
+Facility/manufacturing photos (3-5)
+✅ Website Design:
+
+Full homepage design (desktop)
+Mobile responsive version
+Section templates
+Style guide for developers
+Total Timeline: 5-7 weeks Total Budget: $5,000-15,000 (with AI tools reducing traditional costs by 60-70%)
