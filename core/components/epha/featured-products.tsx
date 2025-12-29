@@ -1,6 +1,13 @@
 import { Image } from '~/components/image';
 import { Button } from '~/components/ui/button';
 
+function getImageFilter(idx: number): string {
+  if (idx === 1 || idx === 3) return 'brightness-50 grayscale';
+  if (idx === 2) return 'hue-rotate-45 brightness-125';
+
+  return '';
+}
+
 export function FeaturedProducts() {
   const products = [
     {
@@ -56,7 +63,7 @@ export function FeaturedProducts() {
               <div className="relative mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-md bg-gradient-to-br from-gray-50 to-gray-100">
                 <Image
                   alt={product.name}
-                  className={`w-4/5 object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110 ${idx === 1 ? 'brightness-50 grayscale' : idx === 2 ? 'hue-rotate-45 brightness-125' : idx === 3 ? 'brightness-50 grayscale' : ''}`}
+                  className={`w-4/5 object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110 ${getImageFilter(idx)}`}
                   height={200}
                   src="/images/generated_images/red_industrial_hose_protector_product_shot.png"
                   width={200}

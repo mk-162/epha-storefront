@@ -24,10 +24,14 @@ import {
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '~/components/ui/sheet';
 import { cn } from '~/lib/utils';
 
-const ListItem = React.forwardRef<
-  React.ComponentRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'> & { title: string }
->(({ className, title, children, href, ...props }, ref) => {
+interface ListItemProps {
+  className?: string;
+  title: string;
+  children?: React.ReactNode;
+  href?: string;
+}
+
+function ListItem({ className, title, children, href }: ListItemProps) {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -37,7 +41,6 @@ const ListItem = React.forwardRef<
             className,
           )}
           href={href || '#'}
-          {...props}
         >
           <div className="text-sm font-medium leading-none text-slate-900">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-slate-500">{children}</p>
@@ -45,9 +48,7 @@ const ListItem = React.forwardRef<
       </NavigationMenuLink>
     </li>
   );
-});
-
-ListItem.displayName = 'ListItem';
+}
 
 interface NavigationProps {
   cartCount?: number | null;

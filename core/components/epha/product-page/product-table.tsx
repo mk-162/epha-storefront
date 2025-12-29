@@ -59,9 +59,6 @@ export function ProductTable({ products }: ProductTableProps) {
   const [isPending, startTransition] = useTransition();
   const [addingVariantId, setAddingVariantId] = useState<number | null>(null);
 
-  // Find the Orange bulk product (has individual variants by size)
-  const bulkProduct = products.find((p) => p.sku === 'HPO/1' || p.name.includes('Bulk'));
-
   // Get all variants from all products and sort by size
   const allVariants = products
     .flatMap((p) =>
@@ -77,20 +74,22 @@ export function ProductTable({ products }: ProductTableProps) {
   // Remove duplicates by size, keeping lowest price
   const uniqueVariants = Object.values(
     allVariants.reduce<Record<string, (typeof allVariants)[0]>>((acc, v) => {
-      if (!acc[v.size] || v.price < acc[v.size].price) {
+      const existing = acc[v.size];
+
+      if (!existing || v.price < existing.price) {
         acc[v.size] = v;
       }
 
       return acc;
     }, {}),
   ).sort((a, b) => {
-    const sizeA = parseInt(a.size);
-    const sizeB = parseInt(b.size);
+    const sizeA = parseInt(a.size, 10);
+    const sizeB = parseInt(b.size, 10);
 
     return sizeA - sizeB;
   });
 
-  const handleAddToCart = async (productEntityId: number, variantEntityId: number) => {
+  const handleAddToCart = (productEntityId: number, variantEntityId: number) => {
     setAddingVariantId(variantEntityId);
     startTransition(async () => {
       try {

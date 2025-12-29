@@ -6,7 +6,7 @@ import {
   ProductResourcesCTA,
   ProductTable,
   ProductVideoHero,
-} from '~/components/epha/ProductPage';
+} from '~/components/epha/product-page';
 
 import { getHoseProtectors } from './_data/get-products';
 

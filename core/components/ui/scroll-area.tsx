@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import * as React from 'react';
 

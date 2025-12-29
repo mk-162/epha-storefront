@@ -103,19 +103,19 @@ export async function getHoseProtectors(): Promise<Product[]> {
     fetchOptions: { next: { revalidate: 3600 } },
   });
 
-  const products = response.data.site.products.edges
+  const products = (response.data.site.products.edges ?? [])
     .map((edge) => {
       const node = edge.node;
 
       // Get the "Hose size" option ID if it exists
-      const sizeOption = node.productOptions.edges.find(
+      const sizeOption = (node.productOptions.edges ?? []).find(
         (opt) => opt.node.displayName === 'Hose size',
       );
 
-      const variants: ProductVariant[] = node.variants.edges.map((v) => {
+      const variants: ProductVariant[] = (node.variants.edges ?? []).map((v) => {
         const variant = v.node;
-        const sizeValue = variant.options.edges
-          .flatMap((o) => o.node.values.edges)
+        const sizeValue = (variant.options.edges ?? [])
+          .flatMap((o) => o.node.values.edges ?? [])
           .find((val) => val.node.label)?.node;
 
         return {

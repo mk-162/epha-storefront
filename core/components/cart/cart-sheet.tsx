@@ -64,9 +64,11 @@ export function CartSheet({
       return state.filter((item) => item.id !== action.id);
     }
 
-    if (action.type === 'update' && action.quantity !== undefined) {
+    if (action.quantity !== undefined) {
+      const newQuantity = action.quantity;
+
       return state.map((item) =>
-        item.id === action.id ? { ...item, quantity: action.quantity! } : item,
+        item.id === action.id ? { ...item, quantity: newQuantity } : item,
       );
     }
 
@@ -193,9 +195,9 @@ export function CartSheet({
                         </button>
                       </div>
 
-                      {item.subtitle && (
+                      {item.subtitle ? (
                         <p className="mt-0.5 text-xs text-slate-500">{item.subtitle}</p>
-                      )}
+                      ) : null}
 
                       <div className="mt-auto flex items-center justify-between pt-2">
                         {/* Quantity Controls */}
