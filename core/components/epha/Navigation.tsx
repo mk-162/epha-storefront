@@ -25,7 +25,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from '~/components/ui/s
 import { cn } from '~/lib/utils';
 
 const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
+  React.ComponentRef<'a'>,
   React.ComponentPropsWithoutRef<'a'> & { title: string }
 >(({ className, title, children, href, ...props }, ref) => {
   return (
