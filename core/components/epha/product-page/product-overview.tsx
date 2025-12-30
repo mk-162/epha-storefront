@@ -50,7 +50,7 @@ export function ProductOverview() {
                 alt="EPHA Hose Protector"
                 className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105"
                 height={500}
-                src="/images/generated_images/red_industrial_hose_protector_product_shot.png"
+                src="https://cdn11.bigcommerce.com/s-usnceuurb6/images/stencil/1920w/products/434/875/HPO_1__49987.1733924243.png"
                 width={500}
               />
             </div>

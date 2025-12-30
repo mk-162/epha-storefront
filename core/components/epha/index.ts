@@ -5,3 +5,5 @@ export { ValueProps } from './value-props';
 export { Comparison } from './comparison';
 export { FeaturedProducts } from './featured-products';
 export { Industries } from './industries';
+export { RelatedProducts } from './related-products';
+export * from './product-relationships';

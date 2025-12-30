@@ -8,6 +8,7 @@ import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 import { auth, getSessionCustomerAccessToken } from '~/auth';
+import { isHoseProtector, RelatedProducts } from '~/components/epha';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { productCardTransformer } from '~/data-transformers/product-card-transformer';
 import { productOptionsTransformer } from '~/data-transformers/product-options-transformer';
@@ -572,16 +573,21 @@ export default async function Product({ params, searchParams }: Props) {
         />
       </ProductAnalyticsProvider>
 
-      <FeaturedProductCarousel
-        cta={{ label: t('RelatedProducts.cta'), href: '/shop-all' }}
-        emptyStateSubtitle={t('RelatedProducts.browseCatalog')}
-        emptyStateTitle={t('RelatedProducts.noRelatedProducts')}
-        nextLabel={t('RelatedProducts.nextProducts')}
-        previousLabel={t('RelatedProducts.previousProducts')}
-        products={streameableRelatedProducts}
-        scrollbarLabel={t('RelatedProducts.scrollbar')}
-        title={t('RelatedProducts.title')}
-      />
+      {/* Smart Related Products for Hose Protectors */}
+      {isHoseProtector(baseProduct.path) ? (
+        <RelatedProducts currentSlug={baseProduct.path} />
+      ) : (
+        <FeaturedProductCarousel
+          cta={{ label: t('RelatedProducts.cta'), href: '/shop-all' }}
+          emptyStateSubtitle={t('RelatedProducts.browseCatalog')}
+          emptyStateTitle={t('RelatedProducts.noRelatedProducts')}
+          nextLabel={t('RelatedProducts.nextProducts')}
+          previousLabel={t('RelatedProducts.previousProducts')}
+          products={streameableRelatedProducts}
+          scrollbarLabel={t('RelatedProducts.scrollbar')}
+          title={t('RelatedProducts.title')}
+        />
+      )}
 
       {showRating && (
         <div id="reviews">
