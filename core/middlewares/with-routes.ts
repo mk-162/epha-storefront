@@ -291,7 +291,7 @@ export const withRoutes: MiddlewareFactory = () => {
     // Skip processing for static files in public folder
     const pathname = request.nextUrl.pathname;
 
-    if (pathname.startsWith('/images/') || pathname.startsWith('/blog/')) {
+    if (pathname.startsWith('/images/')) {
       return NextResponse.next();
     }
 
@@ -405,7 +405,9 @@ export const withRoutes: MiddlewareFactory = () => {
       }
 
       case 'BlogPost': {
-        url = `/${locale}/blog/${node.entityId}`;
+        const slug = pathname.split('/').filter(Boolean).pop();
+
+        url = `/${locale}/blog/${slug}`;
         break;
       }
 
