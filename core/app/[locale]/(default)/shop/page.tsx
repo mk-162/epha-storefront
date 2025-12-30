@@ -3,7 +3,6 @@ import { getFormatter, setRequestLocale } from 'next-intl/server';
 import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
-import { getPreferredCurrencyCode } from '~/lib/currency';
 
 import { ShopPageClient } from './_components/shop-page-client';
 
@@ -100,7 +99,6 @@ export default async function ShopPage({ params }: Props) {
   setRequestLocale(locale);
 
   const customerAccessToken = await getSessionCustomerAccessToken();
-  const currencyCode = await getPreferredCurrencyCode();
   const format = await getFormatter();
 
   // Fetch all products
@@ -122,7 +120,7 @@ export default async function ShopPage({ params }: Props) {
       const opt = optEdge.node;
       const displayName = opt.displayName.toLowerCase();
 
-      if ('values' in opt && opt.values) {
+      if ('values' in opt) {
         const values = (opt.values.edges ?? []).map((v) => v.node.label);
 
         if (displayName.includes('color') || displayName.includes('colour')) {
@@ -141,7 +139,7 @@ export default async function ShopPage({ params }: Props) {
     if (node.prices) {
       const { price: basePrice, priceRange } = node.prices;
 
-      if (priceRange && priceRange.min.value !== priceRange.max.value) {
+      if (priceRange.min.value !== priceRange.max.value) {
         price = {
           type: 'range',
           minValue: format.number(priceRange.min.value, {
@@ -153,7 +151,7 @@ export default async function ShopPage({ params }: Props) {
             currency: priceRange.max.currencyCode,
           }),
         };
-      } else if (basePrice) {
+      } else {
         price = {
           type: 'fixed',
           value: format.number(basePrice.value, {
@@ -189,7 +187,7 @@ export default async function ShopPage({ params }: Props) {
     const numA = parseInt(a, 10);
     const numB = parseInt(b, 10);
 
-    if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+    if (!Number.isNaN(numA) && !Number.isNaN(numB)) return numA - numB;
 
     return a.localeCompare(b);
   });

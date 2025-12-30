@@ -411,9 +411,9 @@ export const withRoutes: MiddlewareFactory = () => {
       }
 
       default: {
-        const { pathname } = new URL(request.url);
+        const { pathname: urlPathname } = new URL(request.url);
 
-        const cleanPathName = clearLocaleFromPath(pathname, locale);
+        const cleanPathName = clearLocaleFromPath(urlPathname, locale);
 
         url = `/${locale}${cleanPathName}`;
       }

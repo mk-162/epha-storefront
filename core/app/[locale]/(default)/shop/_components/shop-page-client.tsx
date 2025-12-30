@@ -119,7 +119,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
     setCurrentPage(1);
   };
 
-  const hasActiveFilters = searchQuery || selectedColors.length > 0 || selectedSizes.length > 0;
+  const hasActiveFilters = Boolean(searchQuery) || selectedColors.length > 0 || selectedSizes.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -197,7 +197,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                     type="text"
                     value={searchQuery}
                   />
-                  {searchQuery && (
+                  {searchQuery.length > 0 && (
                     <button
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
                       onClick={() => setSearchQuery('')}
@@ -319,7 +319,12 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                   <SlidersHorizontal className="h-4 w-4 text-slate-400" />
                   <select
                     className="rounded-md border border-slate-200 bg-white py-2 pl-3 pr-8 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                    onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value === 'name' || value === 'price-low' || value === 'price-high') {
+                        setSortBy(value);
+                      }
+                    }}
                     value={sortBy}
                   >
                     <option value="name">Name A-Z</option>
@@ -446,7 +451,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
             {hasActiveFilters && (
               <div className="mb-6 flex flex-wrap items-center gap-2">
                 <span className="text-sm text-slate-500">Active filters:</span>
-                {searchQuery && (
+                {searchQuery.length > 0 && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
                     &ldquo;{searchQuery}&rdquo;
                     <button
@@ -621,17 +626,17 @@ function ProductCard({ product, viewMode }: ProductCardProps) {
           )}
         </div>
         <div className="flex flex-1 flex-col justify-center">
-          {product.brand && (
+          {product.brand ? (
             <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
               {product.brand}
             </p>
-          )}
+          ) : null}
           <h3 className="mb-2 font-heading text-xl font-bold uppercase text-primary transition-colors group-hover:text-accent">
             {product.name}
           </h3>
-          {product.sku && (
+          {product.sku ? (
             <p className="mb-2 font-mono text-xs text-slate-400">SKU: {product.sku}</p>
-          )}
+          ) : null}
           <div className="flex items-center gap-4">
             <span className="text-lg font-bold text-slate-900">
               {product.price?.type === 'range'
@@ -674,17 +679,17 @@ function ProductCard({ product, viewMode }: ProductCardProps) {
         </div>
       </div>
 
-      {product.brand && (
+      {product.brand ? (
         <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
           {product.brand}
         </p>
-      )}
+      ) : null}
 
       <h3 className="mb-2 line-clamp-2 font-heading text-lg font-bold uppercase text-primary transition-colors group-hover:text-accent">
         {product.name}
       </h3>
 
-      {product.sku && <p className="mb-3 font-mono text-xs text-slate-400">SKU: {product.sku}</p>}
+      {product.sku ? <p className="mb-3 font-mono text-xs text-slate-400">SKU: {product.sku}</p> : null}
 
       <div className="mt-auto">
         <div className="mb-4 text-lg font-bold text-slate-900">
