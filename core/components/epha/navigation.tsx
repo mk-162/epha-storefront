@@ -79,12 +79,12 @@ export function Navigation({
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         {/* Logo */}
         <Link
-          className="flex cursor-pointer items-center gap-3 transition-opacity hover:opacity-90"
+          className="flex shrink-0 cursor-pointer items-center gap-3 transition-opacity hover:opacity-90"
           href="/"
         >
           <Image
             alt="EPHA Logo"
-            className="h-16 w-auto object-contain"
+            className="h-8 w-auto object-contain md:h-10 lg:h-14"
             height={64}
             priority
             src="/images/EPHA Logo.svg"
@@ -93,9 +93,15 @@ export function Navigation({
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-2 md:flex lg:gap-5">
           <Link
-            className="cursor-pointer text-sm font-medium uppercase tracking-wider transition-colors hover:text-accent"
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
+            href="/shop"
+          >
+            Shop
+          </Link>
+          <Link
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
             href="/products"
           >
             Products
@@ -103,7 +109,7 @@ export function Navigation({
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto rounded-md bg-transparent px-3 py-2 text-sm font-medium uppercase tracking-wider text-white hover:bg-white/10 hover:text-accent focus:bg-white/10 focus:text-accent data-[state=open]:bg-white/10 data-[state=open]:text-accent">
+                <NavigationMenuTrigger className="h-auto rounded-md bg-transparent px-2 py-2 text-xs font-medium uppercase tracking-wider text-white hover:bg-white/10 hover:text-accent focus:bg-white/10 focus:text-accent data-[state=open]:bg-white/10 data-[state=open]:text-accent lg:px-3 lg:text-sm">
                   Industries
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -139,19 +145,19 @@ export function Navigation({
           </NavigationMenu>
 
           <Link
-            className="cursor-pointer text-sm font-medium uppercase tracking-wider transition-colors hover:text-accent"
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
             href="/blog"
           >
             Blog
           </Link>
           <Link
-            className="cursor-pointer text-sm font-medium uppercase tracking-wider transition-colors hover:text-accent"
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
             href="/about"
           >
             About
           </Link>
           <Link
-            className="cursor-pointer text-sm font-medium uppercase tracking-wider transition-colors hover:text-accent"
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
             href="/contact"
           >
             Contact
@@ -159,8 +165,8 @@ export function Navigation({
         </nav>
 
         {/* Actions */}
-        <div className="hidden items-center gap-6 md:flex">
-          <div className="flex items-center gap-4 text-sm font-medium">
+        <div className="hidden items-center gap-3 md:flex lg:gap-6">
+          <div className="flex items-center gap-2 text-xs font-medium lg:gap-4 lg:text-sm">
             {isLoggedIn ? (
               <>
                 <Link
@@ -294,6 +300,15 @@ export function Navigation({
 
               {/* Navigation Links */}
               <nav className="flex flex-col py-4">
+                <SheetClose asChild>
+                  <Link
+                    className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"
+                    href="/shop"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Shop
+                  </Link>
+                </SheetClose>
                 <SheetClose asChild>
                   <Link
                     className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"

@@ -3,6 +3,7 @@
 import { ArrowRight, Clock, PlayCircle, Thermometer, TrendingDown } from 'lucide-react';
 
 import { Image } from '~/components/image';
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 
 export function Hero() {
@@ -37,13 +38,15 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3 pt-3">
-            <Button
-              className="rounded-sm bg-accent px-6 py-4 text-base font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:translate-y-[-2px] hover:bg-accent/90"
-              size="lg"
-            >
-              Shop Products
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/shop">
+              <Button
+                className="rounded-sm bg-accent px-6 py-4 text-base font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:translate-y-[-2px] hover:bg-accent/90"
+                size="lg"
+              >
+                Shop Products
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
 
             <Button
               className="rounded-sm border-2 border-white px-6 py-4 text-base font-bold uppercase tracking-wider text-white backdrop-blur-sm hover:bg-white/10 hover:text-white"

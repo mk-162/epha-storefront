@@ -27,7 +27,7 @@ export default async function TermsConditionsPage({ params }: Props) {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="mb-4 font-heading text-5xl uppercase md:text-6xl">Terms & Conditions</h1>
-            <p className="text-white/80">Last updated: January 2025</p>
+            <p className="text-white/80">Last updated: January 2026</p>
           </div>
         </div>
       </section>

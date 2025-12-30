@@ -57,11 +57,6 @@ export function SelectField({
         variant={variant}
         {...rest}
       />
-      {errors?.map((error) => (
-        <FieldError className="mt-2" key={error}>
-          {error}
-        </FieldError>
-      ))}
     </div>
   );
 }
