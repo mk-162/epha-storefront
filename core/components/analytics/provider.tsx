@@ -5,7 +5,6 @@ import { PropsWithChildren, useEffect, useRef } from 'react';
 
 import { FragmentOf } from '~/client/graphql';
 import { Analytics } from '~/lib/analytics';
-import { GoogleAnalyticsProvider } from '~/lib/analytics/providers/google-analytics';
 import { AnalyticsProvider as AnalyticsProviderLib } from '~/lib/analytics/react';
 import { getConsentCookie } from '~/lib/consent-manager/cookies/client';
 
@@ -32,20 +31,22 @@ const getConsent = () => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getAnalytics = ({ channelId, isCookieConsentEnabled, settings }: Props): Analytics | null => {
-  if (settings?.webAnalytics?.ga4?.tagId && channelId) {
-    const googleAnalytics = new GoogleAnalyticsProvider({
-      gaId: settings.webAnalytics.ga4.tagId,
-      consentModeEnabled: isCookieConsentEnabled,
-      developerId: 'dMjk3Nj',
-      getConsent,
-    });
+  // Google Analytics removed as per user request
+  // if (settings?.webAnalytics?.ga4?.tagId && channelId) {
+  //   const googleAnalytics = new GoogleAnalyticsProvider({
+  //     gaId: settings.webAnalytics.ga4.tagId,
+  //     consentModeEnabled: isCookieConsentEnabled,
+  //     developerId: 'dMjk3Nj',
+  //     getConsent,
+  //   });
 
-    return new Analytics({
-      channelId,
-      providers: [googleAnalytics],
-    });
-  }
+  //   return new Analytics({
+  //     channelId,
+  //     providers: [googleAnalytics],
+  //   });
+  // }
 
   return null;
 };

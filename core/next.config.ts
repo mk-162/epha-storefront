@@ -1,4 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
+// Trigger rebuild - GTM removed
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -71,9 +72,15 @@ export default async (): Promise<NextConfig> => {
     // default URL generation in BigCommerce uses trailing slash
     trailingSlash: process.env.TRAILING_SLASH !== 'false',
     images: {
-      remotePatterns: settings.urls.cdnUrls.map((url) => ({
-        hostname: url,
-      })),
+      remotePatterns: [
+        ...settings.urls.cdnUrls.map((url) => ({
+          hostname: url,
+        })),
+        {
+          protocol: 'https',
+          hostname: 'images.unsplash.com',
+        },
+      ],
       // Allow images from public folder
       unoptimized: false,
     },

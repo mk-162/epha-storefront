@@ -37,13 +37,7 @@ export function SelectField({
 
   return (
     <div className={clsx('w-full', className)}>
-      <Label
-        className={clsx(hideLabel && 'sr-only', 'mb-2')}
-        colorScheme={colorScheme}
-        htmlFor={id}
-      >
-        {label}
-      </Label>
+
       {/* Workaround for https://github.com/radix-ui/primitives/issues/3198, remove when fixed */}
       <input name={name} type="hidden" value={value} />
       <Select

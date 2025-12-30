@@ -11,6 +11,10 @@ const GET_PRODUCTS_QUERY = graphql(`
             name
             sku
             path
+            defaultImage {
+              url: urlTemplate(lossy: true)
+              altText
+            }
             prices {
               price {
                 value
@@ -91,6 +95,7 @@ export interface Product {
   name: string;
   sku: string;
   path: string;
+  image: { url: string; altText: string } | null;
   basePrice: number;
   priceRange: { min: number; max: number } | null;
   optionId: number | null;
@@ -131,6 +136,9 @@ export async function getHoseProtectors(): Promise<Product[]> {
         name: node.name,
         sku: node.sku,
         path: node.path,
+        image: node.defaultImage
+          ? { url: node.defaultImage.url, altText: node.defaultImage.altText }
+          : null,
         basePrice: node.prices?.price.value ?? 0,
         priceRange: node.prices?.priceRange
           ? {

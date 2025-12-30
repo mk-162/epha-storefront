@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import {
@@ -153,17 +154,19 @@ export default async function ConstructionIndustry({ params }: Props) {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button
+                  asChild
                   className="h-14 bg-accent px-8 text-lg font-bold text-slate-900 hover:bg-accent/90"
                   size="lg"
                 >
-                  Get Equipment Quote
+                  <Link href="/contact">Get Equipment Quote</Link>
                 </Button>
                 <Button
+                  asChild
                   className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                   size="lg"
                   variant="outline"
                 >
-                  Calculate Savings
+                  <Link href="/contact">Calculate Savings</Link>
                 </Button>
               </div>
             </div>
@@ -451,8 +454,10 @@ export default async function ConstructionIndustry({ params }: Props) {
                   ROI Timeline: Protection investment recovered after first prevented failure
                 </div>
                 <div>
-                  <Button className="font-bold">
-                    Calculate Your Equipment&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                  <Button asChild className="font-bold">
+                    <Link href="/contact">
+                      Calculate Your Equipment&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -624,24 +629,27 @@ export default async function ConstructionIndustry({ params }: Props) {
 
             <div className="mb-16 flex flex-col justify-center gap-4 md:flex-row">
               <Button
+                asChild
                 className="h-14 bg-white px-8 text-lg font-bold text-primary hover:bg-slate-100"
                 size="lg"
               >
-                Get Equipment Quote
+                <Link href="/contact">Get Equipment Quote</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Download Guide
+                <Link href="/contact">Download Guide</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Talk to Equipment Specialist
+                <Link href="/contact">Talk to Equipment Specialist</Link>
               </Button>
             </div>
 

@@ -1,11 +1,4 @@
-import {
-  ArrowLeft,
-  Calendar,
-  ChevronRight,
-  Clock,
-  Share2,
-  User,
-} from 'lucide-react';
+import { ArrowLeft, Calendar, ChevronRight, Clock, Share2, User } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 

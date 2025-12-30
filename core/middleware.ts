@@ -28,6 +28,6 @@ export const config = {
      * - robots.txt (robots route)
      * - images (static images in public folder)
      */
-    '/((?!api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt|images).*)',
+    '/((?!api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt|images|models).*)',
   ],
 };

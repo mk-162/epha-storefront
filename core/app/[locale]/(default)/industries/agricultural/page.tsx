@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import {
@@ -250,17 +251,19 @@ export default async function AgriculturalIndustry({ params }: Props) {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button
+                  asChild
                   className="h-14 bg-accent px-8 text-lg font-bold text-slate-900 hover:bg-accent/90"
                   size="lg"
                 >
-                  Get Farm Equipment Quote
+                  <Link href="/contact">Get Farm Equipment Quote</Link>
                 </Button>
                 <Button
+                  asChild
                   className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                   size="lg"
                   variant="outline"
                 >
-                  Calculate ROI
+                  <Link href="/contact">Calculate ROI</Link>
                 </Button>
               </div>
             </div>
@@ -554,8 +557,10 @@ export default async function AgriculturalIndustry({ params }: Props) {
                   ROI Timeline: Protection investment recovered with first prevented failure
                 </div>
                 <div>
-                  <Button className="font-bold">
-                    Calculate Your Farm&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                  <Button asChild className="font-bold">
+                    <Link href="/contact">
+                      Calculate Your Farm&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -764,24 +769,27 @@ export default async function AgriculturalIndustry({ params }: Props) {
 
             <div className="mb-16 flex flex-col justify-center gap-4 md:flex-row">
               <Button
+                asChild
                 className="h-14 bg-white px-8 text-lg font-bold text-primary hover:bg-slate-100"
                 size="lg"
               >
-                Get Farm Equipment Quote
+                <Link href="/contact">Get Farm Equipment Quote</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Download Equipment Guide
+                <Link href="/contact">Download Equipment Guide</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Talk to Ag Specialist
+                <Link href="/contact">Talk to Ag Specialist</Link>
               </Button>
             </div>
 

@@ -39,7 +39,6 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               {[
                 { name: 'Products', path: '/products' },
-                { name: 'Case Studies', path: '/case-study' },
                 { name: 'Industries', path: '/industries' },
                 { name: 'Blog', path: '/blog' },
                 { name: 'About Us', path: '/about' },

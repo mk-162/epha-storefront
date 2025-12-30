@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import {
@@ -164,17 +165,19 @@ export default async function ManufacturingIndustry({ params }: Props) {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button
+                  asChild
                   className="h-14 bg-accent px-8 text-lg font-bold text-slate-900 hover:bg-accent/90"
                   size="lg"
                 >
-                  Get Manufacturing Quote
+                  <Link href="/contact">Get Manufacturing Quote</Link>
                 </Button>
                 <Button
+                  asChild
                   className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                   size="lg"
                   variant="outline"
                 >
-                  Calculate Downtime Savings
+                  <Link href="/contact">Calculate Downtime Savings</Link>
                 </Button>
               </div>
             </div>
@@ -468,8 +471,10 @@ export default async function ManufacturingIndustry({ params }: Props) {
                   downtime event
                 </div>
                 <div>
-                  <Button className="font-bold">
-                    Calculate Your Facility&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                  <Button asChild className="font-bold">
+                    <Link href="/contact">
+                      Calculate Your Facility&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -645,24 +650,27 @@ export default async function ManufacturingIndustry({ params }: Props) {
 
             <div className="mb-16 flex flex-col justify-center gap-4 md:flex-row">
               <Button
+                asChild
                 className="h-14 bg-white px-8 text-lg font-bold text-primary hover:bg-slate-100"
                 size="lg"
               >
-                Get Manufacturing Quote
+                <Link href="/contact">Get Manufacturing Quote</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Download Guide
+                <Link href="/contact">Download Guide</Link>
               </Button>
               <Button
+                asChild
                 className="h-14 border-white px-8 text-lg font-bold text-white hover:bg-white/10"
                 size="lg"
                 variant="outline"
               >
-                Talk to Industrial Specialist
+                <Link href="/contact">Talk to Industrial Specialist</Link>
               </Button>
             </div>
 

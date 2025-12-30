@@ -1,13 +1,11 @@
-import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { getFormatter, setRequestLocale } from 'next-intl/server';
 
 import { getSessionCustomerAccessToken } from '~/auth';
 import { Comparison, FeaturedProducts, Hero, Industries, ValueProps } from '~/components/epha';
 import { FeaturedProduct } from '~/components/epha/featured-products';
-import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { getPreferredCurrencyCode } from '~/lib/currency';
 
-import { getPageData } from './page-data';
+import { getFeaturedProductsByPath } from './page-data';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -22,39 +20,40 @@ export default async function Home({ params }: Props) {
   const currencyCode = await getPreferredCurrencyCode();
   const format = await getFormatter();
 
-  const data = await getPageData(currencyCode, customerAccessToken);
+  // Fetch hardcoded featured products by path
+  const featuredProducts = await getFeaturedProductsByPath(currencyCode, customerAccessToken);
 
-  // Transform featured products for display
-  const featuredProductsData = removeEdgesAndNodes(data.site.featuredProducts);
-
-  const transformedProducts: FeaturedProduct[] = featuredProductsData.map((product) => {
-    const priceData = pricesTransformer(product.prices, format);
-
-    // Handle different price formats from the transformer
+  const transformedProducts: FeaturedProduct[] = featuredProducts.map((product) => {
+    // Format price based on available data
     let price: FeaturedProduct['price'] = null;
 
-    if (priceData) {
-      if (typeof priceData === 'string') {
-        price = { type: 'fixed', currentValue: priceData };
-      } else if (priceData.type === 'sale') {
-        price = {
-          type: 'sale',
-          currentValue: priceData.currentValue,
-          previousValue: priceData.previousValue,
-        };
-      } else {
-        // priceData.type === 'range'
+    if (product.prices) {
+      const { price: basePrice, priceRange } = product.prices;
+
+      if (priceRange.min.value !== priceRange.max.value) {
+        // Price range
         price = {
           type: 'range',
-          minValue: priceData.minValue,
-          maxValue: priceData.maxValue,
+          minValue: format.number(priceRange.min.value, {
+            style: 'currency',
+            currency: priceRange.min.currencyCode,
+          }),
+          maxValue: format.number(priceRange.max.value, {
+            style: 'currency',
+            currency: priceRange.max.currencyCode,
+          }),
+        };
+      } else {
+        // Fixed price
+        price = {
+          type: 'fixed',
+          currentValue: format.number(basePrice.value, {
+            style: 'currency',
+            currency: basePrice.currencyCode,
+          }),
         };
       }
     }
-
-    // Get SKU from first variant if available
-    const variants = removeEdgesAndNodes(product.variants);
-    const sku = variants[0]?.sku;
 
     return {
       id: product.entityId.toString(),
@@ -68,7 +67,6 @@ export default async function Home({ params }: Props) {
         : undefined,
       price,
       brand: product.brand?.name,
-      sku,
     };
   });
 

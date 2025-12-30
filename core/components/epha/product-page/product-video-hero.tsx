@@ -1,7 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Truck } from 'lucide-react';
 
+const Model3DViewer = dynamic(
+  () => import('~/components/epha/model-3d-viewer').then((mod) => mod.Model3DViewer),
+  { ssr: false },
+);
 import { Button } from '~/components/ui/button';
 
 export function ProductVideoHero() {
@@ -26,44 +31,55 @@ export function ProductVideoHero() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent" />
 
         <div className="container relative mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="mb-6 font-heading text-5xl font-bold uppercase leading-none text-white md:text-7xl">
-              Stop Hose Failures <br />
-              <span className="text-accent">Before They Stop You</span>
-            </h1>
-            <p className="mb-8 max-w-2xl text-xl font-light leading-relaxed text-gray-300">
-              Industrial-grade protection that prevents costly equipment downtime and saves
-              thousands in repair costs. Built for the harshest conditions, installed in minutes.
-            </p>
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            {/* Left Column - Text Content */}
+            <div>
+              <h1 className="mb-6 font-heading text-5xl font-bold uppercase leading-none text-white md:text-7xl">
+                Stop Hose Failures <br />
+                <span className="text-accent">Before They Stop You</span>
+              </h1>
+              <p className="mb-8 max-w-2xl text-xl font-light leading-relaxed text-gray-300">
+                Industrial-grade protection that prevents costly equipment downtime and saves
+                thousands in repair costs. Built for the harshest conditions, installed in minutes.
+              </p>
 
-            <div className="mb-12 flex flex-wrap gap-4">
-              <Button
-                className="bg-accent font-bold uppercase tracking-wider text-white shadow-[0_0_20px_rgba(255,107,53,0.3)] transition-all hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]"
-                size="lg"
-              >
-                Shop All Products
-              </Button>
-              <Button
-                className="border-white font-bold uppercase tracking-wider text-white hover:bg-white/10"
-                size="lg"
-                variant="outline"
-              >
-                Find a Distributor
-              </Button>
+              <div className="mb-12 flex flex-wrap gap-4">
+                <Button
+                  className="bg-accent font-bold uppercase tracking-wider text-white shadow-[0_0_20px_rgba(255,107,53,0.3)] transition-all hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]"
+                  size="lg"
+                >
+                  Shop All Products
+                </Button>
+                <Button
+                  className="border-white font-bold uppercase tracking-wider text-white hover:bg-white/10"
+                  size="lg"
+                  variant="outline"
+                >
+                  Find a Distributor
+                </Button>
+              </div>
+
+              <div className="flex flex-wrap gap-6 text-sm font-bold uppercase tracking-wide text-gray-400">
+                <span className="flex items-center gap-2">
+                  <span className="text-white">Made in USA</span>
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent/50" />
+                <span className="flex items-center gap-2">
+                  <span className="text-white">-40°F to 430°F</span>
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent/50" />
+                <span className="flex items-center gap-2">
+                  <span className="text-white">Chemical & Abrasion Resistant</span>
+                </span>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-6 text-sm font-bold uppercase tracking-wide text-gray-400">
-              <span className="flex items-center gap-2">
-                <span className="text-white">Made in USA</span>
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-accent/50" />
-              <span className="flex items-center gap-2">
-                <span className="text-white">-40°F to 430°F</span>
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-accent/50" />
-              <span className="flex items-center gap-2">
-                <span className="text-white">Chemical & Abrasion Resistant</span>
-              </span>
+            {/* Right Column - 3D Model Viewer */}
+            <div className="flex h-[400px] items-center justify-center lg:h-[500px]">
+              <Model3DViewer
+                className="h-full w-full"
+                modelUrl="/images/hose-protector.glb"
+              />
             </div>
           </div>
         </div>

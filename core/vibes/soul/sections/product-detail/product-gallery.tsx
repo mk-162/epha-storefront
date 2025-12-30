@@ -11,17 +11,17 @@ export interface ProductGalleryProps {
   className?: string;
   thumbnailLabel?: string;
   aspectRatio?:
-    | '1:1'
-    | '4:5'
-    | '5:4'
-    | '3:4'
-    | '4:3'
-    | '2:3'
-    | '3:2'
-    | '16:9'
-    | '9:16'
-    | '5:6'
-    | '6:5';
+  | '1:1'
+  | '4:5'
+  | '5:4'
+  | '3:4'
+  | '4:3'
+  | '2:3'
+  | '3:2'
+  | '16:9'
+  | '9:16'
+  | '5:6'
+  | '6:5';
   fit?: 'contain' | 'cover';
 }
 
@@ -43,7 +43,7 @@ export function ProductGallery({
   images,
   className,
   thumbnailLabel = 'View image number',
-  aspectRatio = '4:5',
+  aspectRatio = '1:1',
   fit = 'contain',
 }: ProductGalleryProps) {
   const [previewImage, setPreviewImage] = useState(0);
@@ -96,7 +96,7 @@ export function ProductGallery({
               <Image
                 alt={image.alt}
                 className={clsx(
-                  'bg-[var(--product-gallery-image-background,hsl(var(--contrast-100)))]',
+                  'bg-transparent',
                   {
                     contain: 'object-contain',
                     cover: 'object-cover',
@@ -132,7 +132,7 @@ export function ProductGallery({
             >
               <Image
                 alt={image.alt}
-                className="bg-[var(--product-gallery-image-background,hsl(var(--contrast-100)))] object-cover"
+                className="bg-transparent object-cover"
                 fill
                 sizes="(min-width: 28rem) 4rem, 3rem"
                 src={image.src}

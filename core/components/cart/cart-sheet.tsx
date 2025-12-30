@@ -1,7 +1,6 @@
 'use client';
 
 import { Minus, Plus, ShoppingBag, ShoppingCart, X } from 'lucide-react';
-import { useRouter } from '~/i18n/routing';
 import { startTransition, useOptimistic, useState } from 'react';
 
 import { Image } from '~/components/image';
@@ -15,6 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '~/components/ui/sheet';
+import { useRouter } from '~/i18n/routing';
 
 export interface CartSheetItem {
   id: string;

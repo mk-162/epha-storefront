@@ -1,10 +1,12 @@
 'use client';
 
-import { Calculator, Check, Loader2 } from 'lucide-react';
+import { Calculator, Check, ExternalLink, Loader2, Minus, Plus } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
 import { addProductToCart } from '~/app/[locale]/(default)/products/_actions/add-to-cart';
 import type { Product } from '~/app/[locale]/(default)/products/_data/get-products';
+import { Image } from '~/components/image';
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 
 // Static specs data for display (dimensions, fit, use cases)
@@ -58,6 +60,7 @@ interface ProductTableProps {
 export function ProductTable({ products }: ProductTableProps) {
   const [isPending, startTransition] = useTransition();
   const [addingVariantId, setAddingVariantId] = useState<number | null>(null);
+  const [quantities, setQuantities] = useState<Record<number, number>>({});
 
   // Get all variants from all products and sort by size
   const allVariants = products
@@ -67,6 +70,8 @@ export function ProductTable({ products }: ProductTableProps) {
         productEntityId: p.entityId,
         optionId: p.optionId,
         productName: p.name,
+        productPath: p.path,
+        productImage: p.image,
       })),
     )
     .filter((v) => v.size);
@@ -89,11 +94,22 @@ export function ProductTable({ products }: ProductTableProps) {
     return sizeA - sizeB;
   });
 
+  const getQuantity = (variantId: number) => quantities[variantId] || 1;
+
+  const updateQuantity = (variantId: number, delta: number) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [variantId]: Math.max(1, (prev[variantId] || 1) + delta),
+    }));
+  };
+
   const handleAddToCart = (productEntityId: number, variantEntityId: number) => {
+    const qty = getQuantity(variantEntityId);
+
     setAddingVariantId(variantEntityId);
     startTransition(async () => {
       try {
-        await addProductToCart(productEntityId, variantEntityId, 1);
+        await addProductToCart(productEntityId, variantEntityId, qty);
       } finally {
         setAddingVariantId(null);
       }
@@ -125,10 +141,11 @@ export function ProductTable({ products }: ProductTableProps) {
               <table className="w-full text-left text-sm">
                 <thead className="border-b border-slate-200 bg-slate-50 font-bold uppercase tracking-wider text-primary">
                   <tr>
-                    <th className="p-4">Size</th>
+                    <th className="p-4">Product</th>
                     <th className="p-4">Specs</th>
-                    <th className="p-4">Application</th>
+                    <th className="hidden p-4 md:table-cell">Application</th>
                     <th className="p-4 text-right">Unit Price</th>
+                    <th className="p-4 text-center">Qty</th>
                     <th className="p-4" />
                   </tr>
                 </thead>
@@ -136,22 +153,73 @@ export function ProductTable({ products }: ProductTableProps) {
                   {uniqueVariants.map((variant) => {
                     const specs = staticSpecs[variant.size] || { dim: '-', fit: '-', use: '-' };
                     const isAdding = addingVariantId === variant.entityId;
+                    const qty = getQuantity(variant.entityId);
 
                     return (
                       <tr
                         className="group transition-colors hover:bg-slate-50/50"
                         key={variant.entityId}
                       >
-                        <td className="p-4 align-middle font-bold text-primary">
-                          HP{variant.size.replace('"', '')}
+                        <td className="p-4 align-middle">
+                          <div className="flex items-center gap-3">
+                            {variant.productImage ? (
+                              <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-50">
+                                <Image
+                                  alt={variant.productImage.altText || variant.productName}
+                                  className="h-full w-full object-contain"
+                                  height={56}
+                                  src={variant.productImage.url}
+                                  width={56}
+                                />
+                              </div>
+                            ) : (
+                              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-slate-100">
+                                <span className="text-xs text-gray-400">No img</span>
+                              </div>
+                            )}
+                            <div>
+                              <div className="font-bold text-primary">
+                                HP{variant.size.replace('"', '')}
+                              </div>
+                              <Link
+                                className="inline-flex items-center gap-1 text-xs text-accent hover:underline"
+                                href={variant.productPath}
+                              >
+                                View Product
+                                <ExternalLink className="h-3 w-3" />
+                              </Link>
+                            </div>
+                          </div>
                         </td>
                         <td className="p-4 align-middle font-mono text-xs text-gray-600">
                           <div className="font-bold">{specs.fit} OD</div>
                           <div>{specs.dim}</div>
                         </td>
-                        <td className="p-4 align-middle text-xs text-gray-600">{specs.use}</td>
+                        <td className="hidden p-4 align-middle text-xs text-gray-600 md:table-cell">
+                          {specs.use}
+                        </td>
                         <td className="p-4 text-right align-middle text-lg font-bold text-primary">
                           ${variant.price.toFixed(2)}
+                        </td>
+                        <td className="p-4 align-middle">
+                          <div className="flex items-center justify-center gap-1">
+                            <button
+                              className="flex h-8 w-8 items-center justify-center rounded border border-slate-200 text-gray-500 transition-colors hover:bg-slate-100 disabled:opacity-50"
+                              disabled={qty <= 1}
+                              onClick={() => updateQuantity(variant.entityId, -1)}
+                              type="button"
+                            >
+                              <Minus className="h-4 w-4" />
+                            </button>
+                            <span className="w-10 text-center font-bold">{qty}</span>
+                            <button
+                              className="flex h-8 w-8 items-center justify-center rounded border border-slate-200 text-gray-500 transition-colors hover:bg-slate-100"
+                              onClick={() => updateQuantity(variant.entityId, 1)}
+                              type="button"
+                            >
+                              <Plus className="h-4 w-4" />
+                            </button>
+                          </div>
                         </td>
                         <td className="p-4 text-right align-middle">
                           <Button
@@ -168,7 +236,7 @@ export function ProductTable({ products }: ProductTableProps) {
                                 Adding...
                               </>
                             ) : (
-                              'Buy Now'
+                              'Add to Cart'
                             )}
                           </Button>
                         </td>

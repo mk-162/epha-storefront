@@ -57,6 +57,7 @@ const GetRouteQuery = graphql(`
           }
           ... on BlogPost {
             entityId
+            path
           }
         }
       }
@@ -165,7 +166,7 @@ const NodeSchema = z.union([
   z.object({ __typename: z.literal('NormalPage'), id: z.string() }),
   z.object({ __typename: z.literal('RawHtmlPage'), id: z.string() }),
   z.object({ __typename: z.literal('Blog'), id: z.string() }),
-  z.object({ __typename: z.literal('BlogPost'), entityId: z.number() }),
+  z.object({ __typename: z.literal('BlogPost'), entityId: z.number(), path: z.string() }),
 ]);
 
 const RouteSchema = z.object({
@@ -291,7 +292,7 @@ export const withRoutes: MiddlewareFactory = () => {
     // Skip processing for static files in public folder
     const pathname = request.nextUrl.pathname;
 
-    if (pathname.startsWith('/images/') || pathname.startsWith('/blog/')) {
+    if (pathname.startsWith('/images/')) {
       return NextResponse.next();
     }
 
@@ -405,7 +406,7 @@ export const withRoutes: MiddlewareFactory = () => {
       }
 
       case 'BlogPost': {
-        url = `/${locale}/blog/${node.entityId}`;
+        url = `/${locale}/blog/${node.path}`;
         break;
       }
 

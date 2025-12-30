@@ -100,13 +100,6 @@ export function Navigation({
           >
             Products
           </Link>
-          <Link
-            className="cursor-pointer text-sm font-medium uppercase tracking-wider transition-colors hover:text-accent"
-            href="/case-study"
-          >
-            Case Studies
-          </Link>
-
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -310,16 +303,6 @@ export function Navigation({
                     Products
                   </Link>
                 </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"
-                    href="/case-study"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Case Studies
-                  </Link>
-                </SheetClose>
-
                 <Accordion className="w-full" collapsible type="single">
                   <AccordionItem className="border-b-0" value="item-1">
                     <AccordionTrigger className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide hover:bg-white/5 hover:no-underline data-[state=open]:border-accent data-[state=open]:bg-white/5">
@@ -366,15 +349,6 @@ export function Navigation({
                   </AccordionItem>
                 </Accordion>
 
-                <SheetClose asChild>
-                  <Link
-                    className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"
-                    href="/knowledge-base"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Knowledge Base
-                  </Link>
-                </SheetClose>
                 <SheetClose asChild>
                   <Link
                     className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"

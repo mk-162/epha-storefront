@@ -11,9 +11,11 @@ export const cspHeader = builder({
   directives: {
     baseUri: ['self'],
     frameAncestors: [frameAncestors],
+    // Allow 'unsafe-eval' for Three.js/React Three Fiber 3D rendering
+    scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    // connectSrc: ['self'],
     // formAction: ['self'],
     // defaultSrc: ['self'],
-    // scriptSrc: ['self'],
     // styleSrc: ['self'],
     // imgSrc: ['self'],
     // connectSrc: ['self'],
