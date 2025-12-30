@@ -1,40 +1,78 @@
 import { Image } from '~/components/image';
+import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 
-function getImageFilter(idx: number): string {
-  if (idx === 1 || idx === 3) return 'brightness-50 grayscale';
-  if (idx === 2) return 'hue-rotate-45 brightness-125';
-
-  return '';
+export interface FeaturedProduct {
+  id: string;
+  name: string;
+  href: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  price?: {
+    type: 'sale' | 'range' | 'fixed';
+    currentValue?: string;
+    previousValue?: string;
+    minValue?: string;
+    maxValue?: string;
+  } | null;
+  brand?: string;
+  sku?: string;
 }
 
-export function FeaturedProducts() {
-  const products = [
-    {
-      name: 'Kase Protector',
-      code: 'LEA9R RO8E',
-      desc: '2 Inch Heavy Duty - For Extreme Abrasion',
-      color: 'bg-red-600',
-    },
-    {
-      name: 'Hose Protector',
-      code: 'LEA9A R08E',
-      desc: '2 Inch Heavy Duty - For Extreme Abrasion',
-      color: 'bg-black',
-    },
-    {
-      name: 'Kase Protector',
-      code: 'LEA9A R08E',
-      desc: '2 Inch Heavy Duty - For Extreme Abrasion',
-      color: 'bg-yellow-400',
-    },
-    {
-      name: 'Kase Protector',
-      code: 'LEB1A R08E',
-      desc: '2 Inch Heavy Duty - For Extreme Abrasion',
-      color: 'bg-slate-800',
-    },
-  ];
+interface FeaturedProductsProps {
+  products?: FeaturedProduct[];
+}
+
+export function FeaturedProducts({ products = [] }: FeaturedProductsProps) {
+  // If no products, show placeholder
+  if (products.length === 0) {
+    return (
+      <section className="bg-secondary/30 py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 flex items-end justify-between">
+            <div>
+              <h2 className="font-heading text-4xl font-bold uppercase text-primary md:text-5xl">
+                Featured Products
+              </h2>
+              <div className="mt-4 h-1 w-24 bg-accent" />
+            </div>
+          </div>
+          <p className="text-center text-gray-500">No featured products available.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const formatPrice = (price: FeaturedProduct['price']) => {
+    if (!price) return null;
+
+    if (price.type === 'sale' && price.currentValue) {
+      return (
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-accent">{price.currentValue}</span>
+          {price.previousValue ? (
+            <span className="text-sm text-gray-400 line-through">{price.previousValue}</span>
+          ) : null}
+        </div>
+      );
+    }
+
+    if (price.type === 'range' && price.minValue && price.maxValue) {
+      return (
+        <span className="font-bold text-gray-900">
+          {price.minValue} - {price.maxValue}
+        </span>
+      );
+    }
+
+    if (price.currentValue) {
+      return <span className="font-bold text-gray-900">{price.currentValue}</span>;
+    }
+
+    return null;
+  };
 
   return (
     <section className="bg-secondary/30 py-24">
@@ -46,43 +84,67 @@ export function FeaturedProducts() {
             </h2>
             <div className="mt-4 h-1 w-24 bg-accent" />
           </div>
-          <Button
-            className="hidden font-bold uppercase tracking-wider text-primary md:block"
-            variant="link"
-          >
-            View All Products &rarr;
-          </Button>
+          <Link href="/products">
+            <Button
+              className="hidden font-bold uppercase tracking-wider text-primary md:block"
+              variant="link"
+            >
+              View All Products &rarr;
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product, idx) => (
-            <div
+          {products.slice(0, 8).map((product) => (
+            <Link
               className="group rounded-lg border border-transparent bg-white p-6 shadow-sm transition-all duration-300 hover:border-accent/20 hover:shadow-xl"
-              key={idx}
+              href={product.href}
+              key={product.id}
             >
               <div className="relative mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-md bg-gradient-to-br from-gray-50 to-gray-100">
-                <Image
-                  alt={product.name}
-                  className={`w-4/5 object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110 ${getImageFilter(idx)}`}
-                  height={200}
-                  src="/images/generated_images/red_industrial_hose_protector_product_shot.png"
-                  width={200}
-                />
-                {/* Simulated color variant badge */}
-                <div
-                  className={`absolute right-4 top-4 h-4 w-4 rounded-full ${product.color} shadow-md ring-2 ring-white`}
-                />
+                {product.image ? (
+                  <Image
+                    alt={product.image.alt || product.name}
+                    className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
+                    height={300}
+                    src={product.image.src}
+                    width={300}
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gray-100">
+                    <span className="text-gray-400">No image</span>
+                  </div>
+                )}
               </div>
 
-              <h3 className="mb-1 text-lg font-bold text-primary">{product.name}</h3>
-              <p className="mb-2 font-mono text-xs text-gray-400">{product.code}</p>
-              <p className="mb-4 text-sm text-gray-600">{product.desc}</p>
+              {product.brand ? (
+                <p className="mb-1 text-xs font-medium uppercase tracking-wider text-accent">
+                  {product.brand}
+                </p>
+              ) : null}
 
-              <Button className="w-full bg-gray-900 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-accent hover:text-white">
-                View Specs
-              </Button>
-            </div>
+              <h3 className="mb-2 line-clamp-2 text-lg font-bold text-primary">{product.name}</h3>
+
+              {product.sku ? (
+                <p className="mb-2 font-mono text-xs text-gray-400">SKU: {product.sku}</p>
+              ) : null}
+
+              <div className="mb-4">{formatPrice(product.price)}</div>
+
+              <div className="w-full rounded-full bg-gray-900 px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-white transition-colors group-hover:bg-accent">
+                View Product
+              </div>
+            </Link>
           ))}
+        </div>
+
+        {/* Mobile View All Button */}
+        <div className="mt-8 text-center md:hidden">
+          <Link href="/products">
+            <Button className="font-bold uppercase tracking-wider" variant="outline">
+              View All Products
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
