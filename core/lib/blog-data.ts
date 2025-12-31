@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
       </blockquote>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="EPHA Spiral Hose Guards" />
           </div>
@@ -436,7 +436,7 @@ export const blogPosts: BlogPost[] = [
       <p>In a study of three different industries, fleets that implemented a hose protection program saw a consistent <strong>85-88% reduction in failures</strong>, with ROI typically exceeding 6,000%.</p>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="EPHA Protection Program" />
           </div>
@@ -498,7 +498,7 @@ export const blogPosts: BlogPost[] = [
       </blockquote>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop" alt="Damage Zones" />
           </div>
@@ -583,7 +583,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="Installation Steps" />
           </div>
@@ -668,7 +668,7 @@ export const blogPosts: BlogPost[] = [
       <p>Standard hose materials lose their properties at temperature extremes. EPHA protection is engineered to perform from -40°F to 430°F. Our proprietary thermoplastic polyurethane (TPU) remains flexible in the Alaskan winter and retains its shape in the Arizona summer.</p>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=2070&auto=format&fit=crop" alt="Temperature Comparison" />
           </div>
@@ -730,7 +730,7 @@ export const blogPosts: BlogPost[] = [
       <p>A 50-vehicle fleet reduced their annual hose failures from 142 to just 21 incidents after implementing EPHA protection. By preventing 121 failures at an average cost of $3,840 each, they realized $464,640 in annual savings. Their payback period? <strong>5.2 days.</strong></p>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="ROI Infographic" />
           </div>
@@ -790,7 +790,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2089&auto=format&fit=crop" alt="Construction Before and After" />
           </div>
@@ -863,7 +863,7 @@ export const blogPosts: BlogPost[] = [
       <p>Time is money. American manufacturing allows for "Just-in-Time" inventory, reducing carrying costs and freeing up cash flow. While imports force you into bulk orders and 4-month lead times, domestic supply chains are resilient, responsive, and reliable.</p>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" alt="American Quality" />
           </div>
@@ -939,7 +939,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop" alt="Process Diagram" />
           </div>
@@ -1006,7 +1006,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" alt="Chemical Comparison" />
           </div>
@@ -1076,7 +1076,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <div class="product-card">
-        <a href="/products" class="product-card-link">
+        <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
             <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=2074&auto=format&fit=crop" alt="Roadside Crisis" />
           </div>

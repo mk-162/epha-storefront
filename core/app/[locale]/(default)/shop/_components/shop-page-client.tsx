@@ -16,7 +16,7 @@ import { Image } from '~/components/image';
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 
-import type { ShopProduct } from '../page';
+import type { ProductCategory, ShopProduct } from '../page';
 
 interface ShopPageClientProps {
   products: ShopProduct[];
@@ -24,7 +24,61 @@ interface ShopPageClientProps {
   availableSizes: string[];
 }
 
+const CATEGORY_LABELS: Record<ProductCategory, string> = {
+  'hose-protectors': 'Hose Protectors',
+  'cable-ties': 'Cable Ties',
+  other: 'Other Products',
+};
+
+const CATEGORY_ORDER: ProductCategory[] = ['hose-protectors', 'cable-ties', 'other'];
+
 const PRODUCTS_PER_PAGE = 10;
+
+interface CategoryTabsProps {
+  availableCategories: ProductCategory[];
+  selectedCategory: ProductCategory | 'all';
+  onCategoryChange: (category: ProductCategory | 'all') => void;
+}
+
+function CategoryTabs({
+  availableCategories,
+  selectedCategory,
+  onCategoryChange,
+}: CategoryTabsProps) {
+  return (
+    <section className="border-b border-slate-200 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center gap-1 overflow-x-auto py-1">
+          <button
+            className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
+              selectedCategory === 'all'
+                ? 'border-b-2 border-accent bg-slate-50 text-accent'
+                : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
+            }`}
+            onClick={() => onCategoryChange('all')}
+            type="button"
+          >
+            All Products
+          </button>
+          {availableCategories.map((category) => (
+            <button
+              className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
+                selectedCategory === category
+                  ? 'border-b-2 border-accent bg-slate-50 text-accent'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
+              }`}
+              key={category}
+              onClick={() => onCategoryChange(category)}
+              type="button"
+            >
+              {CATEGORY_LABELS[category]}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function ShopPageClient({ products, availableColors, availableSizes }: ShopPageClientProps) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,10 +88,29 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
   const [sortBy, setSortBy] = useState<'name' | 'price-low' | 'price-high'>('name');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>(
+    'hose-protectors',
+  );
+
+  // Get available categories (only those with products)
+  const availableCategories = useMemo(() => {
+    const categoryCounts = new Map<ProductCategory, number>();
+
+    products.forEach((p) => {
+      categoryCounts.set(p.category, (categoryCounts.get(p.category) ?? 0) + 1);
+    });
+
+    return CATEGORY_ORDER.filter((cat) => (categoryCounts.get(cat) ?? 0) > 0);
+  }, [products]);
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
     let result = [...products];
+
+    // Category filter
+    if (selectedCategory !== 'all') {
+      result = result.filter((p) => p.category === selectedCategory);
+    }
 
     // Search filter
     if (searchQuery) {
@@ -89,7 +162,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
     });
 
     return result;
-  }, [products, searchQuery, selectedColors, selectedSizes, sortBy]);
+  }, [products, selectedCategory, searchQuery, selectedColors, selectedSizes, sortBy]);
 
   // Pagination
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
@@ -174,6 +247,16 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
           </div>
         </div>
       </section>
+
+      {/* Category Tabs */}
+      <CategoryTabs
+        availableCategories={availableCategories}
+        onCategoryChange={(category) => {
+          setSelectedCategory(category);
+          setCurrentPage(1);
+        }}
+        selectedCategory={selectedCategory}
+      />
 
       {/* Main Content */}
       <section className="container mx-auto px-4 py-12">
@@ -583,7 +666,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                 Contact Sales
               </Button>
             </Link>
-            <Link href="/products">
+            <Link href="/hose-protector">
               <Button
                 className="border-primary font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-white"
                 variant="outline"

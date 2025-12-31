@@ -102,9 +102,9 @@ export function Navigation({
           </Link>
           <Link
             className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
-            href="/products"
+            href="/hose-protector"
           >
-            Products
+            Hose Protectors
           </Link>
           <Link
             className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
@@ -318,10 +318,10 @@ export function Navigation({
                 <SheetClose asChild>
                   <Link
                     className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"
-                    href="/products"
+                    href="/hose-protector"
                     onClick={() => setIsOpen(false)}
                   >
-                    Products
+                    Hose Protectors
                   </Link>
                 </SheetClose>
                 <SheetClose asChild>

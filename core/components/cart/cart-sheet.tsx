@@ -147,7 +147,7 @@ export function CartSheet({
                 asChild
                 className="bg-accent font-heading uppercase text-white hover:bg-accent/90"
               >
-                <Link href="/products">Shop Products</Link>
+                <Link href="/hose-protector">Shop Products</Link>
               </Button>
             </SheetClose>
           </div>

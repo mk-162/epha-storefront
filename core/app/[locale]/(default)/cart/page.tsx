@@ -4,6 +4,7 @@ import { getFormatter, getTranslations, setRequestLocale } from 'next-intl/serve
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { Cart as CartComponent, CartEmptyState } from '@/vibes/soul/sections/cart';
 import { CartAnalyticsProvider } from '~/app/[locale]/(default)/cart/_components/cart-analytics-provider';
+import { CartCableTieCrossSell } from '~/components/epha/cart-cable-tie-cross-sell';
 import { getCartId } from '~/lib/cart';
 import { getPreferredCurrencyCode } from '~/lib/currency';
 import { exists } from '~/lib/utils';
@@ -70,7 +71,7 @@ export default async function Cart({ params }: Props) {
   if (!cartId) {
     return (
       <CartEmptyState
-        cta={{ label: t('Empty.cta'), href: '/products' }}
+        cta={{ label: t('Empty.cta'), href: '/hose-protector' }}
         subtitle={t('Empty.subtitle')}
         title={t('Empty.title')}
       />
@@ -87,7 +88,7 @@ export default async function Cart({ params }: Props) {
   if (!cart) {
     return (
       <CartEmptyState
-        cta={{ label: t('Empty.cta'), href: '/products' }}
+        cta={{ label: t('Empty.cta'), href: '/hose-protector' }}
         subtitle={t('Empty.subtitle')}
         title={t('Empty.title')}
       />
@@ -266,7 +267,7 @@ export default async function Cart({ params }: Props) {
           emptyState={{
             title: t('Empty.title'),
             subtitle: t('Empty.subtitle'),
-            cta: { label: t('Empty.cta'), href: '/products' },
+            cta: { label: t('Empty.cta'), href: '/hose-protector' },
           }}
           giftCertificate={
             giftCertificatesEnabled
@@ -345,6 +346,13 @@ export default async function Cart({ params }: Props) {
           title={t('title')}
         />
       </CartAnalyticsProvider>
+      {/* Cable Tie Cross-Sell for Hose Protectors in Cart */}
+      <CartCableTieCrossSell
+        lineItems={formattedLineItems.map((item) => ({
+          href: item.href,
+          productEntityId: item.productEntityId,
+        }))}
+      />
       <CartViewed
         currencyCode={cart.currencyCode}
         lineItems={lineItems}

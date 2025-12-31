@@ -152,7 +152,7 @@ export default async function BlogPostPage({ params }: Props) {
                   </div>
 
                   {/* Featured Product */}
-                  <Link className="group block" href="/products">
+                  <Link className="group block" href="/hose-protector">
                     <div className="overflow-hidden rounded-xl border border-gray-200 transition-all hover:border-accent/50 hover:shadow-lg">
                       <div className="relative h-40 overflow-hidden">
                         <Image

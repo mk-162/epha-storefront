@@ -8,7 +8,12 @@ import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 import { auth, getSessionCustomerAccessToken } from '~/auth';
-import { isHoseProtector, RelatedProducts } from '~/components/epha';
+import {
+  CableTieCrossSell,
+  isHoseProtector,
+  RelatedProducts,
+  shouldShowCableTieCrossSell,
+} from '~/components/epha';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { productCardTransformer } from '~/data-transformers/product-card-transformer';
 import { productOptionsTransformer } from '~/data-transformers/product-options-transformer';
@@ -575,7 +580,13 @@ export default async function Product({ params, searchParams }: Props) {
 
       {/* Smart Related Products for Hose Protectors */}
       {isHoseProtector(baseProduct.path) ? (
-        <RelatedProducts currentSlug={baseProduct.path} />
+        <>
+          <RelatedProducts currentSlug={baseProduct.path} />
+          {/* Cable Tie Cross-Sell for non-counter-display hose protectors */}
+          {shouldShowCableTieCrossSell(baseProduct.path) && (
+            <CableTieCrossSell hoseProtectorSlug={baseProduct.path} variant="product-page" />
+          )}
+        </>
       ) : (
         <FeaturedProductCarousel
           cta={{ label: t('RelatedProducts.cta'), href: '/shop-all' }}

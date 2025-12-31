@@ -68,6 +68,8 @@ const GET_ALL_PRODUCTS_QUERY = graphql(`
   }
 `);
 
+export type ProductCategory = 'hose-protectors' | 'cable-ties' | 'other';
+
 export interface ShopProduct {
   id: string;
   entityId: number;
@@ -87,6 +89,7 @@ export interface ShopProduct {
   } | null;
   colors: string[];
   sizes: string[];
+  category: ProductCategory;
 }
 
 interface Props {
@@ -162,6 +165,27 @@ export default async function ShopPage({ params }: Props) {
       }
     }
 
+    // Determine product category based on name/SKU
+    const nameLower = node.name.toLowerCase();
+    const skuLower = node.sku.toLowerCase();
+    let category: ProductCategory = 'other';
+
+    if (
+      nameLower.includes('hose protector') ||
+      nameLower.includes('spiral wrap') ||
+      skuLower.startsWith('hp') ||
+      skuLower.startsWith('sph')
+    ) {
+      category = 'hose-protectors';
+    } else if (
+      nameLower.includes('cable tie') ||
+      nameLower.includes('zip tie') ||
+      nameLower.includes('nylon') ||
+      skuLower.startsWith('ct')
+    ) {
+      category = 'cable-ties';
+    }
+
     return {
       id: node.entityId.toString(),
       entityId: node.entityId,
@@ -178,6 +202,7 @@ export default async function ShopPage({ params }: Props) {
       price,
       colors,
       sizes,
+      category,
     };
   });
 

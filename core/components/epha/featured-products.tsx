@@ -84,7 +84,7 @@ export function FeaturedProducts({ products = [] }: FeaturedProductsProps) {
             </h2>
             <div className="mt-4 h-1 w-24 bg-accent" />
           </div>
-          <Link href="/products">
+          <Link href="/hose-protector">
             <Button
               className="hidden font-bold uppercase tracking-wider text-primary md:block"
               variant="link"
@@ -140,7 +140,7 @@ export function FeaturedProducts({ products = [] }: FeaturedProductsProps) {
 
         {/* Mobile View All Button */}
         <div className="mt-8 text-center md:hidden">
-          <Link href="/products">
+          <Link href="/hose-protector">
             <Button className="font-bold uppercase tracking-wider" variant="outline">
               View All Products
             </Button>

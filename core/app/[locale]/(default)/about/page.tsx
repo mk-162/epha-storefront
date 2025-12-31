@@ -257,7 +257,7 @@ export default async function AboutPage({ params }: Props) {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 font-heading uppercase text-white transition-colors hover:bg-accent/90"
-                href="/products"
+                href="/hose-protector"
               >
                 Shop Products
               </Link>

@@ -44,7 +44,7 @@ export function RetailerCTA() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/products">
+            <Link href="/hose-protector">
               <Button
                 className="group bg-white px-10 py-7 text-lg font-black uppercase tracking-wider text-accent shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/90"
                 size="lg"

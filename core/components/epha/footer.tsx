@@ -45,7 +45,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-gray-400">
               {[
-                { name: 'Products', path: '/products' },
+                { name: 'Hose Protector', path: '/hose-protector' },
                 { name: 'Industries', path: '/industries' },
                 { name: 'Blog', path: '/blog' },
                 { name: 'About Us', path: '/about' },

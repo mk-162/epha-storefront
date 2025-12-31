@@ -7,10 +7,8 @@ import { Link } from '~/components/link';
 
 import {
   CABLE_TIE_COLOR_INFO,
-  type CableTieColor,
   type CableTieProduct,
   getCableTieRecommendationsWithDetails,
-  getHoseProtectorCableTieColor,
   getRecommendedCableTies,
   type HoseProtectorSize,
   shouldShowCableTieCrossSell,
@@ -20,31 +18,6 @@ interface CableTieCrossSellProps {
   hoseProtectorSlug: string;
   hoseProtectorSize?: HoseProtectorSize;
   variant?: 'product-page' | 'cart';
-}
-
-// Installation requirement data
-const INSTALLATION_INFO = {
-  '4': { tiesNeeded: 3, tieLength: '8"' },
-  '5': { tiesNeeded: 2, tieLength: '12"' },
-  '6': { tiesNeeded: 3, tieLength: '12"' },
-  '8': { tiesNeeded: 3, tieLength: '12"' },
-  '10': { tiesNeeded: 4, tieLength: '14"' },
-  '12': { tiesNeeded: 4, tieLength: '14"' },
-} as const;
-
-function ColorMatchBadge({ color }: { color: CableTieColor }) {
-  const colorInfo = CABLE_TIE_COLOR_INFO[color];
-
-  return (
-    <div className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-current px-3 py-1.5 text-xs font-bold uppercase tracking-wider">
-      <div
-        className="h-3 w-3 rounded-full ring-2 ring-white"
-        style={{ backgroundColor: colorInfo.hex }}
-      />
-      <span>Color Matched</span>
-      <Check className="h-3.5 w-3.5" />
-    </div>
-  );
 }
 
 function CableTieCard({
@@ -78,10 +51,7 @@ function CableTieCard({
         </div>
         <div className="min-w-0 flex-1">
           <div className="mb-1 flex items-center gap-2">
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: colorInfo.hex }}
-            />
+            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: colorInfo.hex }} />
             <span className="text-xs font-semibold text-gray-600">
               {product.length}" x {product.strength}lb
             </span>
@@ -155,12 +125,12 @@ function CableTieCard({
         </h4>
 
         {/* Installation note */}
-        {installationNote && (
+        {installationNote ? (
           <p className="mb-3 flex items-center gap-1.5 text-xs text-gray-500">
             <Wrench className="h-3 w-3" />
             {installationNote}
           </p>
-        )}
+        ) : null}
 
         {/* CTA */}
         <div className="mt-auto">
@@ -184,7 +154,6 @@ export function CableTieCrossSell({
   }
 
   const isCompact = variant === 'cart';
-  const color = getHoseProtectorCableTieColor(hoseProtectorSlug);
 
   const recommendationsWithDetails = hoseProtectorSize
     ? getCableTieRecommendationsWithDetails(hoseProtectorSlug, hoseProtectorSize)
@@ -251,17 +220,20 @@ export function CableTieCrossSell({
               Complete Your Installation
             </h3>
             <p className="max-w-xl text-base text-slate-400">
-              Hose protectors require cable ties to secure them in place. We&apos;ve selected the
-              right size and color to match your order.
+              Hose protectors require cable ties to secure them in place. We recommend{' '}
+              <strong className="text-white">black cable ties</strong> for maximum strength and UV
+              resistance.
             </p>
           </div>
 
-          {/* Color match indicator */}
-          {color && (
-            <div className="flex-shrink-0" style={{ color: CABLE_TIE_COLOR_INFO[color].hex }}>
-              <ColorMatchBadge color={color} />
+          {/* UV resistant badge */}
+          <div className="flex-shrink-0">
+            <div className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-slate-500 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-300">
+              <div className="h-3 w-3 rounded-full bg-slate-800 ring-2 ring-white" />
+              <span>UV Resistant</span>
+              <Check className="h-3.5 w-3.5" />
             </div>
-          )}
+          </div>
         </div>
 
         {/* Why you need this section */}
@@ -332,8 +304,10 @@ export function CableTieCrossSell({
             <div className="flex-1">
               <h4 className="mb-1 font-bold text-white">Pro Installation Tip</h4>
               <p className="text-sm text-slate-400">
-                For outdoor equipment exposed to UV, our <strong className="text-white">black cable ties</strong> are UV-stabilized
-                for maximum longevity. Use pliers to tighten the final pull for a secure, vibration-resistant fit.
+                For outdoor equipment exposed to UV, our{' '}
+                <strong className="text-white">black cable ties</strong> are UV-stabilized for
+                maximum longevity. Use pliers to tighten the final pull for a secure,
+                vibration-resistant fit.
               </p>
             </div>
           </div>

@@ -1,9 +1,9 @@
 /**
  * EPHA Cable Tie Cross-Sell Configuration
  *
- * Recommends cable ties for hose protector purchases based on:
- * - Color matching (orange HP -> orange CT, black HP -> black CT, yellow HP -> yellow CT)
+ * Recommends BLACK cable ties for hose protector purchases based on:
  * - Size-based recommendations (HP size determines CT length and strength)
+ * - Black cable ties are always recommended as they are the strongest and UV-resistant
  *
  * Excludes counter-display boxes (they already include cable ties)
  */
@@ -222,9 +222,10 @@ export function shouldShowCableTieCrossSell(slug: string): boolean {
 }
 
 /**
- * Get the hose protector color as a cable tie color
+ * Get the cable tie color to recommend for a hose protector
+ * ALWAYS returns 'black' as black cable ties are the strongest and UV-resistant
  * @param {string} slug - The product URL slug
- * @returns {CableTieColor | null} The cable tie color matching the hose protector, or null if not found
+ * @returns {CableTieColor | null} Always returns 'black' if valid hose protector, null otherwise
  */
 export function getHoseProtectorCableTieColor(slug: string): CableTieColor | null {
   const productInfo = getProductInfo(slug);
@@ -233,15 +234,8 @@ export function getHoseProtectorCableTieColor(slug: string): CableTieColor | nul
     return null;
   }
 
-  // ProductColor and CableTieColor are the same values
-  // Use type-safe lookup to avoid type assertions
-  const colorMap: Record<string, CableTieColor> = {
-    orange: 'orange',
-    black: 'black',
-    yellow: 'yellow',
-  };
-
-  return colorMap[productInfo.color] ?? null;
+  // Always recommend black cable ties - they are the strongest and UV-resistant
+  return 'black';
 }
 
 // Default cable tie recommendations for when size is not specified

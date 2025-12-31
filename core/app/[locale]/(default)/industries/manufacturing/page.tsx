@@ -146,7 +146,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-slate-900 py-24 text-white md:py-32">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent" />
 
           <div className="container relative mx-auto px-4">

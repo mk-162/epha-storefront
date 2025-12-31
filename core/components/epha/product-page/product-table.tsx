@@ -3,8 +3,8 @@
 import { Calculator, Check, ExternalLink, Loader2, Minus, Plus } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
-import { addProductToCart } from '~/app/[locale]/(default)/products/_actions/add-to-cart';
-import type { Product } from '~/app/[locale]/(default)/products/_data/get-products';
+import { addProductToCart } from '~/app/[locale]/(default)/hose-protector/_actions/add-to-cart';
+import type { Product } from '~/app/[locale]/(default)/hose-protector/_data/get-products';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';

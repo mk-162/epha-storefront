@@ -38,7 +38,7 @@ const categories = [
   },
   {
     name: 'All Products',
-    href: '/products',
+    href: '/hose-protector',
     icon: Shield,
     description: 'Browse full catalog',
   },

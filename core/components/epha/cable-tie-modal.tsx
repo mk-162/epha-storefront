@@ -9,7 +9,6 @@ import { Button } from '~/components/ui/button';
 import {
   CABLE_TIE_COLOR_INFO,
   CABLE_TIE_PRODUCTS,
-  type CableTieColor,
   type CableTieProduct,
   type HoseProtectorSize,
   SIZE_TO_CABLE_TIE_MAP,
@@ -18,16 +17,17 @@ import {
 interface CableTieModalProps {
   isOpen: boolean;
   onClose: () => void;
-  hoseProtectorColor: CableTieColor;
   hoseProtectorSize?: HoseProtectorSize;
   hoseProtectorQuantity: number;
   onAddCableTies?: (product: CableTieProduct, quantity: number) => Promise<void>;
 }
 
+// Always recommend black cable ties - they are the strongest and UV-resistant
+const RECOMMENDED_COLOR = 'black';
+
 export function CableTieModal({
   isOpen,
   onClose,
-  hoseProtectorColor,
   hoseProtectorSize,
   hoseProtectorQuantity,
   onAddCableTies,
@@ -37,16 +37,18 @@ export function CableTieModal({
   const [isPending, startTransition] = useTransition();
   const [addedToCart, setAddedToCart] = useState(false);
 
-  const colorInfo = CABLE_TIE_COLOR_INFO[hoseProtectorColor];
+  const colorInfo = CABLE_TIE_COLOR_INFO[RECOMMENDED_COLOR];
 
-  // Get recommended cable ties based on color and size
+  // Get recommended cable ties - always black for maximum strength
   const getRecommendedProducts = (): CableTieProduct[] => {
     const recommendations: CableTieProduct[] = [];
 
-    if (hoseProtectorSize && SIZE_TO_CABLE_TIE_MAP[hoseProtectorSize]) {
-      // Get size-specific recommendations
-      SIZE_TO_CABLE_TIE_MAP[hoseProtectorSize].forEach((spec) => {
-        const key = `${hoseProtectorColor}-${spec.length}-${spec.strength}`;
+    if (hoseProtectorSize) {
+      const sizeMapping = SIZE_TO_CABLE_TIE_MAP[hoseProtectorSize];
+
+      // Get size-specific recommendations - always black
+      sizeMapping.forEach((spec) => {
+        const key = `${RECOMMENDED_COLOR}-${spec.length}-${spec.strength}`;
         const product = CABLE_TIE_PRODUCTS[key];
 
         if (product) {
@@ -54,11 +56,11 @@ export function CableTieModal({
         }
       });
     } else {
-      // Default: show 8" and 12" for the color
+      // Default: show 8" and 12" black cable ties
       const defaultSizes = ['8-50', '12-50'];
 
       defaultSizes.forEach((size) => {
-        const key = `${hoseProtectorColor}-${size}`;
+        const key = `${RECOMMENDED_COLOR}-${size}`;
         const product = CABLE_TIE_PRODUCTS[key];
 
         if (product) {
@@ -75,8 +77,15 @@ export function CableTieModal({
   // Calculate recommended quantity based on hose protector quantity
   const getRecommendedQuantity = (): number => {
     if (!hoseProtectorSize) return 1;
-    const tiesPerProtector =
-      hoseProtectorSize === '4' ? 3 : hoseProtectorSize === '10' || hoseProtectorSize === '12' ? 4 : 3;
+
+    const getTiesPerProtector = (size: HoseProtectorSize): number => {
+      if (size === '4') return 3;
+      if (size === '10' || size === '12') return 4;
+
+      return 3;
+    };
+
+    const tiesPerProtector = getTiesPerProtector(hoseProtectorSize);
     const totalTiesNeeded = hoseProtectorQuantity * tiesPerProtector;
     // Each pack has 100, so calculate packs needed (minimum 1)
 
@@ -90,7 +99,8 @@ export function CableTieModal({
       setQuantity(getRecommendedQuantity());
       setAddedToCart(false);
     }
-  }, [isOpen, hoseProtectorColor, hoseProtectorSize]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, hoseProtectorSize, hoseProtectorQuantity]);
 
   const handleAddToCart = () => {
     if (!selectedProduct || !onAddCableTies) return;
@@ -122,7 +132,7 @@ export function CableTieModal({
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-lg animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-lg duration-200 animate-in fade-in zoom-in-95">
         <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
           {/* Header with warning */}
           <div className="relative bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4">
@@ -140,21 +150,19 @@ export function CableTieModal({
                 <h2 className="text-lg font-black uppercase tracking-wide text-white">
                   Don&apos;t Forget!
                 </h2>
-                <p className="text-sm text-white/90">
-                  Cable ties required for installation
-                </p>
+                <p className="text-sm text-white/90">Cable ties required for installation</p>
               </div>
             </div>
           </div>
 
-          {/* Color match indicator */}
+          {/* Strength indicator */}
           <div className="flex items-center justify-center gap-2 border-b border-gray-100 bg-gray-50 py-3">
             <div
-              className="h-4 w-4 rounded-full ring-2 ring-white shadow"
+              className="h-4 w-4 rounded-full shadow ring-2 ring-white"
               style={{ backgroundColor: colorInfo.hex }}
             />
             <span className="text-sm font-semibold text-gray-700">
-              {colorInfo.name} cable ties to match your protectors
+              Black cable ties - strongest &amp; UV resistant
             </span>
             <Check className="h-4 w-4 text-green-500" />
           </div>
@@ -165,8 +173,8 @@ export function CableTieModal({
             <div className="mb-6 flex items-start gap-3 rounded-xl bg-blue-50 p-4">
               <Link2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
               <div className="text-sm text-blue-800">
-                <strong>Secure installation requires 3-4 cable ties per protector.</strong> We&apos;ve
-                pre-selected the right size and color to match your order.
+                <strong>Secure installation requires 3-4 cable ties per protector.</strong> We
+                recommend black cable ties for maximum strength and UV resistance.
               </div>
             </div>
 
@@ -210,7 +218,9 @@ export function CableTieModal({
                         {colorInfo.name} Cable Ties
                       </p>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-orange-600">${product.price.toFixed(2)}</span>
+                        <span className="text-lg font-bold text-orange-600">
+                          ${product.price.toFixed(2)}
+                        </span>
                         <span className="text-sm text-gray-500">/ pack of 100</span>
                       </div>
                     </div>
@@ -245,7 +255,9 @@ export function CableTieModal({
                   >
                     -
                   </button>
-                  <span className="w-12 text-center text-xl font-bold text-gray-900">{quantity}</span>
+                  <span className="w-12 text-center text-xl font-bold text-gray-900">
+                    {quantity}
+                  </span>
                   <button
                     className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
                     onClick={() => setQuantity((q) => q + 1)}
@@ -266,11 +278,7 @@ export function CableTieModal({
 
             {/* Action buttons */}
             <div className="flex gap-3">
-              <Button
-                className="flex-1 py-6 text-base"
-                onClick={onClose}
-                variant="secondary"
-              >
+              <Button className="flex-1 py-6 text-base" onClick={onClose} variant="secondary">
                 No Thanks
               </Button>
               <Button
@@ -282,14 +290,14 @@ export function CableTieModal({
                 disabled={isPending || !selectedProduct}
                 onClick={handleAddToCart}
               >
-                {isPending ? (
-                  'Adding...'
-                ) : addedToCart ? (
+                {isPending && 'Adding...'}
+                {!isPending && addedToCart && (
                   <>
                     <Check className="mr-2 h-5 w-5" />
                     Added!
                   </>
-                ) : (
+                )}
+                {!isPending && !addedToCart && (
                   <>
                     <ShoppingCart className="mr-2 h-5 w-5" />
                     Add Cable Ties

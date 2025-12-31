@@ -3,17 +3,13 @@
 import { Check, Loader2, Minus, Package, Plus, ShoppingCart, Truck } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
-import { addProductToCart } from '~/app/[locale]/(default)/Hose-Protector/_actions/add-to-cart';
-import type { Product } from '~/app/[locale]/(default)/Hose-Protector/_data/get-products';
+import { addProductToCart } from '~/app/[locale]/(default)/hose-protector/_actions/add-to-cart';
+import type { Product } from '~/app/[locale]/(default)/hose-protector/_data/get-products';
 import { Image } from '~/components/image';
 import { Button } from '~/components/ui/button';
 
-import {
-  type CableTieColor,
-  type CableTieProduct,
-  type HoseProtectorSize,
-} from '../cable-tie-relationships';
 import { CableTieModal } from '../cable-tie-modal';
+import { type CableTieProduct, type HoseProtectorSize } from '../cable-tie-relationships';
 
 // Pack types configuration
 const packTypes = [
@@ -259,23 +255,13 @@ export function ProductSelector({ products }: ProductSelectorProps) {
     await addProductToCart(product.entityId, product.variantId || product.entityId, qty);
   };
 
-  // Convert selected color to CableTieColor type
-  const getCableTieColor = (): CableTieColor => {
-    if (selectedColor === 'black') return 'black';
-    if (selectedColor === 'yellow') return 'yellow';
-
-    return 'orange';
-  };
-
   // Convert selected size to HoseProtectorSize type
   const getHoseProtectorSize = (): HoseProtectorSize | undefined => {
     const sizeNum = selectedSize.replace('"', '');
+    const validSizes: HoseProtectorSize[] = ['4', '5', '6', '8', '10', '12'];
+    const matchedSize = validSizes.find((size) => size === sizeNum);
 
-    if (['4', '5', '6', '8', '10', '12'].includes(sizeNum)) {
-      return sizeNum as HoseProtectorSize;
-    }
-
-    return undefined;
+    return matchedSize;
   };
 
   return (
@@ -659,7 +645,6 @@ export function ProductSelector({ products }: ProductSelectorProps) {
 
       {/* Cable Tie Recommendation Modal */}
       <CableTieModal
-        hoseProtectorColor={getCableTieColor()}
         hoseProtectorQuantity={quantity}
         hoseProtectorSize={getHoseProtectorSize()}
         isOpen={showCableTieModal}
