@@ -5,6 +5,7 @@ import {
   ProductBenefits,
   ProductHeroCompact,
   ProductSelector,
+  ProductTechSpecs,
   ProductTrust,
   ProductVolumeCTA,
 } from '~/components/epha/product-page';
@@ -38,6 +39,9 @@ export default async function ProductsPage({ params }: Props) {
 
       {/* Benefits - Quick value props */}
       <ProductBenefits />
+
+      {/* Technical Specs with 3D Model Viewer */}
+      <ProductTechSpecs />
 
       {/* Social Proof */}
       <ProductTrust />

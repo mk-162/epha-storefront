@@ -1,0 +1,45 @@
+import { Truck } from 'lucide-react';
+import { setRequestLocale } from 'next-intl/server';
+
+import {
+  RetailerBenefits,
+  RetailerCTA,
+  RetailerHero,
+  RetailerHowItWorks,
+  RetailerProducts,
+} from '~/components/epha/retailers';
+
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function RetailersPage({ params }: Props) {
+  const { locale } = await params;
+
+  setRequestLocale(locale);
+
+  return (
+    <div className="min-h-screen bg-background font-sans text-foreground">
+      {/* Free Shipping Banner */}
+      <div className="flex items-center justify-center gap-2 bg-accent py-2.5 text-center text-sm font-bold uppercase tracking-wider text-white">
+        <Truck className="h-4 w-4" />
+        Free Shipping on Orders Over $500
+      </div>
+
+      {/* Hero Section */}
+      <RetailerHero />
+
+      {/* How It Works */}
+      <RetailerHowItWorks />
+
+      {/* Counter Display Products */}
+      <RetailerProducts />
+
+      {/* Benefits */}
+      <RetailerBenefits />
+
+      {/* CTA */}
+      <RetailerCTA />
+    </div>
+  );
+}

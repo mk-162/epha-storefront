@@ -106,6 +106,12 @@ export function Navigation({
           >
             Products
           </Link>
+          <Link
+            className="cursor-pointer text-xs font-medium uppercase tracking-wider transition-colors hover:text-accent lg:text-sm"
+            href="/retailers"
+          >
+            Retailers
+          </Link>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -316,6 +322,15 @@ export function Navigation({
                     onClick={() => setIsOpen(false)}
                   >
                     Products
+                  </Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link
+                    className="border-l-4 border-transparent px-6 py-4 font-heading text-xl uppercase tracking-wide transition-colors hover:border-accent hover:bg-white/5"
+                    href="/retailers"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Retailers
                   </Link>
                 </SheetClose>
                 <Accordion className="w-full" collapsible type="single">

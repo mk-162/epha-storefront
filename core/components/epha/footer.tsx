@@ -10,11 +10,18 @@ export function Footer() {
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <Image
-                alt="EPHA Inc - Made in USA"
-                className="h-20 w-auto object-contain"
-                height={80}
-                src="/images/epha-logo-usa.png"
-                width={200}
+                alt="EPHA Inc"
+                className="h-16 w-auto object-contain"
+                height={64}
+                src="/images/epha-logo2.png"
+                width={160}
+              />
+              <Image
+                alt="Made in USA"
+                className="h-14 w-auto object-contain"
+                height={56}
+                src="/images/made-in-usa2.png"
+                width={56}
               />
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
@@ -98,6 +105,9 @@ export function Footer() {
             </p>
             <div className="flex gap-2">
               <input
+                id="newsletter-email"
+                name="newsletter-email"
+                autoComplete="email"
                 className="w-full rounded border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-accent focus:outline-none"
                 placeholder="Email Address"
                 type="email"

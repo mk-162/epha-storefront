@@ -4,6 +4,7 @@ export { ProductSelector } from './product-selector';
 export { ProductBenefits } from './product-benefits';
 export { ProductTrust } from './product-trust';
 export { ProductVolumeCTA } from './product-volume-cta';
+export { ProductTechSpecs } from './product-tech-specs';
 
 // Legacy components (kept for reference)
 export { ProductVideoHero } from './product-video-hero';
