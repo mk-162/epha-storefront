@@ -147,7 +147,7 @@ export function ProductHeroCompact() {
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
+                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/images/stencil/1920w/products/434/875/HPO_1__49987.1733924243.png?compression=lossy"
                 />
               </div>
 
