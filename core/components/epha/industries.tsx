@@ -138,7 +138,13 @@ function IndustryCard({
 }
 
 export function Industries() {
-  const [fleet, construction, manufacturing, automotive, municipal, agricultural] = industries;
+  // Define variant for each industry by index
+  const getVariant = (index: number): 'large' | 'standard' | 'wide' => {
+    if (index === 0) return 'large';
+    if (index === 5) return 'wide';
+
+    return 'standard';
+  };
 
   return (
     <section className="bg-white py-24">
@@ -154,12 +160,9 @@ export function Industries() {
 
         {/* Bento Grid Layout */}
         <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
-          <IndustryCard industry={fleet} variant="large" />
-          <IndustryCard industry={construction} />
-          <IndustryCard industry={manufacturing} />
-          <IndustryCard industry={automotive} />
-          <IndustryCard industry={municipal} />
-          <IndustryCard industry={agricultural} variant="wide" />
+          {industries.map((industry, index) => (
+            <IndustryCard industry={industry} key={industry.id} variant={getVariant(index)} />
+          ))}
         </div>
 
         {/* View All Link */}
