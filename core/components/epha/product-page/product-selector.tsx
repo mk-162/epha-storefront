@@ -3,10 +3,17 @@
 import { Check, Loader2, Minus, Package, Plus, ShoppingCart, Truck } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
-import { addProductToCart } from '~/app/[locale]/(default)/products/_actions/add-to-cart';
-import type { Product } from '~/app/[locale]/(default)/products/_data/get-products';
+import { addProductToCart } from '~/app/[locale]/(default)/Hose-Protector/_actions/add-to-cart';
+import type { Product } from '~/app/[locale]/(default)/Hose-Protector/_data/get-products';
 import { Image } from '~/components/image';
 import { Button } from '~/components/ui/button';
+
+import {
+  type CableTieColor,
+  type CableTieProduct,
+  type HoseProtectorSize,
+} from '../cable-tie-relationships';
+import { CableTieModal } from '../cable-tie-modal';
 
 // Pack types configuration
 const packTypes = [
@@ -158,6 +165,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
   const [quantity, setQuantity] = useState(10);
   const [isPending, startTransition] = useTransition();
   const [addedToCart, setAddedToCart] = useState(false);
+  const [showCableTieModal, setShowCableTieModal] = useState(false);
 
   // Get all variants from products
   const allVariants = products.flatMap((p) =>
@@ -230,11 +238,44 @@ export function ProductSelector({ products }: ProductSelectorProps) {
       try {
         await addProductToCart(variant.productEntityId, variant.entityId, quantity);
         setAddedToCart(true);
-        setTimeout(() => setAddedToCart(false), 3000);
+
+        // Show cable tie modal for non-counter-display products (they don't include cable ties)
+        if (selectedPackType !== 'counter-display') {
+          setTimeout(() => {
+            setShowCableTieModal(true);
+            setAddedToCart(false);
+          }, 800);
+        } else {
+          setTimeout(() => setAddedToCart(false), 3000);
+        }
       } catch (error) {
         console.error('Failed to add to cart:', error);
       }
     });
+  };
+
+  // Handler for adding cable ties from modal
+  const handleAddCableTies = async (product: CableTieProduct, qty: number) => {
+    await addProductToCart(product.entityId, product.variantId || product.entityId, qty);
+  };
+
+  // Convert selected color to CableTieColor type
+  const getCableTieColor = (): CableTieColor => {
+    if (selectedColor === 'black') return 'black';
+    if (selectedColor === 'yellow') return 'yellow';
+
+    return 'orange';
+  };
+
+  // Convert selected size to HoseProtectorSize type
+  const getHoseProtectorSize = (): HoseProtectorSize | undefined => {
+    const sizeNum = selectedSize.replace('"', '');
+
+    if (['4', '5', '6', '8', '10', '12'].includes(sizeNum)) {
+      return sizeNum as HoseProtectorSize;
+    }
+
+    return undefined;
   };
 
   return (
@@ -615,6 +656,16 @@ export function ProductSelector({ products }: ProductSelectorProps) {
           </div>
         </div>
       </div>
+
+      {/* Cable Tie Recommendation Modal */}
+      <CableTieModal
+        hoseProtectorColor={getCableTieColor()}
+        hoseProtectorQuantity={quantity}
+        hoseProtectorSize={getHoseProtectorSize()}
+        isOpen={showCableTieModal}
+        onAddCableTies={handleAddCableTies}
+        onClose={() => setShowCableTieModal(false)}
+      />
     </section>
   );
 }
