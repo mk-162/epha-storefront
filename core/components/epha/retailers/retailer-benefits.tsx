@@ -90,10 +90,11 @@ export function RetailerBenefits() {
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-4">
             {businessBenefits.map((benefit) => {
               const Icon = benefit.icon;
+
               return (
                 <div
-                  key={benefit.title}
                   className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/10"
+                  key={benefit.title}
                 >
                   <div
                     className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${benefit.color} shadow-lg transition-transform duration-300 group-hover:scale-110`}
@@ -129,10 +130,11 @@ export function RetailerBenefits() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {productBenefits.map((benefit) => {
               const Icon = benefit.icon;
+
               return (
                 <div
-                  key={benefit.title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 hover:bg-white/10"
+                  key={benefit.title}
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/20">

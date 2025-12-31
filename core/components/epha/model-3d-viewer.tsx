@@ -10,6 +10,7 @@ interface ModelProps {
 
 function Model({ url }: ModelProps) {
   const { scene } = useGLTF(url);
+
   // Manual rotation removed to prevent conflicts with Stage/OrbitControls
   // eslint-disable-next-line react/no-unknown-property
   return <primitive object={scene} />;
@@ -35,10 +36,10 @@ export function Model3DViewer({ modelUrl, className = '' }: Model3DViewerProps) 
         <Canvas
           camera={{ position: [0, 0, 5], fov: 45 }}
           className="touch-none"
-          style={{ background: 'transparent' }}
           shadows
+          style={{ background: 'transparent' }}
         >
-          <Stage environment="city" intensity={0.6} adjustCamera={0.6}>
+          <Stage adjustCamera={0.6} environment="city" intensity={0.6}>
             <Model url={modelUrl} />
           </Stage>
 
@@ -48,9 +49,9 @@ export function Model3DViewer({ modelUrl, className = '' }: Model3DViewerProps) 
             enableDamping
             enablePan={false}
             enableZoom
-            minDistance={0.1}
-            maxDistance={20}
             makeDefault
+            maxDistance={20}
+            minDistance={0.1}
           />
         </Canvas>
       </Suspense>

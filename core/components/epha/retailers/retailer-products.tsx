@@ -3,8 +3,8 @@
 import { Check, Package, ShoppingCart, Truck } from 'lucide-react';
 
 import { Image } from '~/components/image';
-import { Button } from '~/components/ui/button';
 import { Link } from '~/components/link';
+import { Button } from '~/components/ui/button';
 
 const counterDisplayProducts = [
   {
@@ -13,7 +13,8 @@ const counterDisplayProducts = [
     sku: 'HPO-BOX',
     color: 'Safety Orange',
     colorHex: '#FF6B35',
-    image: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1',
+    image:
+      'https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1',
     description: 'High-visibility orange for safety-conscious customers',
     sizes: ['4"', '5"', '6"', '8"', '10"', '12"'],
     qtySmall: 50,
@@ -27,7 +28,8 @@ const counterDisplayProducts = [
     sku: 'HPB-BOX',
     color: 'Professional Black',
     colorHex: '#1a1a1a',
-    image: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/432/images/870/HPB-BOX__47555.1733924143.386.513.png?c=1',
+    image:
+      'https://cdn11.bigcommerce.com/s-usnceuurb6/products/432/images/870/HPB-BOX__47555.1733924143.386.513.png?c=1',
     description: 'Low-profile black for a professional appearance',
     sizes: ['4"', '5"', '6"', '8"', '10"', '12"'],
     qtySmall: 50,
@@ -41,7 +43,8 @@ const counterDisplayProducts = [
     sku: 'HPY-BOX',
     color: 'Caution Yellow',
     colorHex: '#FCD34D',
-    image: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/433/images/871/HPY-BOX__05300.1733924152.386.513.png?c=1',
+    image:
+      'https://cdn11.bigcommerce.com/s-usnceuurb6/products/433/images/871/HPY-BOX__05300.1733924152.386.513.png?c=1',
     description: 'Maximum visibility for hazard areas',
     sizes: ['4"', '5"', '6"', '8"', '10"', '12"'],
     qtySmall: 50,
@@ -84,8 +87,8 @@ export function RetailerProducts() {
           <div className="grid gap-8 md:grid-cols-3">
             {counterDisplayProducts.map((product) => (
               <div
-                key={product.id}
                 className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10"
+                key={product.id}
               >
                 {/* Popular badge */}
                 {product.popular && (
@@ -97,11 +100,11 @@ export function RetailerProducts() {
                 {/* Image */}
                 <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-50 p-8">
                   <Image
-                    src={product.image}
                     alt={product.name}
-                    fill
                     className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    fill
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    src={product.image}
                   />
                 </div>
 
@@ -130,8 +133,8 @@ export function RetailerProducts() {
                     <div className="flex flex-wrap gap-2">
                       {product.sizes.map((size) => (
                         <span
-                          key={size}
                           className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                          key={size}
                         >
                           {size}
                         </span>
@@ -176,7 +179,7 @@ export function RetailerProducts() {
             </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {productFeatures.map((feature) => (
-                <div key={feature} className="flex items-center gap-3">
+                <div className="flex items-center gap-3" key={feature}>
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100">
                     <Check className="h-4 w-4 text-green-600" />
                   </div>

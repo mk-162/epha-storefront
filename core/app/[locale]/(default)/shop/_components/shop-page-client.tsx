@@ -119,7 +119,8 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
     setCurrentPage(1);
   };
 
-  const hasActiveFilters = Boolean(searchQuery) || selectedColors.length > 0 || selectedSizes.length > 0;
+  const hasActiveFilters =
+    Boolean(searchQuery) || selectedColors.length > 0 || selectedSizes.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -321,6 +322,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                     className="rounded-md border border-slate-200 bg-white py-2 pl-3 pr-8 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
                     onChange={(e) => {
                       const value = e.target.value;
+
                       if (value === 'name' || value === 'price-low' || value === 'price-high') {
                         setSortBy(value);
                       }
@@ -517,9 +519,7 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                 <h3 className="mb-2 font-heading text-xl font-bold uppercase text-primary">
                   No Products Found
                 </h3>
-                <p className="mb-4 text-slate-500">
-                  Try adjusting your filters or search terms.
-                </p>
+                <p className="mb-4 text-slate-500">Try adjusting your filters or search terms.</p>
                 <Button onClick={clearFilters} variant="outline">
                   Clear Filters
                 </Button>
@@ -689,7 +689,9 @@ function ProductCard({ product, viewMode }: ProductCardProps) {
         {product.name}
       </h3>
 
-      {product.sku ? <p className="mb-3 font-mono text-xs text-slate-400">SKU: {product.sku}</p> : null}
+      {product.sku ? (
+        <p className="mb-3 font-mono text-xs text-slate-400">SKU: {product.sku}</p>
+      ) : null}
 
       <div className="mt-auto">
         <div className="mb-4 text-lg font-bold text-slate-900">

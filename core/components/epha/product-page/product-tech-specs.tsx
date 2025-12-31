@@ -115,8 +115,8 @@ export function ProductTechSpecs() {
             Technical Specifications
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-white/60">
-            Explore our hose protector in 3D and discover the engineering that makes it the
-            industry standard for hydraulic protection.
+            Explore our hose protector in 3D and discover the engineering that makes it the industry
+            standard for hydraulic protection.
           </p>
         </div>
 
@@ -129,17 +129,18 @@ export function ProductTechSpecs() {
 
               {/* 3D Viewer */}
               <div className="relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900">
-                <Model3DViewer modelUrl="/images/hose-protector.glb" className="h-full w-full" />
+                <Model3DViewer className="h-full w-full" modelUrl="/images/hose-protector.glb" />
               </div>
 
               {/* Feature callouts - first row */}
               <div className="mt-4 grid grid-cols-3 gap-2">
                 {keyFeatures.slice(0, 3).map((feature) => {
                   const Icon = feature.icon;
+
                   return (
                     <div
-                      key={feature.label}
                       className="group rounded-xl border border-white/10 bg-white/5 p-3 text-center transition-all hover:border-accent/30 hover:bg-white/10"
+                      key={feature.label}
                     >
                       <Icon className="mx-auto mb-2 h-5 w-5 text-accent" />
                       <div className="text-xs font-bold text-white">{feature.label}</div>
@@ -152,10 +153,11 @@ export function ProductTechSpecs() {
               <div className="mt-2 grid grid-cols-3 gap-2">
                 {keyFeatures.slice(3, 6).map((feature) => {
                   const Icon = feature.icon;
+
                   return (
                     <div
-                      key={feature.label}
                       className="group rounded-xl border border-white/10 bg-white/5 p-3 text-center transition-all hover:border-accent/30 hover:bg-white/10"
+                      key={feature.label}
                     >
                       <Icon className="mx-auto mb-2 h-5 w-5 text-accent" />
                       <div className="text-xs font-bold text-white">{feature.label}</div>
@@ -209,10 +211,11 @@ export function ProductTechSpecs() {
           <div className="space-y-6">
             {technicalSpecs.map((category) => {
               const Icon = category.icon;
+
               return (
                 <div
-                  key={category.category}
                   className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/[0.07]"
+                  key={category.category}
                 >
                   {/* Category header */}
                   <div className="flex items-center gap-4 border-b border-white/10 px-6 py-4">
@@ -229,10 +232,7 @@ export function ProductTechSpecs() {
                   {/* Specs list */}
                   <div className="divide-y divide-white/5 px-6">
                     {category.specs.map((spec) => (
-                      <div
-                        key={spec.label}
-                        className="flex items-center justify-between py-4"
-                      >
+                      <div className="flex items-center justify-between py-4" key={spec.label}>
                         <span className="text-white/60">{spec.label}</span>
                         <span
                           className={`font-bold ${spec.highlight ? 'text-accent' : 'text-white'}`}
@@ -246,7 +246,6 @@ export function ProductTechSpecs() {
                 </div>
               );
             })}
-
           </div>
         </div>
       </div>

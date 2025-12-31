@@ -35,7 +35,6 @@ export function SelectField({
 
   return (
     <div className={clsx('w-full', className)}>
-
       {/* Workaround for https://github.com/radix-ui/primitives/issues/3198, remove when fixed */}
       <input name={name} type="hidden" value={value} />
       <Select

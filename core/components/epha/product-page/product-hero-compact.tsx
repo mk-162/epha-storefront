@@ -96,17 +96,23 @@ export function ProductHeroCompact() {
             <div className="mb-10 flex flex-wrap items-center justify-center gap-8 lg:justify-start">
               <div className="text-center">
                 <div className="font-heading text-3xl font-black text-accent">3-5x</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-white/50">Longer Life</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-white/50">
+                  Longer Life
+                </div>
               </div>
               <div className="h-12 w-px bg-white/10" />
               <div className="text-center">
                 <div className="font-heading text-3xl font-black text-white">500+</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-white/50">Fleet Customers</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-white/50">
+                  Fleet Customers
+                </div>
               </div>
               <div className="h-12 w-px bg-white/10" />
               <div className="text-center">
                 <div className="font-heading text-3xl font-black text-white">USA</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-white/50">Made in America</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-white/50">
+                  Made in America
+                </div>
               </div>
             </div>
 
@@ -136,29 +142,30 @@ export function ProductHeroCompact() {
               {/* Image container */}
               <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8 backdrop-blur-sm lg:aspect-[4/3]">
                 <Image
-                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
                   alt="EPHA Orange Hose Protector - Industrial Grade Spiral Guard"
-                  fill
                   className="object-contain drop-shadow-2xl"
+                  fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
                 />
               </div>
 
               {/* Feature annotations */}
               {featureAnnotations.map((feature, index) => {
                 const Icon = feature.icon;
+
                 return (
                   <div
-                    key={feature.id}
                     className="absolute hidden lg:block"
+                    key={feature.id}
                     style={{
                       ...feature.position,
                       animationDelay: `${index * 150}ms`,
                     }}
                   >
                     <div
-                      className="group relative animate-fade-in"
+                      className="animate-fade-in group relative"
                       style={{ animationDelay: `${index * 200 + 500}ms` }}
                     >
                       {/* Connector line */}
@@ -189,10 +196,11 @@ export function ProductHeroCompact() {
             <div className="mt-6 flex flex-wrap justify-center gap-3 lg:hidden">
               {featureAnnotations.map((feature) => {
                 const Icon = feature.icon;
+
                 return (
                   <div
-                    key={feature.id}
                     className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/80 px-4 py-2 backdrop-blur-sm"
+                    key={feature.id}
                   >
                     <Icon className="h-4 w-4 text-accent" />
                     <span className="text-xs font-bold text-white">{feature.label}</span>

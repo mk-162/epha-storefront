@@ -1,12 +1,13 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Truck } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
 const Model3DViewer = dynamic(
   () => import('~/components/epha/model-3d-viewer').then((mod) => mod.Model3DViewer),
   { ssr: false },
 );
+
 import { Button } from '~/components/ui/button';
 
 export function ProductVideoHero() {
@@ -76,10 +77,7 @@ export function ProductVideoHero() {
 
             {/* Right Column - 3D Model Viewer */}
             <div className="flex h-[400px] items-center justify-center lg:h-[500px]">
-              <Model3DViewer
-                className="h-full w-full"
-                modelUrl="/images/hose-protector.glb"
-              />
+              <Model3DViewer className="h-full w-full" modelUrl="/images/hose-protector.glb" />
             </div>
           </div>
         </div>

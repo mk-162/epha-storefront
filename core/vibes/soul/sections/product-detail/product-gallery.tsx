@@ -11,17 +11,17 @@ export interface ProductGalleryProps {
   className?: string;
   thumbnailLabel?: string;
   aspectRatio?:
-  | '1:1'
-  | '4:5'
-  | '5:4'
-  | '3:4'
-  | '4:3'
-  | '2:3'
-  | '3:2'
-  | '16:9'
-  | '9:16'
-  | '5:6'
-  | '6:5';
+    | '1:1'
+    | '4:5'
+    | '5:4'
+    | '3:4'
+    | '4:3'
+    | '2:3'
+    | '3:2'
+    | '16:9'
+    | '9:16'
+    | '5:6'
+    | '6:5';
   fit?: 'contain' | 'cover';
 }
 

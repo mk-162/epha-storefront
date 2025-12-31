@@ -193,10 +193,6 @@ export default async function ShopPage({ params }: Props) {
   });
 
   return (
-    <ShopPageClient
-      availableColors={allColors}
-      availableSizes={allSizes}
-      products={products}
-    />
+    <ShopPageClient availableColors={allColors} availableSizes={allSizes} products={products} />
   );
 }

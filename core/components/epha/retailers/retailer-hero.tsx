@@ -3,8 +3,8 @@
 import { ArrowRight, DollarSign, Package, Store, TrendingUp, Users } from 'lucide-react';
 
 import { Image } from '~/components/image';
-import { Button } from '~/components/ui/button';
 import { Link } from '~/components/link';
+import { Button } from '~/components/ui/button';
 
 const stats = [
   { icon: Store, value: '500+', label: 'Active Dealers' },
@@ -68,14 +68,17 @@ export function RetailerHero() {
             <div className="mb-10 flex flex-wrap items-center justify-center gap-8 lg:justify-start">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
+
                 return (
-                  <div key={stat.label} className="flex items-center gap-3">
+                  <div className="flex items-center gap-3" key={stat.label}>
                     {index > 0 && <div className="h-12 w-px bg-white/10" />}
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
                       <Icon className="h-6 w-6 text-accent" />
                     </div>
                     <div className="text-left">
-                      <div className="font-heading text-2xl font-black text-white">{stat.value}</div>
+                      <div className="font-heading text-2xl font-black text-white">
+                        {stat.value}
+                      </div>
                       <div className="text-xs font-bold uppercase tracking-wider text-white/50">
                         {stat.label}
                       </div>
@@ -116,12 +119,12 @@ export function RetailerHero() {
               {/* Counter Display Box Image */}
               <div className="relative aspect-square">
                 <Image
-                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
                   alt="EPHA Counter Display Box - 50 Hose Protectors"
-                  fill
                   className="object-contain drop-shadow-2xl"
+                  fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
                 />
               </div>
 

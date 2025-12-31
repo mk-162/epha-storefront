@@ -40,7 +40,7 @@ const packTypes = [
     skuPrefix: 'HP12',
     skuSuffix: '-2',
   },
-];
+] as const;
 
 // Human-readable size data with clear descriptions
 const sizeData: Record<
@@ -93,7 +93,16 @@ const sizeData: Record<
   },
 };
 
-const colorOptions = [
+type PackTypeId = 'counter-display' | 'bulk' | 'box-25';
+
+const colorOptions: Array<{
+  name: string;
+  value: string;
+  code: string;
+  hex: string;
+  description: string;
+  images: Record<PackTypeId, string>;
+}> = [
   {
     name: 'Safety Orange',
     value: 'orange',
@@ -101,9 +110,11 @@ const colorOptions = [
     hex: '#FF6B35',
     description: 'High visibility for safety compliance',
     images: {
-      'counter-display': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1',
-      'bulk': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/434/images/875/HPO_1__49987.1733924243.386.513.png?c=1',
-      'box-25': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/439/images/883/HP12O-25__39002.1733924744.386.513.png?c=1',
+      'counter-display':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1',
+      bulk: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/434/images/875/HPO_1__49987.1733924243.386.513.png?c=1',
+      'box-25':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/439/images/883/HP12O-25__39002.1733924744.386.513.png?c=1',
     },
   },
   {
@@ -113,9 +124,11 @@ const colorOptions = [
     hex: '#1a1a1a',
     description: 'Professional low-profile appearance',
     images: {
-      'counter-display': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/432/images/870/HPB-BOX__47555.1733924143.386.513.png?c=1',
-      'bulk': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/435/images/874/HPB_1__83220.1733924241.386.513.png?c=1',
-      'box-25': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/440/images/885/HP12B-25__52594.1733924779.386.513.png?c=1',
+      'counter-display':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/432/images/870/HPB-BOX__47555.1733924143.386.513.png?c=1',
+      bulk: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/435/images/874/HPB_1__83220.1733924241.386.513.png?c=1',
+      'box-25':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/440/images/885/HP12B-25__52594.1733924779.386.513.png?c=1',
     },
   },
   {
@@ -125,9 +138,11 @@ const colorOptions = [
     hex: '#FCD34D',
     description: 'Maximum visibility for hazard areas',
     images: {
-      'counter-display': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/433/images/871/HPY-BOX__05300.1733924152.386.513.png?c=1',
-      'bulk': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/436/images/873/HPY_1__58656.1733924239.386.513.png?c=1',
-      'box-25': 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/441/images/887/HP12Y-25__31206.1733924811.386.513.png?c=1',
+      'counter-display':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/433/images/871/HPY-BOX__05300.1733924152.386.513.png?c=1',
+      bulk: 'https://cdn11.bigcommerce.com/s-usnceuurb6/products/436/images/873/HPY_1__58656.1733924239.386.513.png?c=1',
+      'box-25':
+        'https://cdn11.bigcommerce.com/s-usnceuurb6/products/441/images/887/HP12Y-25__31206.1733924811.386.513.png?c=1',
     },
   },
 ];
@@ -137,7 +152,7 @@ interface ProductSelectorProps {
 }
 
 export function ProductSelector({ products }: ProductSelectorProps) {
-  const [selectedPackType, setSelectedPackType] = useState<string>('bulk');
+  const [selectedPackType, setSelectedPackType] = useState<PackTypeId>('bulk');
   const [selectedSize, setSelectedSize] = useState<string>('6"');
   const [selectedColor, setSelectedColor] = useState<string>('orange');
   const [quantity, setQuantity] = useState(10);
@@ -157,9 +172,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
   // Get available sizes for current pack type
   // - Counter Display & Bulk: 5 sizes (4", 6", 8", 10", 12")
   // - Box of 25: Only 6" extra-wide
-  const availableSizes = selectedPackType === 'box-25'
-    ? ['6"']
-    : Object.keys(sizeData);
+  const availableSizes = selectedPackType === 'box-25' ? ['6"'] : Object.keys(sizeData);
 
   // Reset size if switching to box-25 and size isn't 6"
   if (selectedPackType === 'box-25' && selectedSize !== '6"') {
@@ -170,6 +183,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
   const sizeVariants = availableSizes.map((size) => {
     const data = sizeData[size];
     const variant = allVariants.find((v) => v.size === size);
+
     return {
       size,
       ...data,
@@ -183,7 +197,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
   const selectedPackTypeData = packTypes.find((p) => p.id === selectedPackType);
 
   // Get the right image for selected pack type and color
-  const currentImage = selectedColorData?.images[selectedPackType as keyof typeof selectedColorData.images] || '';
+  const currentImage = selectedColorData?.images[selectedPackType] || '';
 
   const unitPrice = selectedVariant?.price || 0;
   const totalPrice = unitPrice * quantity;
@@ -193,7 +207,15 @@ export function ProductSelector({ products }: ProductSelectorProps) {
     if (selectedPackType !== 'bulk') return 0;
     if (qty >= 200) return 0.25;
     if (qty >= 50) return 0.15;
+
     return 0;
+  };
+
+  const getPriceUnit = (packType: PackTypeId, qtyInBox?: number) => {
+    if (packType === 'counter-display') return `/ box of ${qtyInBox}`;
+    if (packType === 'box-25') return '/ box of 25';
+
+    return '/ea';
   };
 
   const discount = getDiscount(quantity);
@@ -201,6 +223,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
 
   const handleAddToCart = () => {
     const variant = selectedVariant?.variant;
+
     if (!variant) return;
 
     startTransition(async () => {
@@ -242,25 +265,30 @@ export function ProductSelector({ products }: ProductSelectorProps) {
             {packTypes.map((packType) => {
               const Icon = packType.icon;
               const isSelected = selectedPackType === packType.id;
+
               return (
                 <button
-                  key={packType.id}
-                  onClick={() => setSelectedPackType(packType.id)}
                   className={`group flex items-center gap-3 rounded-2xl border-2 px-6 py-4 text-left transition-all duration-300 ${
                     isSelected
                       ? 'border-accent bg-accent text-white shadow-lg shadow-accent/30'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:shadow-md'
                   }`}
+                  key={packType.id}
+                  onClick={() => setSelectedPackType(packType.id)}
                 >
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                    isSelected ? 'bg-white/20' : 'bg-slate-100 group-hover:bg-slate-200'
-                  }`}>
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl ${
+                      isSelected ? 'bg-white/20' : 'bg-slate-100 group-hover:bg-slate-200'
+                    }`}
+                  >
                     <Icon className={`h-5 w-5 ${isSelected ? 'text-white' : 'text-slate-600'}`} />
                   </div>
                   <div>
-                    <div className={`font-heading text-sm font-bold uppercase tracking-wide ${
-                      isSelected ? 'text-white' : 'text-slate-900'
-                    }`}>
+                    <div
+                      className={`font-heading text-sm font-bold uppercase tracking-wide ${
+                        isSelected ? 'text-white' : 'text-slate-900'
+                      }`}
+                    >
                       {packType.name}
                     </div>
                     <div className={`text-xs ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
@@ -300,11 +328,13 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                   )}
                 </div>
 
-                <div className={`grid gap-4 ${
-                  selectedPackType === 'box-25'
-                    ? 'sm:grid-cols-1 max-w-md'
-                    : 'sm:grid-cols-2 xl:grid-cols-3'
-                }`}>
+                <div
+                  className={`grid gap-4 ${
+                    selectedPackType === 'box-25'
+                      ? 'max-w-md sm:grid-cols-1'
+                      : 'sm:grid-cols-2 xl:grid-cols-3'
+                  }`}
+                >
                   {sizeVariants.map((item) => (
                     <button
                       className={`group relative overflow-hidden rounded-2xl border-2 p-5 text-left transition-all duration-300 ${
@@ -351,11 +381,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                               ${item.price.toFixed(2)}
                             </span>
                             <span className="text-sm font-normal text-slate-400">
-                              {selectedPackType === 'counter-display'
-                                ? `/ box of ${item.qtyInBox}`
-                                : selectedPackType === 'box-25'
-                                ? '/ box of 25'
-                                : '/ea'}
+                              {getPriceUnit(selectedPackType, item.qtyInBox)}
                             </span>
                           </div>
                         </div>
@@ -368,10 +394,10 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                             {item.description}
                           </p>
                           <div className="flex flex-wrap gap-1.5">
-                            {item.applications.map((app) => (
+                            {item.applications?.map((app) => (
                               <span
-                                key={app}
                                 className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                                key={app}
                               >
                                 {app}
                               </span>
@@ -416,7 +442,7 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                             className="object-contain p-1"
                             fill
                             sizes="56px"
-                            src={color.images[selectedPackType as keyof typeof color.images]}
+                            src={color.images[selectedPackType]}
                           />
                         </div>
 
@@ -454,7 +480,9 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                     <button
                       className="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-slate-200 bg-white text-slate-600 transition-all hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50"
                       disabled={quantity <= 1}
-                      onClick={() => setQuantity((q) => Math.max(1, q - (selectedPackType === 'bulk' ? 10 : 1)))}
+                      onClick={() =>
+                        setQuantity((q) => Math.max(1, q - (selectedPackType === 'bulk' ? 10 : 1)))
+                      }
                       type="button"
                     >
                       <Minus className="h-5 w-5" />

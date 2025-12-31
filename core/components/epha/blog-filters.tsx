@@ -17,9 +17,7 @@ export function BlogFilters({ posts }: BlogFiltersProps) {
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
 
   const filteredPosts =
-    activeCategory === 'All'
-      ? posts
-      : posts.filter((post) => post.category === activeCategory);
+    activeCategory === 'All' ? posts : posts.filter((post) => post.category === activeCategory);
 
   const visiblePosts = filteredPosts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPosts.length;

@@ -62,8 +62,8 @@ export function RetailerHowItWorks() {
             How It Works
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-white/60">
-            Becoming an EPHA dealer is straightforward. No complicated contracts, no minimum
-            orders, just quality products that sell.
+            Becoming an EPHA dealer is straightforward. No complicated contracts, no minimum orders,
+            just quality products that sell.
           </p>
         </div>
 
@@ -72,8 +72,9 @@ export function RetailerHowItWorks() {
           <div className="grid gap-8 md:grid-cols-3">
             {steps.map((step, index) => {
               const Icon = step.icon;
+
               return (
-                <div key={step.number} className="relative">
+                <div className="relative" key={step.number}>
                   {/* Connector line */}
                   {index < steps.length - 1 && (
                     <div className="absolute left-1/2 top-16 hidden h-px w-full -translate-x-1/2 md:block">

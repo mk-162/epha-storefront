@@ -2,8 +2,8 @@
 
 import { ArrowRight, Mail, Phone, Store } from 'lucide-react';
 
-import { Button } from '~/components/ui/button';
 import { Link } from '~/components/link';
+import { Button } from '~/components/ui/button';
 
 export function RetailerCTA() {
   return (

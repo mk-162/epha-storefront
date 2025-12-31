@@ -40,7 +40,9 @@ export function ProductBenefits() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 text-primary transition-colors group-hover:bg-accent/10 group-hover:text-accent">
                 <benefit.icon className="h-6 w-6" />
               </div>
-              <div className="mb-1 font-heading text-3xl font-bold text-primary">{benefit.stat}</div>
+              <div className="mb-1 font-heading text-3xl font-bold text-primary">
+                {benefit.stat}
+              </div>
               <div className="mb-2 font-bold uppercase tracking-wide text-accent">
                 {benefit.label}
               </div>
