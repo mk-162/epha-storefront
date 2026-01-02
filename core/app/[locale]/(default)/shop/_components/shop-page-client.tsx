@@ -343,10 +343,12 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                           // Only show HP sizes or purely numeric sizes (often interpreted as inches)
                           return /^\d/.test(size) || size.startsWith('HP');
                         }
+
                         if (selectedCategory === 'cable-ties') {
                           // Cable tie sizes often include "x" or length indicators like 4", 8"
                           return size.includes('"') || size.includes('x');
                         }
+
                         return true;
                       })
                       .map((size) => (

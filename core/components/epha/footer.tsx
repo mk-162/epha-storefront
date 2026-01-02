@@ -1,5 +1,6 @@
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
+
 import { NewsletterForm } from './newsletter-form';
 
 export function Footer() {

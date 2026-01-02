@@ -2,7 +2,6 @@ import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFormatter, getTranslations, setRequestLocale } from 'next-intl/server';
-import { TieredPricingTable } from '~/components/epha/tiered-pricing-table';
 import { SearchParams } from 'nuqs/server';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
@@ -15,6 +14,7 @@ import {
   RelatedProducts,
   shouldShowCableTieCrossSell,
 } from '~/components/epha';
+import { TieredPricingTable } from '~/components/epha/tiered-pricing-table';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { productCardTransformer } from '~/data-transformers/product-card-transformer';
 import { productOptionsTransformer } from '~/data-transformers/product-options-transformer';
@@ -25,7 +25,6 @@ import { submitReview } from './_actions/submit-review';
 import { ProductAnalyticsProvider } from './_components/product-analytics-provider';
 import { ProductSchema } from './_components/product-schema';
 import { ProductViewed } from './_components/product-viewed';
-import { Reviews } from './_components/reviews';
 import { WishlistButton } from './_components/wishlist-button';
 import { WishlistButtonForm } from './_components/wishlist-button/form';
 import {
@@ -596,6 +595,7 @@ export default async function Product({ params, searchParams }: Props) {
                     if (rules && Array.isArray(rules) && rules.length > 0 && basePrice) {
                       return <TieredPricingTable basePrice={basePrice} rules={rules} />;
                     }
+
                     return null;
                   }}
                 </Stream>

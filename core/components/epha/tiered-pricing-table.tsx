@@ -48,10 +48,13 @@ export async function TieredPricingTable({ rules, basePrice }: Props) {
                 style: 'currency',
                 currency: rule.price.currencyCode,
               });
+
               const savingsVal = ((basePrice.value - rule.price.value) / basePrice.value) * 100;
+
               savings = `${Math.round(savingsVal)}% OFF`;
             } else if (rule.percentage) {
               const discountedVal = basePrice.value * (1 - rule.percentage / 100);
+
               discountPrice = format.number(discountedVal, {
                 style: 'currency',
                 currency: basePrice.currencyCode,
