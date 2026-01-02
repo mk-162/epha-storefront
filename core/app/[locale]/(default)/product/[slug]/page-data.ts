@@ -192,6 +192,7 @@ const ProductQuery = graphql(
             numberOfReviews
           }
           description
+          sku
           ...ProductOptionsFragment
         }
       }
