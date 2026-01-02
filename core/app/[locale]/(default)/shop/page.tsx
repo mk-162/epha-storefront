@@ -172,7 +172,7 @@ export default async function ShopPage({ params }: Props) {
 
     if (
       nameLower.includes('hose protector') ||
-      nameLower.includes('spiral wrap') ||
+      nameLower.includes('easy strap-on') ||
       skuLower.startsWith('hp') ||
       skuLower.startsWith('sph')
     ) {
@@ -195,9 +195,9 @@ export default async function ShopPage({ params }: Props) {
       brand: node.brand?.name,
       image: node.defaultImage
         ? {
-            src: node.defaultImage.url,
-            alt: node.defaultImage.altText,
-          }
+          src: node.defaultImage.url,
+          alt: node.defaultImage.altText,
+        }
         : undefined,
       price,
       colors,

@@ -35,21 +35,21 @@ export const blogPosts: BlogPost[] = [
         <li>Documenting any changes from the previous inspection</li>
       </ul>
 
-      <h2>2. Protect High-Risk Areas with Spiral Guards</h2>
-      <p>Not all hose sections are created equal. Areas where hoses pass near sharp edges, hot surfaces, or moving parts are at significantly higher risk of failure. Installing spiral guards or sleeves on these high-risk sections can extend hose life by 300-500%.</p>
+      <h2>2. Protect High-Risk Areas with Hose Protectors</h2>
+      <p>Not all hose sections are created equal. Areas where hoses pass near sharp edges, hot surfaces, or moving parts are at significantly higher risk of failure. Installing Hose Protectors or sleeves on these high-risk sections can extend hose life by 300-500%.</p>
       <blockquote>
-        "After installing EPHA spiral guards on our excavator fleet, we reduced hydraulic failures by 78% in the first year alone."
+        "After installing EPHA Hose Protectors on our excavator fleet, we reduced hydraulic failures by 78% in the first year alone."
         <cite>— David Chen, Fleet Manager, Western Construction Co.</cite>
       </blockquote>
 
       <div class="product-card">
         <a href="/hose-protector" class="product-card-link">
           <div class="product-card-image">
-            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="EPHA Spiral Hose Guards" />
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="EPHA Hose Protectors" />
           </div>
           <div class="product-card-content">
             <span class="product-card-label">Featured Product</span>
-            <h3 class="product-card-title">EPHA Spiral Hose Guards</h3>
+            <h3 class="product-card-title">EPHA Hose Protectors</h3>
             <p class="product-card-description">Industrial-grade protection that extends hose life by up to 500%. Available in multiple sizes and colors.</p>
             <span class="product-card-cta">View All Products →</span>
           </div>
@@ -121,7 +121,7 @@ export const blogPosts: BlogPost[] = [
       </ul>
 
       <h3>4. Protect Exposed Hoses</h3>
-      <p>Install protective sleeves on hoses exposed to extreme cold. EPHA spiral guards provide an additional layer of insulation and protection against impact damage from ice and frozen debris.</p>
+      <p>Install protective sleeves on hoses exposed to extreme cold. EPHA Hose Protectors provide an additional layer of insulation and protection against impact damage from ice and frozen debris.</p>
 
       <h2>Storage Considerations</h2>
       <p>When equipment isn't in use, store it in a heated or insulated environment when possible. If outdoor storage is unavoidable, consider using engine block heaters or hydraulic tank heaters to maintain fluid temperature.</p>
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
       </ul>
 
       <h2>Best Practices for Compliance</h2>
-      <p>Implementing a proactive hose protection program not only helps with OSHA compliance but also reduces downtime and repair costs. EPHA spiral guards provide visible protection that demonstrates your commitment to safety.</p>
+      <p>Implementing a proactive hose protection program not only helps with OSHA compliance but also reduces downtime and repair costs. EPHA Hose Protectors provide visible protection that demonstrates your commitment to safety.</p>
 
       <h2>Conclusion</h2>
       <p>Safety compliance doesn't have to be complicated. By implementing systematic inspection, maintenance, and protection programs, you can create a safer workplace while meeting regulatory requirements.</p>
@@ -216,7 +216,7 @@ export const blogPosts: BlogPost[] = [
       <div class="bg-slate-50 p-6 rounded-xl mb-8">
         <h4 class="font-bold text-primary mb-4">Key Statistics</h4>
         <ul class="space-y-2">
-          <li><strong>78% reduction</strong> in hose failures with spiral guard protection</li>
+          <li><strong>78% reduction</strong> in hose failures with EPHA protection</li>
           <li><strong>Average savings:</strong> $4,200 per piece of equipment annually</li>
           <li><strong>ROI:</strong> 1,200% over the life of the protection</li>
           <li><strong>Payback period:</strong> Less than 3 months</li>
@@ -224,7 +224,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <h2>Case Example: Construction Fleet</h2>
-      <p>A 25-excavator construction fleet was experiencing an average of 4 hose failures per machine annually. After installing EPHA spiral guards on high-risk areas:</p>
+      <p>A 25-excavator construction fleet was experiencing an average of 4 hose failures per machine annually. After installing EPHA Hose Protectors on high-risk areas:</p>
       <ul>
         <li>Failures dropped to 0.8 per machine annually</li>
         <li>Annual savings exceeded $100,000</li>
@@ -301,7 +301,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>Hose Protection Inspection</h2>
       <ul>
-        <li>☐ Verify spiral guards are properly positioned</li>
+        <li>☐ Verify Hose Protectors are properly positioned</li>
         <li>☐ Check for wear-through on protective sleeves</li>
         <li>☐ Ensure zip ties/clamps are secure</li>
         <li>☐ Replace damaged protection immediately</li>
@@ -345,7 +345,7 @@ export const blogPosts: BlogPost[] = [
       <p>Our team surveyed all equipment and identified 840 high-risk hose locations across the fleet.</p>
 
       <h3>Phase 2: Installation</h3>
-      <p>EPHA spiral guards and sleeves were installed on all identified risk areas during scheduled maintenance windows.</p>
+      <p>EPHA Hose Protectors and sleeves were installed on all identified risk areas during scheduled maintenance windows.</p>
 
       <h3>Phase 3: Training</h3>
       <p>Maintenance staff received training on proper installation, inspection, and replacement procedures.</p>
@@ -618,7 +618,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'temperature-extremes-destroy-hydraulic-hoses-protection',
     title: 'Winter vs. Summer: How Temperature Extremes Destroy Unprotected Hoses',
     excerpt:
-      'Temperature extremes destroy hydraulic hoses 3x faster. Learn how cold, heat, and cycling damage hoses, plus proven protection for -40°F to 430°F environments.',
+      'Temperature extremes destroy hydraulic hoses 3x faster. Learn how cold, heat, and cycling damage hoses, plus proven protection for (-40° to 430° F) environments.',
     content: `
       <p class="lead">Your hydraulic hoses are aging 3-5x faster than you think. Not from use. Not from pressure. From <strong>temperature</strong>. Every summer afternoon when engine compartments hit 300°F+, your hoses are cooking from the inside out—aging months in a single day.</p>
 
@@ -665,7 +665,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <h2>The EPHA Solution: Engineered for Extremes</h2>
-      <p>Standard hose materials lose their properties at temperature extremes. EPHA protection is engineered to perform from -40°F to 430°F. Our proprietary thermoplastic polyurethane (TPU) remains flexible in the Alaskan winter and retains its shape in the Arizona summer.</p>
+      <p>Standard hose materials lose their properties at temperature extremes. EPHA protection is engineered to perform from (-40° to 430° F). Our proprietary thermoplastic polyurethane (TPU) remains flexible in the Alaskan winter and retains its shape in the Arizona summer.</p>
 
       <div class="product-card">
         <a href="/hose-protector" class="product-card-link">
@@ -675,7 +675,7 @@ export const blogPosts: BlogPost[] = [
           <div class="product-card-content">
             <span class="product-card-label">Extreme Performance</span>
             <h3 class="product-card-title">All-Weather Protection</h3>
-            <p class="product-card-description">Tested from -40°F to 430°F. Protect your hydraulic systems from the most brutal environments on Earth.</p>
+            <p class="product-card-description">Tested from (-40° to 430° F). Protect your hydraulic systems from the most brutal environments on Earth.</p>
             <span class="product-card-cta">View Tech Specs →</span>
           </div>
         </a>

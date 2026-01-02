@@ -1,5 +1,6 @@
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
+import { NewsletterForm } from './newsletter-form';
 
 export function Footer() {
   return (
@@ -103,19 +104,7 @@ export function Footer() {
             <p className="mb-4 text-xs text-gray-500">
               Get the latest industry reports and maintenance tips.
             </p>
-            <div className="flex gap-2">
-              <input
-                autoComplete="email"
-                className="w-full rounded border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-accent focus:outline-none"
-                id="newsletter-email"
-                name="newsletter-email"
-                placeholder="Email Address"
-                type="email"
-              />
-              <button className="rounded bg-accent px-4 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-accent/90">
-                Go
-              </button>
-            </div>
+            <NewsletterForm />
           </div>
         </div>
 

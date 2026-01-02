@@ -83,7 +83,7 @@ export default async function AutomotiveIndustry({ params }: Props) {
   const solutions = [
     {
       title: 'Eliminate Comebacks',
-      desc: 'Proprietary material withstands vibration, heat (-40F to 430F), and abrasion that destroys unprotected hoses.',
+      desc: 'Proprietary material withstands vibration, heat (-40° to 430° F), and abrasion that destroys unprotected hoses.',
     },
     {
       title: '5-Minute Installation',

@@ -99,7 +99,7 @@ export default async function AgriculturalIndustry({ params }: Props) {
     },
     {
       title: 'Handle Temperature Extremes',
-      desc: 'Rated for -40°F to 430°F, protecting lines through frost, heat, and everything between.',
+      desc: 'Rated for (-40° to 430° F), protecting lines through frost, heat, and everything between.',
     },
     {
       title: 'Protect High-Value Harvest Equipment',

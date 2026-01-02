@@ -34,8 +34,8 @@ const technicalSpecs = [
     icon: Flame,
     color: 'from-orange-500 to-red-500',
     specs: [
-      { label: 'Operating Range', value: '-40°F to 430°F', highlight: true },
-      { label: 'Continuous Use', value: 'Up to 275°F' },
+      { label: 'Operating Range', value: '(-40° to 430° F)', highlight: true },
+      { label: 'Continuous Use', value: 'Up to 430°F' },
       { label: 'Peak Tolerance', value: '430°F intermittent' },
     ],
   },

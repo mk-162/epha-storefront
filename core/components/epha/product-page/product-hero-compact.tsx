@@ -10,7 +10,7 @@ const featureAnnotations = [
   {
     id: 'temp',
     icon: Flame,
-    label: '-40°F to 430°F',
+    label: '(-40° to 430° F)',
     description: 'Extreme temperature range',
     position: { top: '15%', left: '10%' },
     lineAngle: 45,
@@ -88,7 +88,7 @@ export function ProductHeroCompact() {
             </h1>
 
             <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-white/70 lg:mx-0 lg:text-xl">
-              Industrial-grade spiral guards that extend equipment life and eliminate costly
+              Industrial-grade Hose Protectors that extend equipment life and eliminate costly
               hydraulic failures. Trusted by 500+ fleet operators.
             </p>
 

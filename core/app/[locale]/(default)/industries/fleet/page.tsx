@@ -72,7 +72,7 @@ export default async function FleetIndustry({ params }: Props) {
     },
     {
       title: 'Withstand Highway Conditions',
-      desc: 'Proprietary material handles constant vibration, temperature extremes (-40°F to 430°F), and chemical exposure.',
+      desc: 'Proprietary material handles constant vibration, temperature extremes ((-40° to 430° F)), and chemical exposure.',
     },
     {
       title: 'Protect Critical Safety Systems',

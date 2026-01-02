@@ -70,11 +70,11 @@ export default async function ConstructionIndustry({ params }: Props) {
   const solutions = [
     {
       title: 'Withstand Jobsite Abuse',
-      desc: 'Proprietary material resists abrasion from steel, rock, and concrete while handling temperatures from -40°F to 430°F.',
+      desc: 'Proprietary material resists abrasion from steel, rock, and concrete while handling temperatures from (-40° to 430° F).',
     },
     {
       title: 'Rapid Installation, Zero Downtime',
-      desc: '4-step spiral wrap installation takes minutes per hose—install during shift changes or brief pauses.',
+      desc: '4-step Easy strap-on installation takes minutes per hose—install during shift changes or brief pauses.',
     },
     {
       title: 'Extend Hose Life 3-5x',

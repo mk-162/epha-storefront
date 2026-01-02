@@ -60,7 +60,7 @@ export function Hero() {
 
           <div className="grid grid-cols-2 gap-4 pt-8 md:grid-cols-4">
             <TrustBadge icon={USFlagIcon} label="Made in USA" />
-            <TrustBadge icon={Thermometer} label="-40°F to 430°F" />
+            <TrustBadge icon={Thermometer} label="(-40° to 430° F)" />
             <TrustBadge icon={Clock} label="4-Minute Install" />
             <TrustBadge icon={TrendingDown} label="85% Fewer Failures" />
           </div>

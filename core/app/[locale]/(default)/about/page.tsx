@@ -50,8 +50,8 @@ export default async function AboutPage({ params }: Props) {
                 </p>
                 <p className="mb-4 text-lg text-gray-600">
                   We recognized that hydraulic hose failures, cable damage, and equipment wear were
-                  costing businesses thousands in repairs, replacements, and downtime. Our patented
-                  spiral-wrap design was engineered to solve these problems once and for all.
+                  costing businesses thousands in repairs, replacements, and downtime. Our
+                  Easy strap-on design was engineered to solve these problems once and for all.
                 </p>
                 <p className="text-lg text-gray-600">
                   Today, EPHA products protect equipment across the United States in fleet
@@ -63,8 +63,8 @@ export default async function AboutPage({ params }: Props) {
                 <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 p-8">
                   <div className="grid grid-cols-2 gap-6">
                     <div className="text-center">
-                      <div className="font-heading text-4xl text-accent">10+</div>
-                      <div className="mt-1 text-sm text-gray-600">Years Experience</div>
+                      <div className="font-heading text-4xl text-accent">Since 1987</div>
+                      <div className="mt-1 text-sm text-gray-600">Global Leader</div>
                     </div>
                     <div className="text-center">
                       <div className="font-heading text-4xl text-accent">1000+</div>
@@ -127,9 +127,9 @@ export default async function AboutPage({ params }: Props) {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">
                   <Award className="h-7 w-7 text-accent" />
                 </div>
-                <h3 className="mb-3 font-heading text-2xl uppercase text-primary">Innovation</h3>
+                <h3 className="mb-3 font-heading text-2xl uppercase text-primary">Easy strap-on design</h3>
                 <p className="text-gray-600">
-                  Our patented spiral-wrap design and continuous R&D ensure we stay at the forefront
+                  Our Easy strap-on design and continuous R&D ensure we stay at the forefront
                   of hose protection technology.
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default async function AboutPage({ params }: Props) {
                     Temperature Extreme Rated
                   </h4>
                   <p className="text-gray-600">
-                    Designed to perform in extreme temperatures from -40°F to +275°F, suitable for
+                    Designed to perform in extreme temperatures from (-40° to 430° F), suitable for
                     any environment.
                   </p>
                 </div>
@@ -188,7 +188,7 @@ export default async function AboutPage({ params }: Props) {
                     Easy Installation
                   </h4>
                   <p className="text-gray-600">
-                    Spiral-wrap design allows installation without disconnecting hoses or cables -
+                    Easy strap-on design allows installation without disconnecting hoses or cables -
                     saving time and money.
                   </p>
                 </div>

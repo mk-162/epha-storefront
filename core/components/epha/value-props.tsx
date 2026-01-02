@@ -14,13 +14,13 @@ export function ValueProps() {
       icon: Clock,
       title: 'Install in Minutes',
       description:
-        'No need to disconnect hoses. Our patented snap-on design allows for installation in under 4 minutes per line.',
+        'No need to disconnect hoses. Our Easy strap-on design allows for installation in under 4 minutes per line.',
     },
     {
       icon: ShieldCheck,
       title: 'Extreme Durability',
       description:
-        'Engineered to withstand temperatures from -40°F to 430°F and resist abrasion, UV rays, and chemical exposure.',
+        'Engineered to withstand temperatures from (-40° to 430° F) and resist abrasion, UV rays, and chemical exposure.',
     },
   ];
 
