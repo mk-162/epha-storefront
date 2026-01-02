@@ -191,7 +191,6 @@ const ProductQuery = graphql(
             averageRating
             numberOfReviews
           }
-          description
           sku
           ...ProductOptionsFragment
         }
