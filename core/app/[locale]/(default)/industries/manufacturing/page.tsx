@@ -166,10 +166,10 @@ export default async function ManufacturingIndustry({ params }: Props) {
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button
                   asChild
-                  className="h-14 bg-accent px-8 text-lg font-bold text-slate-900 hover:bg-accent/90"
+                  className="h-14 bg-accent px-8 text-lg font-bold text-white hover:bg-accent/90"
                   size="lg"
                 >
-                  <Link href="/contact">Get Manufacturing Quote</Link>
+                  <Link href="/contact?subject=Manufacturing Quote">Get Manufacturing Quote</Link>
                 </Button>
                 <Button
                   asChild
@@ -177,7 +177,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                   size="lg"
                   variant="outline"
                 >
-                  <Link href="/contact">Calculate Downtime Savings</Link>
+                  <Link href="/contact?subject=Downtime Calculation">Calculate Downtime Savings</Link>
                 </Button>
               </div>
             </div>
@@ -395,7 +395,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                         Cost Category
                       </TableHead>
                       <TableHead className="font-bold text-slate-900">Without Protection</TableHead>
-                      <TableHead className="bg-green-50 font-bold text-green-700 text-slate-900">
+                      <TableHead className="bg-green-50 font-bold text-green-700">
                         With EPHA Protection
                       </TableHead>
                       <TableHead className="text-right font-bold text-slate-900">
@@ -471,7 +471,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                   downtime event
                 </div>
                 <div>
-                  <Button asChild className="font-bold">
+                  <Button asChild className="bg-accent font-bold text-white hover:bg-accent/90">
                     <Link href="/contact">
                       Calculate Your Facility&apos;s ROI <ChevronRight className="ml-1 h-4 w-4" />
                     </Link>
@@ -654,7 +654,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                 className="h-14 bg-white px-8 text-lg font-bold text-primary hover:bg-slate-100"
                 size="lg"
               >
-                <Link href="/contact">Get Manufacturing Quote</Link>
+                <Link href="/contact?subject=Manufacturing Quote">Get Manufacturing Quote</Link>
               </Button>
               <Button
                 asChild
@@ -662,7 +662,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                 size="lg"
                 variant="outline"
               >
-                <Link href="/contact">Download Guide</Link>
+                <Link href="/contact?subject=Manufacturing Guide">Download Guide</Link>
               </Button>
               <Button
                 asChild
@@ -670,7 +670,7 @@ export default async function ManufacturingIndustry({ params }: Props) {
                 size="lg"
                 variant="outline"
               >
-                <Link href="/contact">Talk to Industrial Specialist</Link>
+                <Link href="/contact?subject=Talk to Specialist">Talk to Industrial Specialist</Link>
               </Button>
             </div>
 

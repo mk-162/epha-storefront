@@ -29,14 +29,6 @@ export function Footer() {
               Since 1987, EPHA has been the global leader in hose protection technology. Proudly
               manufactured in the USA, serving industries worldwide.
             </p>
-            <div className="flex items-center gap-4 pt-2">
-              <div className="flex h-8 w-12 items-center justify-center rounded bg-white/10 text-xs text-gray-500">
-                ISO
-              </div>
-              <div className="flex h-8 w-12 items-center justify-center rounded bg-white/10 text-xs text-gray-500">
-                USA
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -50,6 +42,7 @@ export function Footer() {
                 { name: 'Industries', path: '/industries' },
                 { name: 'Blog', path: '/blog' },
                 { name: 'About Us', path: '/about' },
+                { name: 'Trade Account', path: '/trade' },
                 { name: 'Contact', path: '/contact' },
                 { name: 'Shipping & Returns', path: '/shipping-returns' },
               ].map((item) => (

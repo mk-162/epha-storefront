@@ -2,6 +2,7 @@ import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFormatter, getTranslations, setRequestLocale } from 'next-intl/server';
+import { TieredPricingTable } from '~/components/epha/tiered-pricing-table';
 import { SearchParams } from 'nuqs/server';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
@@ -62,13 +63,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: metaKeywords ? metaKeywords.split(',') : null,
     openGraph: url
       ? {
-          images: [
-            {
-              url,
-              alt,
-            },
-          ],
-        }
+        images: [
+          {
+            url,
+            alt,
+          },
+        ],
+      }
       : null,
   };
 }
@@ -87,8 +88,8 @@ export default async function Product({ params, searchParams }: Props) {
 
   const { product: baseProduct, settings } = await getProduct(productId, customerAccessToken);
 
-  const reviewsEnabled = Boolean(settings?.reviews.enabled && !settings.display.showProductRating);
-  const showRating = Boolean(settings?.reviews.enabled && settings.display.showProductRating);
+  const reviewsEnabled = false;
+  const showRating = false;
 
   if (!baseProduct) {
     return notFound();
@@ -437,43 +438,45 @@ export default async function Product({ params, searchParams }: Props) {
         name: t('ProductDetails.Accordions.condition'),
         value: product.condition,
       },
-      ...customFields.map((field) => ({
-        name: field.name,
-        value: field.value,
-      })),
+      ...customFields
+        .filter((field) => !field.name.toLowerCase().includes('frequentlyboughtwith') && !field.name.toLowerCase().includes('brand_id'))
+        .map((field) => ({
+          name: field.name,
+          value: field.value,
+        })),
     ];
 
     return [
       ...(specifications.length
         ? [
-            {
-              title: t('ProductDetails.Accordions.specifications'),
-              content: (
-                <div className="prose @container">
-                  <dl className="flex flex-col gap-4">
-                    {specifications.map((field, index) => (
-                      <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
-                        <dt>
-                          <strong>{field.name}</strong>
-                        </dt>
-                        <dd>{field.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              ),
-            },
-          ]
+          {
+            title: t('ProductDetails.Accordions.specifications'),
+            content: (
+              <div className="prose @container">
+                <dl className="flex flex-col gap-4">
+                  {specifications.map((field, index) => (
+                    <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
+                      <dt>
+                        <strong>{field.name}</strong>
+                      </dt>
+                      <dd>{field.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ),
+          },
+        ]
         : []),
       ...(product.warranty
         ? [
-            {
-              title: t('ProductDetails.Accordions.warranty'),
-              content: (
-                <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
-              ),
-            },
-          ]
+          {
+            title: t('ProductDetails.Accordions.warranty'),
+            content: (
+              <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
+            ),
+          },
+        ]
         : []),
     ];
   });
@@ -493,7 +496,8 @@ export default async function Product({ params, searchParams }: Props) {
   const streamableMinQuantity = Streamable.from(async () => {
     const product = await streamableProduct;
 
-    return product.minPurchaseQuantity;
+    // Force min quantity to 1 as requested for bulk items
+    return 1;
   });
 
   const streamableMaxQuantity = Streamable.from(async () => {
@@ -533,6 +537,29 @@ export default async function Product({ params, searchParams }: Props) {
     return { email: session?.user?.email ?? '', name: obfuscatedName };
   });
 
+  // Transform options and filter for Cable Ties (Black only)
+  const isCableTie =
+    baseProduct.name.toLowerCase().includes('cable tie') ||
+    baseProduct.name.toLowerCase().includes('zip tie') ||
+    baseProduct.sku.toLowerCase().startsWith('ct');
+
+  let transformedFields = await productOptionsTransformer(baseProduct.productOptions);
+
+  if (isCableTie) {
+    transformedFields = transformedFields.map((field: any) => {
+      if (field.name.toLowerCase().includes('color') || field.name.toLowerCase().includes('colour')) {
+        return {
+          ...field,
+          options: field.options.filter((opt: any) => opt.label.toLowerCase().includes('black')),
+        };
+      }
+      return field;
+    });
+  }
+
+  // Terminology update in description
+  const descriptionHtml = baseProduct.description.replace(/zip ties/gi, 'cable ties');
+
   return (
     <>
       <ProductAnalyticsProvider data={streamableAnalyticsData}>
@@ -550,13 +577,31 @@ export default async function Product({ params, searchParams }: Props) {
           ctaLabel={streameableCtaLabel}
           decrementLabel={t('ProductDetails.decreaseQuantity')}
           emptySelectPlaceholder={t('ProductDetails.emptySelectPlaceholder')}
-          fields={productOptionsTransformer(baseProduct.productOptions)}
+          fields={transformedFields}
           incrementLabel={t('ProductDetails.increaseQuantity')}
           prefetch={true}
           product={{
             id: baseProduct.entityId.toString(),
             title: baseProduct.name,
-            description: <div dangerouslySetInnerHTML={{ __html: baseProduct.description }} />,
+            description: (
+              <>
+                <div
+                  className="prose prose-slate prose-sm max-w-none prose-p:font-sans prose-headings:font-heading"
+                  dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+                />
+                <Stream fallback={null} value={streamableProductPricingAndRelatedProducts}>
+                  {(pricingData) => {
+                    const rules = pricingData?.prices?.bulkPricingRules;
+                    const basePrice = pricingData?.prices?.basePrice;
+
+                    if (rules && Array.isArray(rules) && rules.length > 0 && basePrice) {
+                      return <TieredPricingTable basePrice={basePrice} rules={rules as any} />;
+                    }
+                    return null;
+                  }}
+                </Stream>
+              </>
+            ),
             href: baseProduct.path,
             images: streamableImages,
             price: streamablePrices,

@@ -5,39 +5,39 @@ import { ArrowDown, Flame, Shield, Sparkles, Zap } from 'lucide-react';
 import { Image } from '~/components/image';
 import { Button } from '~/components/ui/button';
 
-// Feature annotation positions (relative to image)
+// Feature annotation positions (distributed evenly around image)
 const featureAnnotations = [
   {
     id: 'temp',
     icon: Flame,
     label: '(-40° to 430° F)',
     description: 'Extreme temperature range',
-    position: { top: '15%', left: '10%' },
+    position: { top: '8%', left: '5%' },
     lineAngle: 45,
-  },
-  {
-    id: 'chemical',
-    icon: Zap,
-    label: 'Chemical Resistant',
-    description: 'Oils, fuels & hydraulic fluids',
-    position: { top: '45%', left: '5%' },
-    lineAngle: 25,
-  },
-  {
-    id: 'abrasion',
-    icon: Shield,
-    label: 'Abrasion Guard',
-    description: '3-5x longer hose life',
-    position: { top: '75%', left: '12%' },
-    lineAngle: -15,
   },
   {
     id: 'install',
     icon: Sparkles,
     label: '5-Min Install',
     description: 'No tools required',
-    position: { top: '25%', right: '8%' },
+    position: { top: '8%', right: '5%' },
     lineAngle: -45,
+  },
+  {
+    id: 'chemical',
+    icon: Zap,
+    label: 'Chemical Resistant',
+    description: 'Oils, fuels & hydraulic fluids',
+    position: { bottom: '12%', left: '5%' },
+    lineAngle: -45,
+  },
+  {
+    id: 'abrasion',
+    icon: Shield,
+    label: 'Abrasion Guard',
+    description: '3-5x longer hose life',
+    position: { bottom: '12%', right: '5%' },
+    lineAngle: 45,
   },
 ];
 

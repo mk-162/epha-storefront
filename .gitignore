@@ -23,3 +23,8 @@ coverage/
 .bigcommerce
 .genkit/
 .claude/
+.playwright-mcp/
+ai images/
+temp/
+website-content.md
+nul

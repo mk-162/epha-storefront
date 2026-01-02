@@ -16,11 +16,11 @@ export function ProductResourcesCTA() {
         <div className="mx-auto mb-16 grid max-w-5xl gap-6 md:grid-cols-4">
           {resources.map((resource) => (
             <div
-              className="cursor-pointer rounded-lg border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
+              className="group cursor-pointer rounded-lg border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10 hover:border-accent/50"
               key={resource.label}
             >
-              <resource.icon className="mx-auto mb-3 h-8 w-8 text-accent" />
-              <div className="text-sm font-bold uppercase tracking-wide">{resource.label}</div>
+              <resource.icon className="mx-auto mb-3 h-10 w-10 text-accent transition-transform group-hover:scale-110" />
+              <div className="text-sm font-bold uppercase tracking-wide group-hover:text-accent transition-colors">{resource.label}</div>
             </div>
           ))}
         </div>

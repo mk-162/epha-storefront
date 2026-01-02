@@ -29,6 +29,29 @@ export const PricingFragment = graphql(`
           currencyCode
         }
       }
+      bulkPricingRules {
+        ... on BulkPricingFixedPriceRule {
+          quantityMin
+          quantityMax
+          price {
+            value
+            currencyCode
+          }
+        }
+        ... on BulkPricingPercentageDiscountRule {
+          quantityMin
+          quantityMax
+          percentage
+        }
+        ... on BulkPricingRelativePriceRule {
+          quantityMin
+          quantityMax
+          price {
+            value
+            currencyCode
+          }
+        }
+      }
     }
   }
 `);
