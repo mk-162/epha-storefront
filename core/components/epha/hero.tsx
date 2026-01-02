@@ -85,12 +85,12 @@ export function Hero() {
             <div className="mb-2 flex items-end justify-between px-2">
               <div className="text-left">
                 <div className="font-heading text-7xl font-black text-[#ff4d00] drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)] md:text-8xl">
-                  $4.50
+                  $300
                 </div>
               </div>
               <div className="text-right">
                 <div className="font-heading text-7xl font-black text-[#ff4d00] drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)] md:text-8xl">
-                  $300
+                  $4.50
                 </div>
               </div>
             </div>
