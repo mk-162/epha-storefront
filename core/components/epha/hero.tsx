@@ -67,7 +67,7 @@ export function Hero() {
         </div>
 
         {/* Comparison Image with CSS Overlays */}
-        <div className="relative mx-auto w-full max-w-md aspect-square overflow-hidden rounded-lg border border-white/20 shadow-2xl lg:mx-0 lg:block lg:max-w-none">
+        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-lg border border-white/20 shadow-2xl lg:mx-0 lg:block lg:max-w-none">
           <Image
             alt="Hose Protector Comparison"
             className="object-cover"
@@ -75,14 +75,14 @@ export function Hero() {
             src="/images/hero-comparison.png"
           />
           {/* Text Overlays */}
-          <div className="absolute inset-0 flex flex-col justify-between p-6 bg-black/5">
-            <div className="text-center mt-2">
+          <div className="absolute inset-0 flex flex-col justify-between bg-black/5 p-6">
+            <div className="mt-2 text-center">
               <h2 className="font-heading text-3xl font-black uppercase leading-none text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)] md:text-5xl">
                 Which would you <br /> rather pay?
               </h2>
             </div>
 
-            <div className="flex justify-between items-end mb-2 px-2">
+            <div className="mb-2 flex items-end justify-between px-2">
               <div className="text-left">
                 <div className="font-heading text-7xl font-black text-[#ff4d00] drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)] md:text-8xl">
                   $4.50

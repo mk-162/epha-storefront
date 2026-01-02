@@ -177,7 +177,9 @@ export default async function ManufacturingIndustry({ params }: Props) {
                   size="lg"
                   variant="outline"
                 >
-                  <Link href="/contact?subject=Downtime Calculation">Calculate Downtime Savings</Link>
+                  <Link href="/contact?subject=Downtime Calculation">
+                    Calculate Downtime Savings
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -670,7 +672,9 @@ export default async function ManufacturingIndustry({ params }: Props) {
                 size="lg"
                 variant="outline"
               >
-                <Link href="/contact?subject=Talk to Specialist">Talk to Industrial Specialist</Link>
+                <Link href="/contact?subject=Talk to Specialist">
+                  Talk to Industrial Specialist
+                </Link>
               </Button>
             </div>
 

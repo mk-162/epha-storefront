@@ -10,7 +10,8 @@ const industries = [
     icon: Truck,
     image:
       'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop',
-    description: 'Keep your fleet running with protection designed for constant vibration and 24/7 operations.',
+    description:
+      'Keep your fleet running with protection designed for constant vibration and 24/7 operations.',
   },
   {
     id: 'construction',

@@ -63,13 +63,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: metaKeywords ? metaKeywords.split(',') : null,
     openGraph: url
       ? {
-        images: [
-          {
-            url,
-            alt,
-          },
-        ],
-      }
+          images: [
+            {
+              url,
+              alt,
+            },
+          ],
+        }
       : null,
   };
 }
@@ -439,7 +439,11 @@ export default async function Product({ params, searchParams }: Props) {
         value: product.condition,
       },
       ...customFields
-        .filter((field) => !field.name.toLowerCase().includes('frequentlyboughtwith') && !field.name.toLowerCase().includes('brand_id'))
+        .filter(
+          (field) =>
+            !field.name.toLowerCase().includes('frequentlyboughtwith') &&
+            !field.name.toLowerCase().includes('brand_id'),
+        )
         .map((field) => ({
           name: field.name,
           value: field.value,
@@ -449,34 +453,34 @@ export default async function Product({ params, searchParams }: Props) {
     return [
       ...(specifications.length
         ? [
-          {
-            title: t('ProductDetails.Accordions.specifications'),
-            content: (
-              <div className="prose @container">
-                <dl className="flex flex-col gap-4">
-                  {specifications.map((field, index) => (
-                    <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
-                      <dt>
-                        <strong>{field.name}</strong>
-                      </dt>
-                      <dd>{field.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ),
-          },
-        ]
+            {
+              title: t('ProductDetails.Accordions.specifications'),
+              content: (
+                <div className="prose @container">
+                  <dl className="flex flex-col gap-4">
+                    {specifications.map((field, index) => (
+                      <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
+                        <dt>
+                          <strong>{field.name}</strong>
+                        </dt>
+                        <dd>{field.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ),
+            },
+          ]
         : []),
       ...(product.warranty
         ? [
-          {
-            title: t('ProductDetails.Accordions.warranty'),
-            content: (
-              <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
-            ),
-          },
-        ]
+            {
+              title: t('ProductDetails.Accordions.warranty'),
+              content: (
+                <div className="prose" dangerouslySetInnerHTML={{ __html: product.warranty }} />
+              ),
+            },
+          ]
         : []),
     ];
   });
@@ -493,7 +497,7 @@ export default async function Product({ params, searchParams }: Props) {
     return productCardTransformer(relatedProducts, format);
   });
 
-  const streamableMinQuantity = Streamable.from(async () => {
+  const streamableMinQuantity = Streamable.from(() => {
     // Force min quantity to 1 as requested for bulk items
     return 1;
   });
@@ -546,7 +550,7 @@ export default async function Product({ params, searchParams }: Props) {
   if (isCableTie) {
     // For Cable Ties, hide color selection entirely (they only come in Black)
     transformedFields = transformedFields.filter((field) => {
-      const fieldName = String(field.name ?? '').toLowerCase();
+      const fieldName = String(field.name).toLowerCase();
 
       return !fieldName.includes('color') && !fieldName.includes('colour');
     });
@@ -581,7 +585,7 @@ export default async function Product({ params, searchParams }: Props) {
             description: (
               <>
                 <div
-                  className="prose prose-slate prose-sm max-w-none prose-p:font-sans prose-headings:font-heading"
+                  className="prose prose-sm prose-slate max-w-none prose-headings:font-heading prose-p:font-sans"
                   dangerouslySetInnerHTML={{ __html: descriptionHtml }}
                 />
                 <Stream fallback={null} value={streamableProductPricingAndRelatedProducts}>
@@ -640,16 +644,7 @@ export default async function Product({ params, searchParams }: Props) {
         />
       )}
 
-      {showRating && (
-        <div id="reviews">
-          <Reviews
-            productId={productId}
-            searchParams={searchParams}
-            streamableImages={streamableImages}
-            streamableProduct={streamableProduct}
-          />
-        </div>
-      )}
+      {/* Reviews section disabled - showRating is false */}
 
       <Stream
         fallback={null}

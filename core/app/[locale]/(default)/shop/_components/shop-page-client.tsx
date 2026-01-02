@@ -50,10 +50,11 @@ function CategoryTabs({
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-1 overflow-x-auto py-1">
           <button
-            className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${selectedCategory === 'all'
-              ? 'border-b-2 border-accent bg-slate-50 text-accent'
-              : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
-              }`}
+            className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
+              selectedCategory === 'all'
+                ? 'border-b-2 border-accent bg-slate-50 text-accent'
+                : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
+            }`}
             onClick={() => onCategoryChange('all')}
             type="button"
           >
@@ -61,10 +62,11 @@ function CategoryTabs({
           </button>
           {availableCategories.map((category) => (
             <button
-              className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${selectedCategory === category
-                ? 'border-b-2 border-accent bg-slate-50 text-accent'
-                : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
-                }`}
+              className={`whitespace-nowrap rounded-t-lg px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
+                selectedCategory === category
+                  ? 'border-b-2 border-accent bg-slate-50 text-accent'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-primary'
+              }`}
               key={category}
               onClick={() => onCategoryChange(category)}
               type="button"
@@ -349,10 +351,11 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                       })
                       .map((size) => (
                         <button
-                          className={`rounded-md border px-3 py-1.5 text-sm font-medium transition-all ${selectedSizes.includes(size)
-                            ? 'border-accent bg-accent text-white'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-accent hover:text-accent'
-                            }`}
+                          className={`rounded-md border px-3 py-1.5 text-sm font-medium transition-all ${
+                            selectedSizes.includes(size)
+                              ? 'border-accent bg-accent text-white'
+                              : 'border-slate-200 bg-white text-slate-700 hover:border-accent hover:text-accent'
+                          }`}
                           key={size}
                           onClick={() => toggleSize(size)}
                           type="button"
@@ -433,20 +436,22 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                 {/* View mode */}
                 <div className="hidden items-center gap-1 rounded-md border border-slate-200 p-1 md:flex">
                   <button
-                    className={`rounded p-1.5 transition-colors ${viewMode === 'grid'
-                      ? 'bg-primary text-white'
-                      : 'text-slate-400 hover:text-slate-600'
-                      }`}
+                    className={`rounded p-1.5 transition-colors ${
+                      viewMode === 'grid'
+                        ? 'bg-primary text-white'
+                        : 'text-slate-400 hover:text-slate-600'
+                    }`}
                     onClick={() => setViewMode('grid')}
                     type="button"
                   >
                     <Grid3X3 className="h-4 w-4" />
                   </button>
                   <button
-                    className={`rounded p-1.5 transition-colors ${viewMode === 'list'
-                      ? 'bg-primary text-white'
-                      : 'text-slate-400 hover:text-slate-600'
-                      }`}
+                    className={`rounded p-1.5 transition-colors ${
+                      viewMode === 'list'
+                        ? 'bg-primary text-white'
+                        : 'text-slate-400 hover:text-slate-600'
+                    }`}
                     onClick={() => setViewMode('list')}
                     type="button"
                   >
@@ -491,10 +496,11 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                     <div className="flex flex-wrap gap-2">
                       {availableColors.map((color) => (
                         <button
-                          className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${selectedColors.includes(color)
-                            ? 'bg-accent text-white'
-                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                            }`}
+                          className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+                            selectedColors.includes(color)
+                              ? 'bg-accent text-white'
+                              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          }`}
                           key={color}
                           onClick={() => toggleColor(color)}
                           type="button"
@@ -513,10 +519,11 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
                     <div className="flex flex-wrap gap-2">
                       {availableSizes.map((size) => (
                         <button
-                          className={`rounded-md border px-3 py-1 text-xs font-medium transition-all ${selectedSizes.includes(size)
-                            ? 'border-accent bg-accent text-white'
-                            : 'border-slate-200 text-slate-700 hover:border-accent'
-                            }`}
+                          className={`rounded-md border px-3 py-1 text-xs font-medium transition-all ${
+                            selectedSizes.includes(size)
+                              ? 'border-accent bg-accent text-white'
+                              : 'border-slate-200 text-slate-700 hover:border-accent'
+                          }`}
                           key={size}
                           onClick={() => toggleSize(size)}
                           type="button"
@@ -631,10 +638,11 @@ export function ShopPageClient({ products, availableColors, availableSizes }: Sh
 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
-                    className={`flex h-10 w-10 items-center justify-center rounded-md font-bold transition-colors ${page === currentPage
-                      ? 'bg-primary text-white'
-                      : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
-                      }`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-md font-bold transition-colors ${
+                      page === currentPage
+                        ? 'bg-primary text-white'
+                        : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     type="button"

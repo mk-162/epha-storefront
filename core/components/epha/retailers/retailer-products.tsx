@@ -146,15 +146,11 @@ export function RetailerProducts() {
                   <div className="mb-6 rounded-xl bg-slate-50 p-4">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
-                        <div className="font-heading text-2xl font-black text-primary">
-                          50
-                        </div>
+                        <div className="font-heading text-2xl font-black text-primary">50</div>
                         <div className="text-xs text-slate-500">pcs (4"-8")</div>
                       </div>
                       <div>
-                        <div className="font-heading text-2xl font-black text-primary">
-                          15
-                        </div>
+                        <div className="font-heading text-2xl font-black text-primary">15</div>
                         <div className="text-xs text-slate-500">pcs (10"-12")*</div>
                       </div>
                     </div>

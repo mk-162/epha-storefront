@@ -153,10 +153,7 @@ export function ContactForm() {
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <label
-                      className="mb-1 block text-sm font-medium text-slate-700"
-                      htmlFor="name"
-                    >
+                    <label className="mb-1 block text-sm font-medium text-slate-700" htmlFor="name">
                       Full Name *
                     </label>
                     <input
@@ -190,10 +187,7 @@ export function ContactForm() {
                 </div>
 
                 <div>
-                  <label
-                    className="mb-1 block text-sm font-medium text-slate-700"
-                    htmlFor="email"
-                  >
+                  <label className="mb-1 block text-sm font-medium text-slate-700" htmlFor="email">
                     Email Address *
                   </label>
                   <input
@@ -209,10 +203,7 @@ export function ContactForm() {
                 </div>
 
                 <div>
-                  <label
-                    className="mb-1 block text-sm font-medium text-slate-700"
-                    htmlFor="phone"
-                  >
+                  <label className="mb-1 block text-sm font-medium text-slate-700" htmlFor="phone">
                     Phone Number (Optional)
                   </label>
                   <input
