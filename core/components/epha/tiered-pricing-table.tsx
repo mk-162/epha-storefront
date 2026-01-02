@@ -15,7 +15,7 @@ interface Props {
 export async function TieredPricingTable({ rules, basePrice }: Props) {
     const format = await getFormatter();
 
-    if (!rules || rules.length === 0) return null;
+    if (rules.length === 0) return null;
 
     return (
         <div className="my-6 overflow-hidden rounded-xl border border-slate-200 bg-white">

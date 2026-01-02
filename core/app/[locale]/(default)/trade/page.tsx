@@ -106,16 +106,16 @@ export default async function TradePage({ params }: Props) {
                                     </h3>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Legal Company Name</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="text" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="company-name">Legal Company Name</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="company-name" required type="text" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Tax ID / VAT Number</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="text" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="tax-id">Tax ID / VAT Number</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="tax-id" required type="text" />
                                 </div>
                                 <div className="col-span-2 space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Registered Address</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="text" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="address">Registered Address</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="address" required type="text" />
                                 </div>
 
                                 {/* Contact Info */}
@@ -125,28 +125,28 @@ export default async function TradePage({ params }: Props) {
                                     </h3>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Full Name</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="text" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="full-name">Full Name</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="full-name" required type="text" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Job Title</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="text" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="job-title">Job Title</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="job-title" required type="text" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Business Email</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="email" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="business-email">Business Email</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="business-email" required type="email" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Phone Number</label>
-                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" required type="tel" />
+                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500" htmlFor="phone-number">Phone Number</label>
+                                    <input className="w-full rounded border border-slate-200 px-4 py-3 text-sm focus:border-accent focus:outline-none" id="phone-number" required type="tel" />
                                 </div>
 
                                 <div className="col-span-2 mt-8">
                                     <div className="flex items-start gap-3 rounded-lg bg-slate-50 p-4">
-                                        <input className="mt-1 h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent" required type="checkbox" />
-                                        <p className="text-xs text-slate-500 leading-relaxed">
+                                        <input className="mt-1 h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent" id="terms-checkbox" required type="checkbox" />
+                                        <label className="text-xs text-slate-500 leading-relaxed" htmlFor="terms-checkbox">
                                             I certify that the information provided above is true and correct and that I am authorized to enter into a credit agreement on behalf of the company. I agree to EPHA&apos;s <a className="text-accent underline" href="/terms-conditions">Terms of Credit</a>.
-                                        </p>
+                                        </label>
                                     </div>
                                 </div>
 

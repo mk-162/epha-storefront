@@ -86,7 +86,7 @@ export default async function Product({ params, searchParams }: Props) {
 
   const productId = Number(slug);
 
-  const { product: baseProduct, settings } = await getProduct(productId, customerAccessToken);
+  const { product: baseProduct } = await getProduct(productId, customerAccessToken);
 
   const reviewsEnabled = false;
   const showRating = false;
@@ -494,8 +494,6 @@ export default async function Product({ params, searchParams }: Props) {
   });
 
   const streamableMinQuantity = Streamable.from(async () => {
-    const product = await streamableProduct;
-
     // Force min quantity to 1 as requested for bulk items
     return 1;
   });
@@ -546,14 +544,11 @@ export default async function Product({ params, searchParams }: Props) {
   let transformedFields = await productOptionsTransformer(baseProduct.productOptions);
 
   if (isCableTie) {
-    transformedFields = transformedFields.map((field: any) => {
-      if (field.name.toLowerCase().includes('color') || field.name.toLowerCase().includes('colour')) {
-        return {
-          ...field,
-          options: field.options.filter((opt: any) => opt.label.toLowerCase().includes('black')),
-        };
-      }
-      return field;
+    // For Cable Ties, hide color selection entirely (they only come in Black)
+    transformedFields = transformedFields.filter((field) => {
+      const fieldName = String(field.name ?? '').toLowerCase();
+
+      return !fieldName.includes('color') && !fieldName.includes('colour');
     });
   }
 
@@ -595,7 +590,7 @@ export default async function Product({ params, searchParams }: Props) {
                     const basePrice = pricingData?.prices?.basePrice;
 
                     if (rules && Array.isArray(rules) && rules.length > 0 && basePrice) {
-                      return <TieredPricingTable basePrice={basePrice} rules={rules as any} />;
+                      return <TieredPricingTable basePrice={basePrice} rules={rules} />;
                     }
                     return null;
                   }}
