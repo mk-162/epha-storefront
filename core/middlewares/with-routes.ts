@@ -304,7 +304,12 @@ export const withRoutes: MiddlewareFactory = () => {
     const cleanPath = clearLocaleFromPath(pathname, locale);
 
     if (CUSTOM_ROUTES.includes(cleanPath)) {
-      return NextResponse.next();
+      // Still rewrite to include locale, but skip BigCommerce routing
+      const rewriteUrl = new URL(`/${locale}${cleanPath}`, request.url);
+
+      rewriteUrl.search = request.nextUrl.search;
+
+      return NextResponse.rewrite(rewriteUrl);
     }
 
     const { route, status } = await getRouteInfo(request, event);
