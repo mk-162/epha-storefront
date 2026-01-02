@@ -496,7 +496,7 @@ export default async function Product({ params, searchParams }: Props) {
     return productCardTransformer(relatedProducts, format);
   });
 
-  const streamableMinQuantity = Streamable.from(() => {
+  const streamableMinQuantity = Streamable.from(async () => {
     // Force min quantity to 1 as requested for bulk items
     return 1;
   });

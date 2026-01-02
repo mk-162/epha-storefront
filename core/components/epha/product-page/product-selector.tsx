@@ -568,7 +568,18 @@ export function ProductSelector({ products }: ProductSelectorProps) {
                         HP {selectedSize.replace('"', '')} inch - {selectedColorData?.name}
                       </div>
                       <div className="text-sm text-white/60">
-                        {selectedPackTypeData?.shortName} × {quantity}
+                        {selectedPackType === 'bulk' ? (
+                          <>{quantity} pieces</>
+                        ) : selectedPackType === 'box-25' ? (
+                          <>
+                            {quantity} × box of 25 ({quantity * 25} pcs)
+                          </>
+                        ) : (
+                          <>
+                            {quantity} × box of {selectedVariant?.qtyInBox || 50} (
+                            {quantity * (selectedVariant?.qtyInBox || 50)} pcs)
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
