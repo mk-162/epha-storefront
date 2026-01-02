@@ -115,7 +115,7 @@ export function Navigation({
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto rounded-md bg-transparent px-2 py-2 text-xs font-medium uppercase tracking-wider text-white hover:bg-white/10 hover:text-accent focus:bg-white/10 focus:text-accent data-[state=open]:bg-white/10 data-[state=open]:text-accent lg:px-3 lg:text-sm">
+                <NavigationMenuTrigger className="h-auto rounded-md bg-transparent px-2 py-2 text-xs font-medium uppercase tracking-wider text-white hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white lg:px-3 lg:text-sm">
                   Industries
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
