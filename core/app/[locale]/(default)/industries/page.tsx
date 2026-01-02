@@ -163,11 +163,46 @@ const benefits = [
 ];
 
 const comparisonData = [
-  { challenge: 'Vibration Damage', fleet: 3, construction: 2, manufacturing: 2, automotive: 1, municipal: 2 },
-  { challenge: 'Temperature Extremes', fleet: 2, construction: 3, manufacturing: 1, automotive: 1, municipal: 3 },
-  { challenge: 'Chemical Exposure', fleet: 2, construction: 1, manufacturing: 3, automotive: 2, municipal: 2 },
-  { challenge: 'Abrasion/Rubbing', fleet: 3, construction: 3, manufacturing: 2, automotive: 2, municipal: 3 },
-  { challenge: 'Bundle Protection', fleet: 2, construction: 3, manufacturing: 2, automotive: 1, municipal: 2 },
+  {
+    challenge: 'Vibration Damage',
+    fleet: 3,
+    construction: 2,
+    manufacturing: 2,
+    automotive: 1,
+    municipal: 2,
+  },
+  {
+    challenge: 'Temperature Extremes',
+    fleet: 2,
+    construction: 3,
+    manufacturing: 1,
+    automotive: 1,
+    municipal: 3,
+  },
+  {
+    challenge: 'Chemical Exposure',
+    fleet: 2,
+    construction: 1,
+    manufacturing: 3,
+    automotive: 2,
+    municipal: 2,
+  },
+  {
+    challenge: 'Abrasion/Rubbing',
+    fleet: 3,
+    construction: 3,
+    manufacturing: 2,
+    automotive: 2,
+    municipal: 3,
+  },
+  {
+    challenge: 'Bundle Protection',
+    fleet: 2,
+    construction: 3,
+    manufacturing: 2,
+    automotive: 1,
+    municipal: 2,
+  },
 ];
 
 function renderChecks(count: number) {
@@ -223,7 +258,9 @@ export default function IndustriesPage() {
                   <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
                   <div>
                     <h4 className="font-bold text-slate-900">Application-Matched Sizing</h4>
-                    <p className="text-sm text-slate-600">Right protection for your equipment types</p>
+                    <p className="text-sm text-slate-600">
+                      Right protection for your equipment types
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-slate-100 bg-slate-50 p-4">
@@ -237,7 +274,9 @@ export default function IndustriesPage() {
                   <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
                   <div>
                     <h4 className="font-bold text-slate-900">Industry-Specific ROI</h4>
-                    <p className="text-sm text-slate-600">Cost savings calculated for your operations</p>
+                    <p className="text-sm text-slate-600">
+                      Cost savings calculated for your operations
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-lg border border-slate-100 bg-slate-50 p-4">
@@ -314,7 +353,8 @@ export default function IndustriesPage() {
                           className="w-full justify-between transition-colors group-hover:bg-primary group-hover:text-white"
                           variant="outline"
                         >
-                          Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          Learn More{' '}
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </Link>
                     </div>
@@ -479,8 +519,10 @@ export default function IndustriesPage() {
               </Link>
             </div>
 
-            <div className="inline-block rounded-xl border border-white/20 bg-primary-foreground/10 p-6 backdrop-blur-sm">
-              <h3 className="mb-2 font-bold text-white">Questions about your specific application?</h3>
+            <div className="bg-primary-foreground/10 inline-block rounded-xl border border-white/20 p-6 backdrop-blur-sm">
+              <h3 className="mb-2 font-bold text-white">
+                Questions about your specific application?
+              </h3>
               <p className="mb-4 text-sm text-white/80">
                 Our team includes professionals with real-world experience in your industry.
               </p>
