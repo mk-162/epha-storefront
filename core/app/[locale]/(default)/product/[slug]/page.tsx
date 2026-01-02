@@ -589,7 +589,7 @@ export default async function Product({ params, searchParams }: Props) {
                 />
                 <Stream fallback={null} value={streamableProductPricingAndRelatedProducts}>
                   {(pricingData) => {
-                    const rules = pricingData?.prices?.bulkPricingRules;
+                    const rules = pricingData?.prices?.bulkPricing;
                     const basePrice = pricingData?.prices?.basePrice;
 
                     if (rules && Array.isArray(rules) && rules.length > 0 && basePrice) {

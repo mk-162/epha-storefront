@@ -1,11 +1,28 @@
 import { getFormatter } from 'next-intl/server';
 
-interface BulkPricingRule {
-  quantityMin: number;
-  quantityMax: number | null;
-  price?: { value: number; currencyCode: string };
-  percentage?: number;
+// BigCommerce bulk pricing types
+interface BulkPricingFixedPriceDiscount {
+  minimumQuantity: number;
+  maximumQuantity: number | null;
+  price: number;
 }
+
+interface BulkPricingPercentageDiscount {
+  minimumQuantity: number;
+  maximumQuantity: number | null;
+  percentOff: number;
+}
+
+interface BulkPricingRelativePriceDiscount {
+  minimumQuantity: number;
+  maximumQuantity: number | null;
+  priceAdjustment: number;
+}
+
+type BulkPricingRule =
+  | BulkPricingFixedPriceDiscount
+  | BulkPricingPercentageDiscount
+  | BulkPricingRelativePriceDiscount;
 
 interface Props {
   rules: BulkPricingRule[];
@@ -43,23 +60,37 @@ export async function TieredPricingTable({ rules, basePrice }: Props) {
             let discountPrice = '';
             let savings = '';
 
-            if (rule.price) {
-              discountPrice = format.number(rule.price.value, {
+            if ('price' in rule) {
+              // Fixed price discount
+              discountPrice = format.number(rule.price, {
                 style: 'currency',
-                currency: rule.price.currencyCode,
+                currency: basePrice.currencyCode,
               });
 
-              const savingsVal = ((basePrice.value - rule.price.value) / basePrice.value) * 100;
+              const savingsVal = ((basePrice.value - rule.price) / basePrice.value) * 100;
 
               savings = `${Math.round(savingsVal)}% OFF`;
-            } else if (rule.percentage) {
-              const discountedVal = basePrice.value * (1 - rule.percentage / 100);
+            } else if ('percentOff' in rule) {
+              // Percentage discount
+              const discountedVal = basePrice.value * (1 - rule.percentOff / 100);
 
               discountPrice = format.number(discountedVal, {
                 style: 'currency',
                 currency: basePrice.currencyCode,
               });
-              savings = `${rule.percentage}% OFF`;
+              savings = `${rule.percentOff}% OFF`;
+            } else if ('priceAdjustment' in rule) {
+              // Relative price discount (price reduction amount)
+              const discountedVal = basePrice.value - rule.priceAdjustment;
+
+              discountPrice = format.number(discountedVal, {
+                style: 'currency',
+                currency: basePrice.currencyCode,
+              });
+
+              const savingsVal = (rule.priceAdjustment / basePrice.value) * 100;
+
+              savings = `${Math.round(savingsVal)}% OFF`;
             }
 
             return (
@@ -68,9 +99,9 @@ export async function TieredPricingTable({ rules, basePrice }: Props) {
                 key={i}
               >
                 <td className="px-4 py-3 font-bold text-primary">
-                  {rule.quantityMax
-                    ? `${rule.quantityMin} - ${rule.quantityMax}`
-                    : `${rule.quantityMin}+`}
+                  {rule.maximumQuantity
+                    ? `${rule.minimumQuantity} - ${rule.maximumQuantity}`
+                    : `${rule.minimumQuantity}+`}
                 </td>
                 <td className="px-4 py-3 font-medium text-slate-600">{discountPrice}</td>
                 <td className="px-4 py-3 text-right">

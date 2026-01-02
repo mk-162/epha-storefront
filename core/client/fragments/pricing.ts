@@ -29,27 +29,21 @@ export const PricingFragment = graphql(`
           currencyCode
         }
       }
-      bulkPricingRules {
-        ... on BulkPricingFixedPriceRule {
-          quantityMin
-          quantityMax
-          price {
-            value
-            currencyCode
-          }
+      bulkPricing {
+        ... on BulkPricingFixedPriceDiscount {
+          minimumQuantity
+          maximumQuantity
+          price
         }
-        ... on BulkPricingPercentageDiscountRule {
-          quantityMin
-          quantityMax
-          percentage
+        ... on BulkPricingPercentageDiscount {
+          minimumQuantity
+          maximumQuantity
+          percentOff
         }
-        ... on BulkPricingRelativePriceRule {
-          quantityMin
-          quantityMax
-          price {
-            value
-            currencyCode
-          }
+        ... on BulkPricingRelativePriceDiscount {
+          minimumQuantity
+          maximumQuantity
+          priceAdjustment
         }
       }
     }
