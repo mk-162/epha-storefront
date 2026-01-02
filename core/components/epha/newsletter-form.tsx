@@ -26,12 +26,17 @@ export function NewsletterForm() {
     shouldRevalidate: 'onInput',
   });
 
+  const allErrors = [...(fields.email.errors ?? []), ...(form.errors ?? [])];
+
   return (
     <div className="space-y-3">
       <form {...getFormProps(form)} action={formAction} className="flex gap-2">
         <div className="relative flex-1">
           <input
             {...getInputProps(fields.email, { type: 'email' })}
+            aria-describedby={allErrors.length > 0 ? 'newsletter-errors' : undefined}
+            aria-invalid={allErrors.length > 0 ? true : undefined}
+            aria-label="Email address"
             className="w-full rounded border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-accent focus:outline-none"
             placeholder="Email Address"
           />
@@ -45,21 +50,19 @@ export function NewsletterForm() {
         </button>
       </form>
 
-      {state.successMessage != null && state.successMessage !== '' ? (
+      {state.successMessage ? (
         <p className="animate-fade-in text-xs font-medium text-green-400">{state.successMessage}</p>
       ) : null}
 
-      {fields.email.errors?.map((error) => (
-        <p className="text-xs font-medium text-red-400" key={error}>
-          {error}
-        </p>
-      ))}
-
-      {form.errors?.map((error) => (
-        <p className="text-xs font-medium text-red-400" key={error}>
-          {error}
-        </p>
-      ))}
+      {allErrors.length > 0 ? (
+        <div id="newsletter-errors">
+          {allErrors.map((error) => (
+            <p className="text-xs font-medium text-red-400" key={error}>
+              {error}
+            </p>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
