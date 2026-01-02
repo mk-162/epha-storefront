@@ -286,6 +286,9 @@ const getRouteInfo = async (request: NextRequest, event: NextFetchEvent) => {
   }
 };
 
+// Custom routes that should bypass BigCommerce routing
+const CUSTOM_ROUTES = ['/contact', '/contact/'];
+
 export const withRoutes: MiddlewareFactory = () => {
   // eslint-disable-next-line complexity
   return async (request, event) => {
@@ -296,7 +299,13 @@ export const withRoutes: MiddlewareFactory = () => {
       return NextResponse.next();
     }
 
+    // Skip BigCommerce routing for custom routes (use our own pages)
     const locale = request.headers.get('x-bc-locale') ?? '';
+    const cleanPath = clearLocaleFromPath(pathname, locale);
+
+    if (CUSTOM_ROUTES.includes(cleanPath)) {
+      return NextResponse.next();
+    }
 
     const { route, status } = await getRouteInfo(request, event);
 
