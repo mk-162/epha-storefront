@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, DollarSign, Package, Store, TrendingUp, Users } from 'lucide-react';
+import { ArrowRight, DollarSign, Store, TrendingUp, Users } from 'lucide-react';
 
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
@@ -18,25 +18,25 @@ export function RetailerHero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-primary to-slate-900 py-20 lg:py-28">
-      {/* Background effects */}
+    <section className="relative overflow-hidden py-20 lg:py-28">
+      {/* Hero Background Image */}
       <div className="absolute inset-0">
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-accent/10 blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[150px]" />
+        <Image
+          alt="EPHA Hose Protectors for Retailers"
+          className="object-cover"
+          fill
+          priority
+          sizes="100vw"
+          src="/images/epha-drag-racing.jpg"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
       </div>
 
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
+      {/* Accent glow effects */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-accent/10 blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[150px]" />
       </div>
 
       <div className="container relative mx-auto px-4">
@@ -110,44 +110,36 @@ export function RetailerHero() {
           </div>
 
           {/* Counter Display Image */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            {/* Glow effect */}
-            <div className="absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-accent/30 via-transparent to-accent/20 blur-2xl" />
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            {/* Main image container - clean, industrial style */}
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+              <Image
+                alt="EPHA Counter Display in Auto Parts Store"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                src="/images/epha-counter-display.jpg"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-            {/* Main image container */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8 backdrop-blur-sm">
-              {/* Counter Display Box Image */}
-              <div className="relative aspect-square">
-                <Image
-                  alt="EPHA Counter Display Box - 50 Hose Protectors"
-                  className="object-contain drop-shadow-2xl"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  src="https://cdn11.bigcommerce.com/s-usnceuurb6/products/431/images/868/HPO-BOX__45149.1733924127.386.513.png?c=1"
-                />
-              </div>
-
-              {/* Feature badges */}
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                  <Package className="mx-auto mb-2 h-6 w-6 text-accent" />
-                  <div className="text-sm font-bold text-white">50 Units/Box</div>
-                  <div className="text-xs text-white/50">Ready to sell</div>
+              {/* Bottom label */}
+              <div className="absolute inset-x-0 bottom-0 p-5">
+                <div className="mb-1 text-xs font-bold uppercase tracking-wider text-accent">
+                  Point of Sale Ready
                 </div>
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                  <Store className="mx-auto mb-2 h-6 w-6 text-accent" />
-                  <div className="text-sm font-bold text-white">Counter Display</div>
-                  <div className="text-xs text-white/50">Eye-catching</div>
+                <div className="font-heading text-xl font-bold uppercase text-white md:text-2xl">
+                  Counter Display Box
                 </div>
               </div>
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -right-4 -top-4 rounded-2xl border border-white/20 bg-gradient-to-br from-slate-800 to-slate-900 p-4 shadow-2xl lg:-right-8 lg:-top-8">
+            {/* USA Badge - positioned top right */}
+            <div className="absolute -right-3 -top-3 rounded-xl border border-white/20 bg-slate-900 px-4 py-3 shadow-2xl md:-right-6 md:-top-6">
               <div className="text-center">
-                <div className="font-heading text-3xl font-black text-accent">USA</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-white/60">
+                <div className="font-heading text-2xl font-black text-accent md:text-3xl">USA</div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-white/60">
                   Made in America
                 </div>
               </div>
