@@ -27,7 +27,7 @@ export function Hero() {
       <div className="container relative mx-auto grid h-full items-end gap-8 px-4 py-16 lg:grid-cols-2">
         <div className="space-y-4">
           <h1 className="font-heading text-4xl font-bold uppercase leading-[0.9] text-white drop-shadow-xl md:text-5xl lg:text-6xl">
-            The <span className="text-accent">$8 Solution</span> <br />
+            The <span className="text-accent">$4.50 Solution</span> <br />
             That Prevents <br />
             $47,500 Failures
           </h1>
