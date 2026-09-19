@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@segment/analytics-node": "^2.2.1",
-    "adm-zip": "^0.5.16",
+    "adm-zip": "^0.6.1",
     "commander": "^14.0.0",
     "conf": "^13.1.0",
     "consola": "^3.4.2",
