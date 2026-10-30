@@ -79,7 +79,7 @@
     "tailwindcss-radix": "^3.0.5",
     "three": "^0.182.0",
     "uuid": "^11.1.0",
-    "zod": "^3.25.51"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@0no-co/graphqlsp": "^1.12.16",
